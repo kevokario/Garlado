@@ -1,0 +1,169 @@
+<style>
+    .autohide{
+
+    }
+    @media(max-width:768px){
+        .autohide{
+            display: none;
+        }
+    }
+</style>
+<div class="container-fluid">
+    <div class="row">
+        <h4 class="text-center">
+            View My Category Group(s).
+        </h4>
+        <div class="row">
+            <div class="col-sm-12">
+                <form name="editMinorCategory">
+                    <table class="table">
+                        <tr>
+                            <td>
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-star"></i>
+                                        </span>
+                                        <select 
+                                            class="form-control" 
+                                            name="statusMinorGroupEdit"
+                                            onfocus="statusValidate(this.value, document.getElementById('statusMinorGroupEdit'))"
+                                            onchange="statusValidate(this.value, document.getElementById('statusMinorGroupEdit'))"
+                                                >
+                                            <option>---select status---</option>
+                                            <option>ACTIVE</option>
+                                            <option>INACTIVE</option>
+                                            <option>ALL</option>
+                                        </select>
+                                    </div>
+                                    <p class="text-danger" id="statusMinorGroupEdit"></p>
+                                </div> 
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-cart-plus"></i>
+                                        </span>
+                                        <select 
+                                            class="form-control"
+                                            name="generalMinorGroupEdit"
+                                            onfocus="generalValidate(this.value, document.getElementById('generalMinorGroupEdit'))"
+                                            onchange="generalValidate(this.value, document.getElementById('generalMinorGroupEdit'))
+                                                            , populateMinorCategoryEdit(this.value)
+                                            "
+                                            >
+                                            <option>---select Group---</option>
+                                        </select>
+                                    </div>
+                                    <p class="text-danger" id="generalMinorGroupEdit"></p>
+                                </div>  
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-shopping-basket"></i>
+                                        </span>
+                                        <select
+                                            class="form-control"
+                                             onfocus="categoryValidate(this.value, document.getElementById('categoryMinorGroupEdit'))"
+                                            onchange="categoryValidate(this.value, document.getElementById('categoryMinorGroupEdit'))"
+                                            name="categoryMinorGroupEdit"
+                                            >
+                                            <option>---select Cat---</option>
+                                        </select>
+                                        <div class="input-group-btn">
+                                            <button type="button" class="btn btn-info" onclick="filterMinorCategoryEdit()">
+                                                <i class="fa fa-search"></i> 
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <p class="text-danger" id="categoryMinorGroupEdit"></p>
+                                </div>  
+                            </td>
+
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+        <div class="col-sm-12" style="max-height: 300px;margin-bottom: 5px;overflow-y: scroll;">
+
+            <table class="table table-hover table-responsive table-striped">
+                <thead class="bg1">
+                    <tr>
+                        <th>
+                            <span class="fa fa-stack">
+                                <i class="fa fa-stack-2x fa-square-o"></i>
+                                <i class="fa fa-stack-1x fa-bars"></i>
+                            </span>
+                            <span class="autohide">No.</span>
+                        </th>
+                        <th>
+                            <span class="fa fa-stack">
+                                <i class="fa fa-stack-2x fa-square-o"></i>
+                                <i class="fa fa-stack-1x fa-cart-plus"></i>
+                            </span>
+                            <span class="autohide">General</span>
+                        </th>
+                        <th>
+                            <span class="fa fa-stack">
+                                <i class="fa fa-stack-2x fa-square-o"></i>
+                                <i class="fa fa-stack-1x fa-shopping-basket"></i>
+                            </span>
+                            <span class="autohide">Category</span>
+                        </th>
+                        <th>
+                            <span class="fa fa-stack">
+                                <i class="fa fa-stack-2x fa-square-o"></i>
+                                <i class="fa fa-stack-1x fa-shopping-bag"></i>
+                            </span>
+                            <span class="autohide">Specific</span>
+                        </th>
+                        <th>
+                            <span class="fa fa-stack">
+                                <i class="fa fa-stack-2x fa-square-o"></i>
+                                <i class="fa fa-stack-1x fa-star"></i>
+                            </span>
+                            <span class="autohide">Status</span>
+                        </th>
+                        <th>
+                            <span class="fa fa-stack">
+                                <i class="fa fa-stack-2x fa-square-o"></i>
+                                <i class="fa fa-stack-1x fa-star-o"></i>
+                            </span>
+                            <span class="autohide">Action</span>
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody  id="SpecificCategoryViewEdit">
+
+                </tbody>
+            </table>
+        </div>
+        <div class="col-sm-12">
+            <div class="panel-group">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" class="btn btn-info" href="#collapsecategoryeditvi3eew">
+                                <i class="fa fa-question-circle-o"></i> About Specific Category Group 
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapsecategoryeditvi3eew" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            Here you get to see all Specific category groups of your products. <br>
+                            You can <strong>Modify</strong> a group by clicking the button <strong>Edit</strong>.
+                            <br>
+                            You can change name or status.
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

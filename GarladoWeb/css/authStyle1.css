@@ -1,0 +1,113 @@
+.myContainer{
+    margin : 20px;
+    padding : 10px;
+}
+.myJumboron img{
+    width: 78px; height: 62px;
+}
+.myJumboron h2{
+    font-size: 21px;
+}
+#userLoginFormDiv{
+    box-shadow: 0 0 8px 0 rgba(0,0,0,0.2);
+    border-radius: 5px;
+}
+#userLoginFormDiv h3,#verifyForm h3{
+    padding-top: 10px;
+    color : #118c8b;
+}
+.myJumboron{
+    padding: 20px 15px;
+    border-bottom: 2px solid #000d29;
+    color: #118c8b;
+    width: 100%;
+    text-align: center;
+    z-index: 2;
+    background: #fcfcfc;
+    top: 0;             
+}
+
+.mybtn{
+    color: #fff;
+    background-color: #118c8b;
+    border : 1px solid #118c8b;
+    border-radius: 0;
+    letter-spacing: -0.5px;
+    transition: .5s;
+}
+.mybtn:focus{
+    color: #fff;
+    background-color: #118C8B;
+}
+.mybtn:hover{
+    color: #118c8b;
+    background-color: #fff;
+}
+.mybtn1{
+    background-color: #fff;
+    color: #118c8b;
+    border : 1px solid #118c8b;
+    border-radius: 0;
+    letter-spacing: -0.5px;
+    transition: .5s;
+}
+.mybtn2:focus{
+    background-color: #fff;
+    color: #118c8b;
+}
+.mybtn2:hover{
+    background-color: #fff;
+    color: #118c8b;
+}
+#authLogin input,#authSignUp input,#authPassword input,#verifyForm input{
+    box-shadow: none;
+    border-radius: 0;
+}
+#authLogin .input-group-addon,#authSignUp .input-group-addon,#authPassword .input-group-addon,#verifyForm .input-group-addon{
+    background-color: #fff;
+    border-radius: 0;
+}
+#authLogin .form-group small,#authSignUp .form-group small,#authPassword .form-group small{
+    z-index: 3;
+}
+#authLogin .form-group span,#authSignUp .form-group span,#authPassword .form-group span{
+    z-index: 3;
+}
+#authLogin .myLoader,#authSignUp .myLoader,#authPassword .myLoader{
+    cursor: pointer;
+}
+@media(max-width:768px){
+    .myJumboron h2{
+        font-size: 21px;
+        margin: 0;
+    }
+    .myJumboron img{
+        width: 78px; height: 62px;
+    }
+    .myContainer{
+        margin-top: 10px;
+    }
+
+}
+@media(max-width:529px){
+    .myJumboron{
+        margin-bottom: 10px;
+    }
+    .myContainer{
+        margin-top: 10px;
+    }
+    #userLoginFormDiv h3{
+        padding-top: 21px;
+    }
+}
+@media(max-width:320px){
+    .myJumboron{
+        margin-bottom: 10px;
+    }
+    .myContainer{
+        margin-top: 10px;
+    }
+    #userLoginFormDiv h3{
+        padding-top: 24px;
+    }
+}

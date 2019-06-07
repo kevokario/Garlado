@@ -1,0 +1,74 @@
+<div class="container-fluid">
+    <h3 class="text-center">Manage Product Pictures.</h3>
+    <div class="row">
+        <div class="col-sm-12">
+            <table class="table" style="margin-bottom: 2px; padding: 2px;">
+                <tr style="margin:0px;padding: 0px;">
+                    <!--Scrollable list-->
+
+                    <td style="width: 50%">
+                        <h4 class="text-center">Click an image to see it!</h4>
+                        <div style="height: 200px; overflow-y: scroll" id="myPicList">
+                            
+                        </div>
+                        <p>Selected Pic : <strong id="selectedPictureName"></strong></p>
+                    </td> 
+                    <!--Image clicked-->
+                    <td style="width: 50%">
+                        <form>
+                            <input type="hidden"/>
+                            <div class="text-center"><h4 id="webPicName"></h4></div>
+                            <div class="form-group" id="webPic">
+                                <!--<img src="./productImages/92f293be689a1a87dad8f91584f8e3b0.jpg"   alt="my Picture" class="productImg"/>-->
+                            </div>
+                            <div class='text center mydef text-success' id="webPicDiv">
+                               
+                            </div>
+                            <div class="form-group text-center">
+                                <button class="btn btn-info" onclick="setWebPic()" type="button">
+                                    <i class="fa fa-thumbs-up"></i>
+                                    Set for Web 
+                                </button>
+                                <button class="btn btn-danger" onclick="deleteWebPic()" type="button">
+                                    <i class="fa fa-trash"></i>
+                                    Delete 
+                                </button>
+                            </div>
+                        </form>
+                    </td>
+                </tr>
+
+            </table>
+            <div class="panel-group">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" class="btn btn-info" href="#collapse1v12qwiew2fds3">
+                                <i class="fa fa-question-circle-o"></i> About Manage Product Pictures 
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapse1v12qwiew2fds3" class="panel-collapse collapse">
+                        <div class="panel-body text-justify">
+                            Here you get to specifically manage a product's images.
+                            You can either <strong>delete</strong> an image or <strong>set</strong> an image to bee seen on the web.
+                             To do so:
+                             <ol>
+                                 <li>
+                                     Click on an image to select it. If it appears under the product title, it is selected.
+                                 </li>
+                                 <li>
+                                     Click on an action. Delete to delete the image, Set for web to set it for your website.
+                                 </li>
+                                 <li>
+                                     Thats all!
+                                 </li>
+                             </ol>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

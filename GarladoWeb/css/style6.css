@@ -1,0 +1,63 @@
+.featuredBrands{
+    margin : 20px;
+    padding: 30px 20px; 
+}
+.featuredBrands .panel{
+    border:2px solid #118C8B;
+    border-radius: 4px 4px 0 0;
+    color: #000D29;
+}
+.featuredBrands .panel .panel-heading{
+    border-bottom: 1px solid #118C8B;
+    padding: 5px 10px;
+}
+.featuredBrands .panel .panel-body{
+    padding: 0px;
+}
+.featuredBrands .panel .panel-body img{
+    padding: 0px;
+    width: 20%;
+    float: left;
+    margin: 0;
+    height: 150px;
+}
+.featuredBrands .panel .panel-body table td{
+    display: inline-block;
+    text-align: center;
+}
+.featuredBrands .panel .panel-body table .tdTitle{
+    width : 100%;
+}
+.featuredBrands .panel .panel-body table .tdTitle{
+    width: 100%;
+}
+.bg1{
+    background-color:#118C8B;
+    color: #fff;
+}.bg2{
+    color:#118C8B;
+    background-color: #fff;
+}
+@media(max-width:768px){
+    .featuredBrands{
+        margin: 9px;
+        padding: 12px 8px;
+    }
+
+    .featuredBrands .panel .panel-body img{
+        height: 110px;
+    }
+}
+@media(max-width:600px){
+    .featuredBrands .panel .panel-body img{
+        height: 100px;
+    }
+}
+@media(max-width:500px){
+    .featuredBrands .panel .panel-body img{
+        height: 90px;
+    } 
+}
+@media(max-width:360px){
+
+}

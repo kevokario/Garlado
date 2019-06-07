@@ -1,0 +1,100 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12 col-sm-offset-0">
+            <h3 class="text-center">Add Specific Category Group.</h3>
+            <form name="addMinorCategoryform">
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-cart-plus"></i>
+                        </span>
+                        <select 
+                            class="form-control"
+                            name="general"
+                            onfocus="generalValidate(this.value, document.getElementById('generalErrorMinor12'))"
+                            onchange="generalValidate(this.value, document.getElementById('generalErrorMinor12'))
+                                ,populateMinorCategory(this.value)
+                            "
+                            onkeyup="generalValidate(this.value, document.getElementById('generalErrorMinor12'))
+                                ,populateMinorCategory(this.value)
+                            "
+                            >
+                            <option>------SELECT PARENT GENERAL GROUP------</option>
+                        </select>
+                    </div>
+                    <p class="text-danger" id="generalErrorMinor12"></p>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-shopping-basket"></i>
+                        </span>
+                        <select 
+                            class="form-control"
+                            name="category"
+                            onfocus="categoryValidate(this.value, document.getElementById('cagetoryErrorMinor'))"
+                            onchange="categoryValidate(this.value, document.getElementById('cagetoryErrorMinor'))"
+                            >
+                            <option>------SELECT CATEGORY GROUP------</option>
+                        </select>
+                    </div>
+                    <p class="text-danger" id="cagetoryErrorMinor"></p>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class=" fa fa-shopping-bag">
+                            </i>
+                        </span>
+                        <input type="text"
+                               name="addminorcategory"
+                               onkeyup="nameValidate1(this.value, document.getElementById('addCategoryminor'))"
+                               onfocus="nameValidate1(this.value, document.getElementById('addCategoryminor'))"
+                               placeholder="Enter Category group name"
+                               class="form-control">
+                    </div>
+                    <p class="text-danger" id="addCategoryminor"></p>
+                </div>
+                <div class="form-group">
+                </div>
+
+                <p class="mydef text-center text-success" id="addMinorCategoryfeedback"></p>
+
+                <div class="form-group">
+                    <button type="button" class="btn btn-primary" onclick="addMinorCategory()">
+                        Add
+                    </button>
+                    <button type="reset" class="btn btn-danger">Clear</button>
+                </div>
+
+            </form>
+            <div class="col-sm-12">
+                <div class="panel-group">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" class="btn btn-info" href="#collapsemincataddview">
+                                <i class="fa fa-question-circle-o"></i> About Specific Category Group
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapsemincataddview" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            This is grouping of your products at the lowest level.
+                            <br>
+                            This grouping describes the groups into which you shall add your products.<br>
+                            <strong>For Example</strong><br>
+                            <strong>Android Phones</strong> can be a group found in <strong>Phones</strong> 
+                            Category belonging to <strong>PHONES AND TABLETS</strong> general Group.
+                            <br> <span class="text-danger">You can only make specific category
+                                groups of <strong>ACTIVE</strong> Category groups</span>.
+                        </div>
+
+                    </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>

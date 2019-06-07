@@ -1,0 +1,75 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12 col-sm-offset-0">
+            <h3 class="text-center">Add A Country</h3>
+            <hr/>
+            <form name="addCountry">
+                <div class="form-group">
+                    <label>Country Name</label>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="">C
+                            </i>
+                        </span>
+                        <input type="text"
+                               name="addNewCountry"
+                               onkeyup="nameValidate1(this.value, document.getElementById('addNewCountry'))"
+                               onfocus="nameValidate1(this.value, document.getElementById('addNewCountry'))"
+                               placeholder="Enter Country name"
+                               class="form-control">
+                    </div>
+                    <p class="text-danger" id="addNewCountry"></p>
+                </div>
+                <div class="form-group">
+                    <label>Enter Country Code</label>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-phone-square">
+                            </i>
+                        </span>
+                        <input type="text"
+                               name="addCountryZip"
+                               onkeyup="cCodeValidate(this.value, document.getElementById('addCountryZip'))"
+                               onfocus="cCodeValidate(this.value, document.getElementById('addCountryZip'))"
+                               placeholder="Enter Country Code eg, +254"
+                               class="form-control">
+                    </div>
+                    <p class="text-danger" id="addCountryZip"></p>
+                </div>
+                <div class="form-group">
+                </div>
+
+                <p class="text-success" id="addCountryFb"></p>
+
+                <div class="form-group">
+                    <button type="button" class="btn btn-primary" onclick="countryAdd()">
+                        Add
+                    </button>
+                    <button type="reset" onclick="/*groupAddClear()*/" class="btn btn-danger">Clear</button>
+                </div>
+
+            </form>
+            <div class="col-sm-12">
+                <div class="panel-group">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" class="btn btn-info" href="#collapse1view">
+                                    <i class="fa fa-question-circle-o"></i> About New Country
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapse1view" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                This is the first step in creating a pick up point.
+                                <br>
+                                Enter the name of the country that shall contain your desired pick up point.
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

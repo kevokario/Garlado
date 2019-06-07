@@ -1,0 +1,103 @@
+<div class="container-fluid">
+    <!--I am header row-->
+    <div class="row">
+        <div class="col-sm-12">
+            <h3 class="text-center">
+                Add Constituency/State
+            </h3>
+            <hr/>
+        </div>
+    </div>
+    
+    <!--I am form row-->
+    <div class="row">
+        <div class="col-sm-10 col-sm-offset-1">
+            <form name="addConstituency">
+                <div class="form-group">
+                    <label>Country</label>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i>C</i>
+                        </span>
+                        <select 
+                            onfocus="countryValidate(this.value,document.getElementById('stateCountryDiv'))"
+                            onchange="countryValidate(this.value,document.getElementById('stateCountryDiv')),loadCountyState(this.value)"
+                            class="form-control" name="stateCountry">
+                            <option>---select Country---</option>
+                        </select>
+                    </div>
+                    <p class="text-danger" id="stateCountryDiv"></p>
+                </div>
+                <div class="form-group">
+                    <label>County/Province</label>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i>P</i>
+                        </span>
+                        <select 
+                            onfocus="countyValidate1(this.value,document.getElementById('stateCounty'))"
+                            onchange="countyValidate1(this.value,document.getElementById('stateCounty'))"
+                            name="stateCounty"
+                            class="form-control">
+                            <option>---select County---</option>
+                        </select>
+                    </div>
+                    <p class="text-danger" id="stateCounty"></p>
+                </div>
+                <div class="form-group">
+                    <label>Enter Constituency/State name</label>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i>S</i>
+                        </span>
+                        <input type="text"
+                               placeholder="Type constituency/state name here!"
+                               onfocus="nameValidate1(this.value,document.getElementById('stateConstituency'))"
+                               onkeyup="nameValidate1(this.value,document.getElementById('stateConstituency'))"
+                               class="form-control" name="addConstituency"/>
+                    </div>
+                    <p class="text-danger" id="stateConstituency"></p>
+                </div>
+                <div class="form-group">
+                    <p id="addConstituencyFeedback" class="text-center text-success">
+                       
+                    </p>
+                </div>
+                <div class="form-group text-center">
+                    <button type="button" onclick="addNewConstituency()" class="btn btn-primary">
+                        Save
+                    </button>
+                    <button type="reset" class="btn btn-danger">
+                        Clear
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!--I am helper row-->
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="panel-group">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a class="btn btn-info" data-toggle="collapse" href="#addState_ConstituencyHelper">
+                                <i class="fa fa-question-circle-o"></i> About Add Constituency/State.
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="addState_ConstituencyHelper" class="collapse panel-collapse">
+                        <div class=" panel-body">
+                            <p>Here you get to add All the <strong>Constituencies/States</strong> that contain your pick up points. To do so:</p>
+                            <ol>
+                                <li>Select Country.</li>
+                                <li>Select County.</li>
+                                <li>Add A constituency/State by filling in its name.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

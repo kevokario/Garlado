@@ -1,0 +1,98 @@
+ /*-------------------contentDiv Css-----------------*/
+            .dataDiv .contentDiv{
+
+            }
+            #searchDiv .docNavigator{
+                padding: 4px;
+                width: 45px;
+                text-align: center;
+                cursor: pointer;
+                border-radius: 5px;
+                transition: .5s;
+                margin-top: 1px;
+                color: #118b8c;
+                margin : 4px;
+                text-decoration: none;
+            }
+            #searchDiv .docNavigator:hover,#searchDiv form .form-group .input-group .input-group-btn button:hover{
+                background-color: #118b8c;
+                color: #FFF;
+            }
+            #searchDiv .col-sm-8{
+                margin-top: 2px;
+                margin-bottom: 9px;
+            }
+            #searchDiv form .form-group{
+                margin-bottom: 0;
+            }
+            #searchDiv form .form-group input{
+                border-radius: 0;
+                box-shadow: none;
+            }
+            #searchDiv form .form-group .input-group .input-group-btn{
+                padding : 0;
+                border-radius:0;
+                border: none;
+            }
+            #searchDiv form .form-group .input-group .input-group-btn button{
+                padding: 5px;
+                width: 40px;
+                color: #fff;
+                background-color: #118b8c;
+                transition: 0.5s;
+            }
+            /*-----------------Filtration code--------------------*/
+            #filterDiv {
+                font-size: 10px;
+            }
+            #filterDiv form ul{
+                padding: 0;
+                list-style-type:none; 
+            }
+            #filterDiv form .form-group .input-group .input-group-addon,
+            #filterDiv .form-group .input-group .input-group-addon{
+                border-radius: 0;
+                background-color: #fff;
+                border: none;
+            }
+            #filterDiv .col-sm-5,#filterDiv .col-sm-2{
+                padding-left: 2px;
+                padding-right: 2px;
+                margin : 0;
+                margin-top: 5px;
+            }
+            #filterDiv .col-sm-2{
+                text-align: center;
+            }
+            #filterDiv .col-sm-2 select{
+                font-size: 10px;
+            }
+            #filterDiv .col-sm-5:first-child{
+                text-align: left;
+            }
+            #filterDiv .col-sm-5:last-child{
+                text-align: right;
+            }
+            #filterDiv input{
+/*                width: 60%;
+                font-size: 10px;*/
+            }
+            #filterDiv .pagination{
+                margin: 1px;
+            }
+            @media(max-width:768px){
+                .dataDiv .contentDiv{
+                    width: 100%;
+                }
+                #filterDiv .col-sm-2,#filterDiv .col-sm-5:first-child{
+                    /*width: 49%;*/
+                }
+            }
+            @media(max-width:600px){
+                #filterDiv .col-sm-2,#filterDiv .col-sm-5:first-child{
+                    /*display: none;*/
+                }
+                #filterDiv .col-sm-5:last-child{
+                    text-align: center;
+                }
+            }

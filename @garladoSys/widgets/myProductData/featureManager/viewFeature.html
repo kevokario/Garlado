@@ -1,0 +1,173 @@
+
+<style>
+    dl dt{
+        text-decoration: underline;
+    }
+</style>
+<div class="row">
+
+
+    <div class="col-sm-5">
+        <!--Picture and form area-->
+        <div class="row">
+            <div class="col-sm-12">
+                <!--Picture area-->
+                <h4>Product : <strong id="ANFnameView"></strong></h4>
+                <div class="text-center" id="ANFimgView">
+                </div>
+            </div>
+            <div class="col-sm-12" id="ANFcoreView">
+                <!--Form area-->
+
+
+            </div>
+        </div>
+    </div>
+
+
+    <!--justa a table here-->
+    <div class="col-sm-7">
+        <h4 class="text-center">More Features</h4>
+        <div style="height: 350px; overflow-y: scroll">
+            <table class="table table-hover table-striped table-responsive">
+                <thead class="bg1">
+                    <tr>
+                        <th>
+                            <span class="fa fa-stack">
+                                <i class="fa fa-stack-1x fa-dedent"></i>
+                                <i class="fa fa-stack-2x fa-square-o"></i>
+                            </span>
+                            <span class="">DESCRIPTION</span>
+                        </th>
+                        <th>
+                            <span class="fa fa-stack">
+                                <i class="fa fa-stack-1x fa-star-o"></i>
+                                <i class="fa fa-stack-2x fa-square-o"></i>
+                            </span>
+                            <span class="">ACTION</span>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody id="ANFprops">
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+     <div class="col-sm-12 text-center mydef text-success " id="ANFfeedbacktable"></div>
+</div>
+<!--
+========================================================================
+        MODAL EDIT CORE DATA
+========================================================================
+-->
+<div class="modal fade" data-backdrop="static" role="dialog" id="EditCoreDataModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <a class="close btn btn-info" data-dismiss="modal">&times;</a>
+                <h3 class="text-center"><i class="fa fa-edit"></i> Edit Core Features</h3>
+            </div>
+            <div class="modal-body">
+                <form name="editCoreData">
+                    <input type="hidden" name="id"/>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                RAM
+                                <input name="ram" 
+                                       onfocus="ramValidate(this.value, document.getElementById('ECDram'))" 
+                                       onkeyup="ramValidate(this.value, document.getElementById('ECDram'))"
+                                       placeholder=" eg, 2GB"
+                                       type="text" class="form-control">
+                                <p class="text-danger" id="ECDram"></p>
+                            </div>
+                            <div class="form-group">
+                                HDD
+                                <input type="text"
+                                       name="rom"
+                                       onkeyup="romValidate(this.value, document.getElementById('ECDrom'))"
+                                       onfocus="romValidate(this.value, document.getElementById('ECDrom'))"
+                                       placeholder=" eg, 250GB"
+                                       class="form-control">
+
+                                <p class="text-danger" id="ECDrom"></p>
+                            </div>
+                            <div class="form-group">
+
+                                CPU
+
+                                <input type="text"
+                                       name="cpu"
+                                       onkeyup="processorValidate(this.value, document.getElementById('ECDcpu'))"
+                                       onfocus="processorValidate(this.value, document.getElementById('ECDcpu'))"
+                                       placeholder="eg, 2.0GHZ"
+                                       class="form-control">
+
+                                <p class="text-danger" id="ECDcpu"></p>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+
+                                OS
+
+                                <input type="text"
+                                       name="os"
+                                       onkeyup="osValidate(this.value, document.getElementById('ECDos'))"
+                                       onfocus="osValidate(this.value, document.getElementById('ECDos'))"
+                                       placeholder=" Android or Windows" 
+                                       class="form-control">
+
+                                <p class="text-danger" id="ECDos"></p>
+                            </div>
+                            <div class="form-group">
+
+                                SCREEN
+                                <input type="text"
+                                       name="display"
+                                       onkeyup="displayValidate(this.value, document.getElementById('ECDdisplay'))"
+                                       onfocus="displayValidate(this.value, document.getElementById('ECDdisplay'))"
+                                       placeholder=" eg, 15.2" 
+                                       class="form-control">
+
+                                <p class="text-danger" id="ECDdisplay"></p>
+                            </div>
+                            <div class="form-group">
+
+                                Sim Slots
+
+                                <input type="text" 
+                                       name="sim"
+                                       onfocus="simslotValidate(this.value, document.getElementById('ECDsim'))"
+                                       onkeyup="simslotValidate(this.value, document.getElementById('ECDsim'))"
+                                       placeholder=" eg, 2 or 0 for none"
+                                       class="form-control">
+
+                                <p class="text-danger" id="ECDsim"></p>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                             <div class="form-group">
+                            <p id="ECDfeedback" class="text-success mydef text-center"></p>
+                        </div>
+                        <div class="form-group text-center">
+                            <button type="button" class="btn btn-primary" onclick="saveCoreDataClick()">
+                               Save
+                            </button>
+                        </div>
+                        </div>
+                    </div>
+                </form> 
+            </div>
+            <div class="modal-footer">
+                <p class="mydef">Riotech Developers</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!--
+
+ 
+
+-->

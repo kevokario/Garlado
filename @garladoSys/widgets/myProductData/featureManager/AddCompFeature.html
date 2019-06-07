@@ -1,0 +1,131 @@
+<h4 class="text-center">
+  
+    Add Features
+</h4>
+
+
+<div class="row">
+    <div class="col-sm-12">
+        <!--//form content-->
+        <form name="addFormFeature">
+            <div class="col-sm-12">
+                
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="control-label">
+                                Product RAM 
+                            </label>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-renren"></i>
+                                </span>
+                                <input type="text"
+                                       name="ram"
+                                       onfocus="ramValidate(this.value,document.getElementById('ADFram'))"
+                                       onkeyup="ramValidate(this.value,document.getElementById('ADFram'))"
+                                       placeholder=" eg, 2GB"
+                                       class="form-control">
+                            </div>
+                            <p class="text-danger" id="ADFram"></p>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">
+                                Product HDD 
+                            </label>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-hdd-o"></i>
+                                </span>
+                                <input type="text"
+                                       name="rom"
+                                       onkeyup="romValidate(this.value,document.getElementById('ADFrom'))"
+                                       onfocus="romValidate(this.value,document.getElementById('ADFrom'))"
+                                       placeholder=" eg, 250GB"
+                                       class="form-control">
+                            </div>
+                            <p class="text-danger" id="ADFrom"></p>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">
+                                Product Processor 
+                            </label>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-connectdevelop"></i>
+                                </span>
+                                <input type="text"
+                                       name="processor"
+                                       onkeyup="processorValidate(this.value,document.getElementById('ADFProcessor'))"
+                                       onfocus="processorValidate(this.value,document.getElementById('ADFProcessor'))"
+                                       placeholder="eg, 2.0GHZ" class="form-control">
+                            </div>
+                            <p class="text-danger" id="ADFProcessor"></p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="control-label">
+                                Product Operating System 
+                            </label>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-windows"></i>
+                                </span>
+                                <input type="text"
+                                       name="os"
+                                       onfocus="osValidate(this.value,document.getElementById('ADFos'))"
+                                       onkeyup="osValidate(this.value,document.getElementById('ADFos'))"
+                                       placeholder=" Android or Windows" class="form-control">
+                            </div>
+                            <p class="text-danger" id="ADFos"></p>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">
+                                Product Screen Display size 
+                            </label>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-laptop"></i>
+                                </span>
+                                <input type="text"
+                                       name="display"
+                                       onfocus="displayValidate(this.value,document.getElementById('ADFdisplay'))"
+                                       onkeyup="displayValidate(this.value,document.getElementById('ADFdisplay'))"
+                                       placeholder=" eg, 15.2" class="form-control">
+                            </div>
+                            <p class="text-danger" id="ADFdisplay"></p>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">
+                                Product Sim Slots
+                            </label>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-credit-card-alt"></i>
+                                </span>
+                                <input type="text"
+                                       name="sim"
+                                       onfocus="simslotValidate(this.value,document.getElementById('ADFsim'))"
+                                        onkeyup="simslotValidate(this.value,document.getElementById('ADFsim'))"
+                                       placeholder=" eg, 2 or 0 for none" class="form-control">
+                            </div>
+                            <p class="text-danger" id="ADFsim"></p>
+                        </div>
+
+                    </div>
+                
+               
+            </div>
+            <div class="form-group text-center">
+                <div class="text-success mydef" id="ADFfeedback"></div>
+                <button type="button" class="btn btn-primary" onclick="addCompFeature()">
+                    Add
+                </button>
+                <button type="reset" class="btn btn-danger">
+                    clear
+                </button>
+            </div>
+        </form>
+
+    </div>
+</div>

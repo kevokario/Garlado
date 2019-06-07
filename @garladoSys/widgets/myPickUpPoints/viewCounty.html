@@ -1,0 +1,147 @@
+<style>
+    .autohide{
+        
+    }
+    @media(max-width:768px){
+        .autohide{
+            display: none;
+        }
+    }
+</style>
+<div class="container-fluid">
+    <!--Row for title only-->
+    <div class="row">
+        <div class="col-sm-12 text-center">
+            <h3>View Provinces/Counties</h3>
+        </div>
+    </div>
+    <!--row that contains form data-->
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="filterCounty">
+                <table class="table">
+                    <tr>
+                        <td>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-star"></i>
+                                    </span>
+                                    <select class="form-control" 
+                                            onfocus="statusValidate(this.value, document.getElementById('viewCountyStatus'))"
+                                            onchange="statusValidate(this.value, document.getElementById('viewCountyStatus'))"
+                                            name="viewCountyStatus">
+                                        <option>---select status---</option>
+                                        <option>ACTIVE</option>
+                                        <option>INACTIVE</option>
+                                        <option>ALL</option>
+                                    </select>
+                                </div>
+                                <p class="text-danger" id="viewCountyStatus"></p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="">C</i>
+                                    </span>
+                                    <select class="form-control"
+                                            onfocus="countryValidate(this.value, document.getElementById('viewCountyCountry'))"
+                                            onchange="countryValidate(this.value, document.getElementById('viewCountyCountry'))"
+                                            name="viewCountyCountry">
+                                        <option>---select Country---</option>
+                                    </select>
+                                    <div class="input-group-btn">
+                                        <button type="button" onclick="filterCountyData1()" class="btn btn-info">
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <p class="text-danger" id="viewCountyCountry"></p>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div> 
+    </div>
+
+    <!--Row containing only table data-->
+    <div class="row">
+        <div class="col-sm-12" style="height: 300px;margin-bottom: 5px;overflow-y: auto;">
+            <table class="table table-hover table-responsive table-striped">
+                <thead class="bg1">
+                    <tr>
+                        <th>
+                            <span class="fa fa-stack">
+                                <i class="fa fa-stack-2x fa-square-o"></i>
+                                <i class="fa fa-stack-1x fa-bars"></i>
+                            </span>
+                            <span class="autohide">No.</span>
+                        </th>
+                        <th>
+                            <span class="fa fa-stack">
+                                <i class="fa fa-stack-2x fa-square-o"></i>
+                                <i class="fa fa-stack-1x">C</i>
+                            </span>
+                            <span class="autohide">Country</span>
+                        </th>
+                        <th>
+                            <span class="fa fa-stack">
+                                <i class="fa fa-stack-2x fa-square-o"></i>
+                                <i class="fa fa-stack-1x">P</i>
+                            </span>
+                            <span class="autohide">Province/County</span>
+                        </th>
+                        <th>
+                            <span class="fa fa-stack">
+                                <i class="fa fa-stack-2x fa-square-o"></i>
+                                <i class="fa fa-stack-1x fa-star"></i>
+                            </span>
+                            <span class="autohide">Status</span>
+                        </th>
+                        <th>
+                            <span class="fa fa-stack">
+                                <i class="fa fa-stack-2x fa-square-o"></i>
+                                <i class="fa fa-stack-1x fa-star-o"></i>
+                            </span>
+                            <span class="autohide">Action</span>
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody id="tableViewCounty">
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!--helper panel on a completely different row-->
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="panel-group">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a class="btn btn-info" data-toggle="collapse" href="#viewCountyHelp">
+                                <i class="fa fa-question-circle-o"></i> About View County/Provinces.
+                            </a>
+                        </h4>
+                    </div>
+                    <div class="collapse panel-collapse" id="viewCountyHelp">
+                        <div class="panel-body">
+                            Here you get to see all Counties/Provinces with pickup points. <br>
+                            You can <strong>Modify</strong> a County/Province by clicking the button <strong>Edit</strong>.
+                            <br>
+                            You can change name or status.
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

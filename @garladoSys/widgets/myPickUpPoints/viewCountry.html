@@ -1,0 +1,108 @@
+<style>
+    .autohide{
+        
+    }
+    @media(max-width:768px){
+        .autohide{
+            display: none;
+        }
+    }
+</style>
+<div class="container-fluid">
+    <div class="row">
+        <h4 class="text-center">
+            View Countries.
+        </h4>
+        <div class="row">
+            <div class="col-sm-8 col-sm-offset-2">
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                          Filter by
+                        </span>
+                        <select id="filterCountry" class="form-control">
+                            <option>ALL</option>
+                            <option>ACTIVE</option>
+                            <option>INACTIVE</option>
+                        </select>
+                        <div class="input-group-btn">
+                            <button class="btn btn-info" type="button" onclick="filterCountry()">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12" style="height: 300px;margin-bottom: 5px;overflow-y: auto;">
+
+            <table class="table table-hover table-responsive table-striped">
+                <thead class="bg1">
+                    <tr>
+                        <th>
+                            <span class="fa fa-stack">
+                                <i class="fa fa-stack-2x fa-square-o"></i>
+                                <i class="fa fa-stack-1x fa-bars"></i>
+                            </span>
+                            <span class="autohide">No.</span>
+                        </th>
+                        <th>
+                            <span class="fa fa-stack">
+                                <i class="fa fa-stack-2x fa-square-o"></i>
+                                <i class="fa fa-stack-1x ">C</i>
+                            </span>
+                            <span class="autohide">Name</span>
+                        </th>
+                        <th>
+                            <span class="fa fa-stack">
+                                <i class="fa fa-stack-2x fa-square-o"></i>
+                                <i class="fa fa-stack-1x fa-phone-square"></i>
+                            </span>
+                            <span class="autohide">C-Code</span>
+                        </th>
+                        <th>
+                            <span class="fa fa-stack">
+                                <i class="fa fa-stack-2x fa-square-o"></i>
+                                <i class="fa fa-stack-1x fa-star-o"></i>
+                            </span>
+                            <span class="autohide">Status</span>
+                        </th>
+                        <th>
+                            <span class="fa fa-stack">
+                                <i class="fa fa-stack-2x fa-square-o"></i>
+                                <i class="fa fa-stack-1x fa-star-o"></i>
+                            </span>
+                            <span class="autohide btn ">Action</span>
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody  id="countryTableView">
+
+                </tbody>
+            </table>
+        </div>
+        <div class="col-sm-12">
+            <div class="panel-group">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" class="btn btn-info" href="#collapse1cview">
+                                <i class="fa fa-question-circle-o"></i> About Edit Country 
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapse1cview" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            Here you get to see all Countries with pickup points. <br>
+                            You can <strong>Modify</strong> a Country by clicking the button <strong>Edit</strong>.
+                            <br>
+                            You can change name or status.
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

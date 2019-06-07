@@ -1,0 +1,168 @@
+<style>
+    .autohide{
+        
+    }
+    @media(max-width:768px){
+        .autohide{
+            display: none;
+        }
+    }
+</style>
+<div class="container-fluid">
+    <!--i am header row-->
+    <div class="row">
+        <div class="col-sm-12">
+            <h3 class="text-center">View Constituencies/States</h3>
+        </div>
+    </div>
+    <!--filter form-->
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="filterStateEdit">
+                <table class="table">
+                    <tr>
+                        <td>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-star"></i>
+                                    </span>
+                                    <select class="form-control"
+                                            onfocus="statusValidate(this.value,document.getElementById('FSEstatus'))"
+                                            onchange="statusValidate(this.value,document.getElementById('FSEstatus'))"
+                                            name="status">
+                                        <option>---select status---</option>
+                                        <option>ACTIVE</option>
+                                        <option>INACTIVE</option>
+                                        <option>ALL</option>
+                                    </select>
+                                </div>
+                                <p class="text-danger" id="FSEstatus"></p>
+                            </div> 
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        C
+                                    </span>
+                                    <select class="form-control"
+                                            onfocus="countryValidate(this.value,document.getElementById('FSEcountry'))"
+                                            onchange="countryValidate(this.value,document.getElementById('FSEcountry')),
+                                            loadCountyEditConst(this.value)"
+                                            name="country">
+                                        <option>---select Country---</option>
+                                    </select>
+                                </div>
+                                <p class="text-danger" id="FSEcountry"></p>
+                            </div> 
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        P
+                                    </span>
+                                    <select class="form-control"
+                                            onfocus="countyValidate1(this.value,document.getElementById('FSEcounty'))"
+                                            onchange="countyValidate1(this.value,document.getElementById('FSEcounty'))"
+                                            name="county">
+                                        <option>---select County---</option>
+                                    </select>
+                                    <div class="input-group-btn">
+                                        <button type="button" onclick="filterTableDataState()" class="btn btn-info">
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <p class="text-danger" id="FSEcounty"></p>
+                            </div> 
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+    <!--I am a table div-->
+    <div class="row">
+        <div class="col-sm-12" style="height: 300px;margin-bottom: 5px;overflow-y: auto;">
+           <table class="table table-hover table-responsive table-striped">
+                <thead class="bg1">
+                    <tr>
+                        <th>
+                            <span class="fa fa-stack">
+                                <i class="fa fa-stack-2x fa-square-o"></i>
+                                <i class="fa fa-stack-1x fa-bars"></i>
+                            </span>
+                            <span class="autohide">No.</span>
+                        </th>
+                        <th>
+                            <span class="fa fa-stack">
+                                <i class="fa fa-stack-2x fa-square-o"></i>
+                                <i class="fa fa-stack-1x">C</i>
+                            </span>
+                            <span class="autohide">Country</span>
+                        </th>
+                        <th>
+                            <span class="fa fa-stack">
+                                <i class="fa fa-stack-2x fa-square-o"></i>
+                                <i class="fa fa-stack-1x">P</i>
+                            </span>
+                            <span class="autohide">Province/County</span>
+                        </th>
+                        <th>
+                            <span class="fa fa-stack">
+                                <i class="fa fa-stack-2x fa-square-o"></i>
+                                <i class="fa fa-stack-1x">S</i>
+                            </span>
+                            <span class="autohide">State</span>
+                        </th>
+                        <th>
+                            <span class="fa fa-stack">
+                                <i class="fa fa-stack-2x fa-square-o"></i>
+                                <i class="fa fa-stack-1x fa-star"></i>
+                            </span>
+                            <span class="autohide">Status</span>
+                        </th>
+                        <th>
+                            <span class="fa fa-stack">
+                                <i class="fa fa-stack-2x fa-square-o"></i>
+                                <i class="fa fa-stack-1x fa-star-o"></i>
+                            </span>
+                            <span class="autohide">Action</span>
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody id="tableViewState">
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!--This is helper thing for edit states-->
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="panel-group">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a class="btn btn-info" data-toggle="collapse" href="#StateHelper">
+                                <i class="fa fa-question-circle-o"></i> 
+                                About View States/constituencies.
+                            </a>
+                        </h4>
+                    </div>
+                    <div class="collapse panel-collapse" id="StateHelper">
+                    <div class="panel-body">
+                        <p>
+                            Here you get to view all <strong>States/Constituencies</strong> that contain your pickup points.<br>
+                            To edit an <strong>State/Constituency</strong>, click the button Edit.
+                        </p>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

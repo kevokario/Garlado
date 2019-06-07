@@ -1,0 +1,66 @@
+<form name="filterGroup">
+    <table class="table" style="margin-bottom : 0px">
+        <tr>
+            <td><p onclick="filterOptions('filterDefault');" style="margin-top: 45%; margin-bottom: 35%; height: 10%; cursor: pointer"> 
+                    <i class=" fa fa-remove text-primary"></i>
+                </p>
+            </td>
+            <td>
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-cart-plus"></i>
+                        </span>
+                        <select name="general"
+                                onfocus="generalValidate(this.value,document.getElementById('FGgeneral'))"
+                                onchange="generalValidate(this.value,document.getElementById('FGgeneral')),
+                                 populateFilterCat(this.value)
+                                "
+                                class="form-control">
+                            <option>---select Group---</option>
+                        </select>
+                    </div>
+                    <p class="text-danger mydef" id="FGgeneral"></p>
+                </div>
+            </td>
+            <td>
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-shopping-basket"></i>
+                        </span>
+                        <select name="category"
+                                onfocus="categoryValidate(this.value,document.getElementById('FGcat'))"
+                                onchange="categoryValidate(this.value,document.getElementById('FGcat')),
+                                populateFilterSpec(this.value)"
+                                class="form-control">
+                            <option>---select Cat---</option>
+                        </select>
+                    </div>
+                    <p class="text-danger mydef" id="FGcat"></p>
+                </div>
+            </td>
+            <td>
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-shopping-bag"></i>
+                        </span>
+                        <select name="specific"
+                                onfocus="categoryValidate(this.value,document.getElementById('FGspecific'))"
+                                onchange="categoryValidate(this.value,document.getElementById('FGspecific'))"
+                            class="form-control">
+                            <option>---select group---</option>
+                        </select>
+                        <div class="input-group-btn">
+                            <button type="button" onclick="filterGroupClick()" class="btn btn-info">
+                                <span class="fa fa-search"></span>
+                            </button>
+                        </div>
+                    </div>
+                    <p class="text-danger mydef" id="FGspecific"></p>
+                </div>
+            </td>
+        </tr>
+    </table>
+</form>

@@ -1,0 +1,220 @@
+<div class="row">
+    <h3 class="text-center">
+        <span class="pull-left fa fa-hand-o-left" style="cursor:pointer;padding : 5px;" onclick="menuClicked('defaultPage')"></span> View Members
+    </h3>
+    <div class=" col-sm-12">
+        <div  style="height:350px; overflow-y: scroll">
+            <table class="table table-responsive table-hover table-striped">
+                <thead class="bg1">
+                    <tr>
+                        <th>
+                            <span class="fa fa-stack ">
+                                <i class="glyphicon glyphicon-barcode fa-stack-1x"></i>
+                                <i class="fa fa-stack-2x fa-square-o"></i>
+                            </span> 
+                            <span class="autohider"> No.</span>
+                        </th> 
+                        <th>
+                            <span class="fa fa-stack ">
+                                <i class="fa fa-user fa-stack-1x"></i>
+                                <i class="fa fa-stack-2x fa-square-o"></i>
+                            </span> 
+                            <span class="autohider"> Name</span>
+                        </th> 
+                        <th>
+                            <span class="fa fa-stack ">
+                                <i class="fa fa-envelope fa-stack-1x"></i>
+                                <i class="fa fa-stack-2x fa-square-o"></i>
+                            </span> 
+                            <span class="autohider"> Email</span>
+                        </th> 
+                        <th>
+                            <span class="fa fa-stack ">
+                                <i class="fa fa-phone-square fa-stack-1x"></i>
+                                <i class="fa fa-stack-2x fa-square-o"></i>
+                            </span> 
+                            <span class="autohider">Phone</span>
+                        </th>
+                        <th>
+                            <span class="fa fa-stack ">
+                                <i class="fa fa-level-up fa-stack-1x"></i>
+                                <i class="fa fa-stack-2x fa-square-o"></i>
+                            </span> 
+                            <span class="autohider">  Level</span>
+                        </th>
+                        <th>
+                            <span class="fa fa-stack ">
+                                <i class="fa fa-star fa-stack-1x"></i>
+                                <i class="fa fa-stack-2x fa-square-o"></i>
+                            </span> 
+                            <span class="autohider">  Status</span>
+                        </th>
+                        <th>
+                            <span class="fa fa-stack ">
+                                <i class="fa fa-star-o fa-stack-1x"></i>
+                                <i class="fa fa-stack-2x fa-square-o"></i>
+                            </span> 
+                            <span class="autohider">Action</span>
+                        </th>
+                    </tr>  
+                </thead>
+                <tbody id="usertable">
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <style>
+        .userImg{
+            height: 200px;
+            border: 1px solid #999;
+            border-radius: 5px;
+            padding: 4px;
+            transition: 1s;
+            width:100%;
+        }
+        @media(max-width:768px){
+            .userImg{
+                height: 230px;
+                border: 1px solid #999;
+                border-radius: 5px;
+                padding: 4px;
+                width:60%;
+                margin-right: 20%;
+                margin-left: 20%;
+            }
+        } 
+    </style>
+    <div class="modal" role="dialog" data-backdrop="static" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg1">
+                    <a class="close btn btn-info" data-dismiss="modal">&times;</a>
+                    <h3 class="text-center">
+                        <span class="fa fa-stack">
+                            <i class="fa fa-stack-1x fa-user-secret"></i>
+                            <i class="fa fa-stack-2x fa-square-o"></i>
+                        </span>
+                        Member Details
+                    </h3>
+                </div>
+                <div class="modal-body" id="detailsarea">
+
+                </div>
+                <div class="modal-footer">
+                    <p class="mydef">
+                        Riotech Developers
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" role="dialog" data-backdrop="static" id="myModalEdit">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                   <a class="close btn btn-info" data-dismiss="modal">&times;</a>
+                            <h4 class="text-center" style="text-decoration: none;color :#fff;">Edit User Details.</h4> 
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <h4 class="" style="text-decoration: underline">User Details.</h4>
+                            <form style="margin-top: 5px" name="editMemberDetails">
+                                <input  type="hidden" name="id"/>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label> Name </label>
+                                            <input type="text"
+                                                   onfocus="nameValidate(this.value,document.getElementById('EDMname'))"
+                                                   onkeyup="nameValidate(this.value,document.getElementById('EDMname'))"
+                                                   name="name" class="form-control"/>
+                                            <p class="text-danger" id="EDMname"></p>
+                                        </div>
+                                        <div class="form-group">
+                                            <label> Email </label>
+                                            <input type="text" 
+                                                   onfocus="emailValidate(this.value,document.getElementById('EDMemail'))"
+                                                   onkeyup="emailValidate(this.value,document.getElementById('EDMemail'))"
+                                                   name="email" class="form-control"/>
+                                             <p class="text-danger" id="EDMemail"></p>
+                                        </div>
+                                        <div class="form-group">
+                                            <label> Phone </label>
+                                            <input type="text"
+                                                   onfocus="numberValidate(this.value,document.getElementById('EDMphone'))"
+                                                   onkeyup="numberValidate(this.value,document.getElementById('EDMphone'))"
+                                                   name="phone" class="form-control"/>
+                                            <p class="text-danger" id="EDMphone"></p>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+
+                                            <label> Level </label>
+                                            <select name="level"
+                                                    onfocus="levelValidate(this.value,document.getElementById('EDMlevel'))"
+                                                   onchange="levelValidate(this.value,document.getElementById('EDMlevel'))"
+                                                    class="form-control"></select>
+                                            <p class="text-danger" id="EDMlevel"></p>
+                                        </div>
+                                        <div class="form-group">
+                                            <label> Status </label>
+                                            <select name="status"
+                                                    onfocus="statusValidate(this.value,document.getElementById('EDMstatus'))"
+                                                    onchange="statusValidate(this.value,document.getElementById('EDMstatus'))"
+                                                    class="form-control"></select>
+                                            <p class="text-danger" id="EDMstatus"></p>
+                                        </div>
+                                        <div class="form-group" id="toggleMemberImageDiv" style="display: none">
+                                            <label> Image </label>
+                                            <input name="pic"
+                                                    onfocus="imageValidator(this.value,document.getElementById('EDMpic'))"
+                                                   onchange="imageValidator(this.value,document.getElementById('EDMpic'))"
+                                                   class="form-control" type="file"/>
+                                            <p class="text-danger" id="EDMpic"></p>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 form-group text-success text-center" id="editMemberFeedBack">
+                                        <i class="fa fa-spin fa-refresh"></i>
+                                    </div>
+                                    <div class="col-sm-12 form-group text-center">
+                                        <button  onclick="EDMSave()" class="btn btn-primary btn-sm" type="button">
+                                            Save
+                                        </button>
+                                      
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-sm-4 text-center">
+                            <h4 class="text-center col-sm-12" style="text-decoration: underline">User Picture.</h4>
+
+                            <div style="margin-bottom: 6px" id="EditUserPic">
+                                  <img class="userImg" src="./userpics/fc578fad21d96110755d41286ff14873.jpg" alt=""/>
+                            </div>
+                            <button class="btn btn-sm btn-success" onclick="toggleDivImg()">
+                                Change
+                            </button>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <p class="mydef">
+                        Riotech Developers
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+

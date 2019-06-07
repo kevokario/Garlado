@@ -1,0 +1,188 @@
+.myLog:hover, .myProductMenu{
+    display: block;
+}
+.navDiv hr{
+    margin: 0;
+    width: 100%;
+    border-top: 2px solid #999;
+}
+#carousel_adverts{
+    /*margin-bottom: 20px;*/
+}
+#carousel_adverts img{
+    height: 300px;
+    width: 88%;
+    margin: auto;
+}
+#carousel_adverts .carousel-control,#carousel_MajorGroup .carousel-control,
+#carousel_MajorGroup2 .carousel-control,#carousel_MajorGroup3 .carousel-control,
+#carousel_mostBought .carousel-control,#carousel_featuredBrands .carousel-control
+{
+    background: none;
+    color: #F14D49;
+}
+.logo .myProductMenu{
+    /*display: block;*/
+}
+.myProductMenu{
+    padding: 10px;
+    background-color: #fff;
+    display: none;
+    width: max-content;
+    text-align: center;
+    border: 0.1px solid #999;
+    padding: 5px 0;
+    border-radius: 0px;
+    /* box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.4); */
+    position: absolute;
+    z-index: 4;
+    /*opacity: 0.8;*/
+    /*margin-top: 12px;*/
+}
+.myProductMenu .blockDiv {
+    /*display: inline-block;*/
+    box-sizing: border-box;
+    float: left;
+    clear: right;
+    /*padding: 10px;*/
+}
+.myProductMenu .blockDiv2 {
+    /*display: inline-block;*/
+    box-sizing: border-box;
+    float: left;
+    clear: right;
+    padding: 10px;
+    /*display: none;*/
+}
+.myProductMenu h3{
+    margin: 2px 5px;
+    font-size: 18px;
+    color: #000;
+    font-weight: 600;
+}
+.genPMenu,.genCMenu{
+    text-align: left;
+    /*padding-left: 5px;*/
+}
+.genPMenu p{
+    /*border-bottom: 1px dotted #999;*/
+    margin: 0;
+    padding: 4px;
+    cursor: pointer;
+    font-size: small;
+    font-weight: 100;
+}
+.genPMenu p:active, .genPMenu p:hover{
+    font-weight: 700;
+    color : #000D29;
+    /*box-shadow: 0 2px 2px 0 rgba(0,0,0,0.2);*/
+    /*background-color: red;*/
+    opacity: 1;
+
+}
+.genCdata{
+    overflow-x: auto;
+    max-width: 330px;
+}
+.genCdata h4{
+    font-weight: 500;
+    color: #000;
+    font-size: 12px;
+    /*text-decoration: underline;*/
+}
+.genCdata p{
+    padding: 1px;
+    margin-bottom: 1px;
+    /*border-bottom: 1px dotted #777;*/
+    font-size: 11px;
+}
+.genCdata p a{
+    color: #777;
+    cursor: pointer;
+}
+.genPMenu p:last-child{
+    border-bottom: none;
+}
+@media(max-width:768px){
+    #carousel_adverts img{
+        height: 255px;
+        width: 88%;
+        margin: auto;
+    }
+    h3{
+        font-size: 15px;
+    }
+    h4{
+        font-size: 11px;
+        margin : 5px 2px;
+    }
+    p{
+        font-size: 10px;
+    }
+    .myProductMenu{
+        /*margin-top: 10px;*/
+    }
+    .genCdata{
+        overflow-x: auto;
+        max-width: 330px;
+    }
+    #carousel_adverts{
+        margin-bottom: 17px;
+    }
+}
+@media(max-width:750px){
+    .logo .myProductMenu{
+        display: none; 
+    }
+}
+@media(max-width:500px){
+    #carousel_adverts img{
+        height: 235px;
+        width: 100%;
+    }
+    h3{
+        font-size: 14px;
+    }
+    h4{
+        font-size: 13px;
+        margin : 5px 2px;
+    }
+    p{
+        font-size: 11px;
+    }
+    .genCdata{
+        overflow-x: auto;
+        max-width: 156px;
+    }
+}
+@media(max-width:360px){
+    #carousel_adverts img{
+        height: 200px;
+        width: 100%;
+    }
+    .genCdata{
+        overflow-x: auto;
+        max-width: 100px;
+    }.myProductMenu h3{
+        font-size: 12.5px;
+    }
+    .myProductMenu p{
+        font-size: 10.5px;
+        padding : 4px;
+    }.myProductMenu .blockDiv {
+        display: inline-block;
+        box-sizing: border-box;
+        float: left;
+        clear: right;
+        padding: 4px;
+    }.genCdata p a {
+        font-size: 10.5px;
+    }
+    #carousel_adverts{
+        margin-bottom: 15px;
+    }
+    h3{
+        font-size: 11px;
+        margin: 2px 4px;
+    }
+}

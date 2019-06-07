@@ -1,0 +1,112 @@
+.menu{
+    cursor: pointer;
+    /*        border : 1px #23527c solid;*/
+    color: #23527c;
+    border-radius: 5px;
+    padding: 4px;
+    margin: 0px;
+    transition: 0.5s;
+    text-decoration: none;
+}
+.menu span{
+    font-size: 45px;
+}
+.menu:hover{
+    /*border : 1px #23527c solid;*/
+    box-shadow: 1px 4px 8px 1px rgba(0,0,0,0.2);
+}
+
+.menu1 span, .menu3 span{
+    font-size: 35px;
+}
+.menu3:hover{
+     box-shadow: 1px 4px 8px 1px rgba(0,0,0,0.2);
+}
+.menu2 span{
+    font-size: 25px;
+}
+.menu1 p,.menu3 p{
+    font-size: 12px;
+}
+
+.menu1, .menu3{
+    /*        border : 1px #23527c solid;*/
+    cursor: pointer;
+    color: #23527c;
+    border-radius: 5px;
+    padding: 4px;
+    margin: 0px;
+    transition: 0.5s;
+    text-decoration: none;
+    text-align: center;
+    border: 1px solid #999;
+}
+.menu3{
+    /*margin: 1px;*/
+    /*box-shadow: 1px 4px 8px 1px rgba(0,0,0,0.2);*/
+    border: none;
+   box-sizing: border-box;
+}
+.menu2{
+    cursor: pointer;
+    color: #23527c;
+    border-radius: 5px;
+    padding: 4px;
+    margin: 0px;
+}
+.modal-header{
+    background-color: #23527c;
+}
+
+.modal .modal-header h3{
+    color: #fff;
+}
+.fa-stack-1x{
+    transition: 1s;
+}
+.fa-stack-1x:hover{
+    transform: rotateY(360deg);
+}
+#modalGeneral .mytitle, #modalCategory .mytitle, #modalMinorCategory .mytitle,#animDefProd, #modalBrand
+.mytitle,#modalSetProductPic .mytitle,.mytitle{
+    font-size:35px;
+    animation-name: motoranimation;
+    animation-duration: 3s;
+    animation-delay: 0s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 1;
+    position:relative;
+    display: inline;
+
+
+}
+
+
+
+@keyframes motoranimation{
+    0%{
+        font-size: 0px;
+        top:0px;
+        opacity: 0;
+    }
+    100%{
+        font-size:35px;
+        top:50%;
+        opacity: 1;
+    }
+}
+
+@keyframes motoranimation1{
+    0%{
+        font-size: 0px;
+        top:0px;
+        opacity: 0;
+    }
+    100%{
+        font-size:35px;
+        top:50%;
+        opacity: 1;
+    }
+}
+
+

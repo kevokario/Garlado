@@ -1,0 +1,77 @@
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12 col-sm-offset-0">
+            <h3 class="text-center">Add Category Group.</h3>
+            <form name="addCategoryform">
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-cart-plus"></i>
+                        </span>
+                        <select 
+                            class="form-control"
+                            name="general"
+                            onfocus="generalValidate(this.value, document.getElementById('generalError'))"
+                            onchange="generalValidate(this.value, document.getElementById('generalError'))"
+                            >
+                            <option>------SELECT PARENT GENERAL GROUP------</option>
+                        </select>
+                    </div>
+                    <p class="text-danger" id="generalError"></p>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class=" fa fa-shopping-basket">
+                            </i>
+                        </span>
+                        <input type="text"
+                               name="addcategory"
+                               onkeyup="nameValidate1(this.value, document.getElementById('addCategory'))"
+                               onfocus="nameValidate1(this.value, document.getElementById('addCategory'))"
+                               placeholder="Enter Category group name"
+                               class="form-control">
+                    </div>
+                    <p class="text-danger" id="addCategory"></p>
+                </div>
+                <div class="form-group">
+                </div>
+
+                <p class="text-success" id="addCategoryfeedback"></p>
+
+                <div class="form-group">
+                    <button type="button" class="btn btn-primary" onclick="addCategory()">
+                        Add
+                    </button>
+                    <button type="reset" class="btn btn-danger">Clear</button>
+                </div>
+
+            </form>
+            <div class="col-sm-12">
+                <div class="panel-group">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" class="btn btn-info" href="#collapsecataddview">
+                                <i class="fa fa-question-circle-o"></i> About Category Group
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapsecataddview" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            This is grouping of your products with some degree of relationship.
+                            <br>
+                            For example, <strong>Television</strong> 
+                            is a category group under <strong>Electronics</strong>.<br>
+                            <span class="text-danger">You can only make category groups of <strong>ACTIVE</strong> General groups</span>
+                        </div>
+
+                    </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>

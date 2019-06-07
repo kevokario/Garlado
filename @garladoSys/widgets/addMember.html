@@ -1,0 +1,145 @@
+<!--/*box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);*/-->
+<!--
+8***************************************************************************8
+                    TO MOVE TO A NEW FILE
+8***************************************************************************8
+\-->
+
+<div class="row">
+    <div class=" col-sm-10 col-sm-offset-1">
+        <h3 class="text-center">
+            <span class="pull-left fa fa-hand-o-left" style="cursor:pointer;padding : 5px;" onclick="menuClicked('defaultPage')"></span>
+            Add new Member
+        </h3>
+
+        <hr style="margin-top : 3px; margin-bottom: 10px">
+
+        <form name="addMember">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="control-label">User's Name</label>
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <span class="fa fa-user-o"></span>
+                            </span>
+                            <input type="text"
+                                   class="form-control"
+                                   onfocus="nameValidate(this.value, document.getElementById('admname'))"
+                                   onkeyup="nameValidate(this.value, document.getElementById('admname'))"
+                                   name="admname" placeholder="Enter User names"/>
+                        </div>
+                        <p class="mydef text-danger" id="admname"></p>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">User Email</label>
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <span class="fa fa-envelope-o"></span>
+                            </span>
+                            <input type="text"
+                                   class="form-control"
+                                   onfocus="emailValidate(this.value, document.getElementById('admemail'))"
+                                   onkeyup="emailValidate(this.value, document.getElementById('admemail'))"
+                                   name="admemail"
+                                   placeholder="Enter User email"/>
+                        </div>
+                        <p class="mydef text-danger" id="admemail"></p>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Phone number</label>
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <span class="fa fa-phone"></span>
+                            </span>
+                            <input type="text"
+                                   onfocus="numberValidate(this.value, document.getElementById('admphone'))"
+                                   onkeyup="numberValidate(this.value, document.getElementById('admphone'))"
+                                   class="form-control" name="admphone" placeholder="Enter User phone"/>
+                        </div>
+                        <p class="mydef text-danger" id="admphone"></p>
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+
+                    <div class="form-group">
+                        <label class="control-label">User Level</label>
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <span class="fa fa-level-up"></span>
+                            </span>
+                            <select name="admlevel" class="form-control" 
+                                    onfocus="levelValidate(this.value, document.getElementById('admlevel'))"
+                                    onchange="levelValidate(this.value, document.getElementById('admlevel'))"
+                                    >
+                                <option>
+                                    -------------Select Level--------------
+                                </option>
+                                <option>
+                                    Admin
+                                </option>
+                                <option>
+                                   Super Admin
+                                </option>
+                            </select>
+                        </div>
+                        <p class="mydef text-danger" id="admlevel"></p>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="control-label">Select User Image.</label>
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <span class="fa fa-image"></span>
+                            </span>
+                            <input type="file" 
+                                   name="admphoto"
+                                   onchange="imageValidator(document.addMember.admphoto,document.getElementById('admphoto'))" 
+                                   onfocus="imageValidator(document.addMember.admphoto,document.getElementById('admphoto'))" 
+                                   class="form-control" />
+                        </div>
+                        <p class="mydef text-danger" id="admphoto"></p>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">User Status</label>
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <span class="fa fa-star"></span>
+                            </span>
+                            <select 
+                                name="status"
+                                onfocus="statusValidate(this.value,document.getElementById('admstatus'))"
+                                onchange="statusValidate(this.value,document.getElementById('admstatus'))"
+                                class="form-control">
+                                <option>---select status---</option>
+                                <option>ACTIVE</option>
+                                <option>INACTIVE</option>
+                            </select>
+                        </div>
+                        <p class="mydef text-danger" id="admstatus"></p>
+                    </div>
+                    
+                </div>
+            </div>
+            <hr style="margin: 3px"/>
+            <div id="admfeedback" class="text-center mydef text-success">
+
+            </div>
+            <hr style="margin: 3px"/>
+            <div class="form-group text-center">
+                <button class="btn btn-primary" type="button" onclick="addMemberFunction()">
+
+                    Save
+                </button>
+                <button onclick="resetaddMember()" class="btn btn-danger" type="reset">
+                    Clear
+                </button>
+            </div>
+        </form>
+
+
+    </div>
+    
+    

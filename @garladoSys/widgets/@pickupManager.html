@@ -1,0 +1,688 @@
+
+
+<h3 class="text-center">
+    <i class="fa fa-fort-awesome"></i> My Pickup Points.
+</h3>
+<hr/>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+            <div class="row">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-5 text-center menu" data-toggle="modal" data-target="#countryModal">
+                    <span class="fa fa-stack">
+                        <i class="fa fa-stack-1x">C</i>
+                        <i class="fa fa-stack-2x fa-square-o"></i>
+                    </span>
+                    <p>Country</p>
+                </div>
+                <div class="col-sm-5 text-center menu" data-toggle="modal" data-target="#countyModal">
+                    <span class="fa fa-stack">
+                        <i class="fa fa-stack-1x ">P</i>
+                        <i class="fa fa-stack-2x fa-square-o"></i>
+                    </span>
+                    <p>Province(s)/counties.</p>
+                </div>
+                <div class="col-sm-1"></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-5 text-center menu" data-toggle="modal" data-target="#constituencyModal">
+                    <span class="fa fa-stack">
+                        <i class="fa fa-stack-1x">S</i>
+                        <i class="fa fa-stack-2x fa-square-o"></i>
+                    </span>
+                    <p>States/Constituencies</p>
+                </div>
+                <div class="col-sm-5 text-center menu" data-toggle="modal" data-target="#modalPickupMain">
+                    <span class="fa fa-stack">
+                        <i class="fa fa-stack-1x fa-fort-awesome"></i>
+                        <i class="fa fa-stack-2x fa-square-o"></i>
+                    </span>
+                    <p>Pickup Stations.</p>
+                </div>
+                <div class="col-sm-1"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Modals--> 
+<!--Country Modal-->
+<div class="modal" data-backdrop="static" id="countryModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <a class="btn btn-info close" data-dismiss="modal">&times;</a>
+                <h3 class="text-center">My Countries</h3>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <ul class="nav nav-tabs">
+                            <li >
+                                <a data-toggle="tab" title="Add Group" onclick="menuClicked('addCountry')">
+                                    <span class="fa fa-stack fa-lg">
+                                        <i class="fa fa-stack-1x">C</i><span>
+                                            <sup style="margin-left:29px; margin-bottom: 9px;">
+                                                <i class="fa fa-plus"></i>
+                                            </sup>
+                                        </span>
+                                    </span><br>
+                                    <span class="autohide"> Add Country </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a data-toggle="tab" title="View Group" onclick="menuClicked('viewCountry')">
+                                    <span class="fa fa-stack fa-lg">
+                                        <i class="fa fa-stack-1x">C</i><span>
+                                            <sup style="margin-left:29px; margin-bottom: 9px;">
+                                                <i class="fa fa-edit"></i>
+                                            </sup>
+                                        </span>
+                                        <!--<i class="fa fa-stack-2x fa-square-o"></i>-->
+                                    </span><br>
+                                    <span class="autohide"> Edit Countries </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class=" col-sm-9 tab-pane" id="modalCountry">
+                        <h3 class="mytitle">Garlado Limited</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <p class="mydef">Riotech Developers</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--MODAL POPUP FOR EDIT COUNTRY-->
+<div class="modal fade" role="dialog" data-backdrop="static" id="editCountryModal101">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <a class="btn btn-info close" data-dismiss="modal">&times;</a>
+                <h3 class="text-center"><span class="fa">C</span> Edit Country</h3>
+            </div>
+            <div class="modal-body">
+
+                <div class="row">
+                    <div class="col-sm-10 col-sm-offset-1">
+                        <form class="form-horizontal" name="countryEditForm">
+                            <input type="hidden" name="countryId"/>
+                            <div class="form-group">
+                                <label class="control-label ">
+                                    Country Name
+                                </label>
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i>C</i>
+                                    </span>
+                                    <input 
+                                        type="text"
+                                        name="countryName"
+                                        onkeyup="nameValidate1(this.value, document.getElementById('countryName'))"
+                                        onfocus="nameValidate1(this.value, document.getElementById('countryName'))"
+                                        placeholder="Enter a new Item Name"
+                                        class="form-control"/>
+                                </div>
+                                <p class="text-danger" id="countryName"></p>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label ">
+                                    Country Code
+                                </label>
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-phone-square"></i>
+                                    </span>
+                                    <input 
+                                        type="text"
+                                        name="countryCode"
+                                        onkeyup="cCodeValidate(this.value, document.getElementById('countryCode'))"
+                                        onfocus="cCodeValidate(this.value, document.getElementById('countryCode'))"
+                                        placeholder="Enter a new Item Name"
+                                        class="form-control"/>
+                                </div>
+                                <p class="text-danger" id="countryCode"></p>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label">
+                                    Status
+                                </label>
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-star"></i>
+                                    </span>
+                                    <select class="form-control" name="status"></select>
+                                    <p class="text-danger" id="statusdiv"></p>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="control-label col-sm-2"></div>
+                                <div class="col-sm-10 text-center">
+                                    <p class="text-success" id="countryEditFeedback"></p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label"></label>
+
+                                <button type="button" class="btn btn-primary" onclick="editCountrySave()">
+                                    <i class="fa fa-save"></i> Save
+                                </button>
+
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="panel-group">
+                            <div class="panel panel-info">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" class="btn btn-info" href="#collapsevieweditcountry">
+                                            <i class="fa fa-question-circle-o"></i> About Edit Group 
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapsevieweditcountry" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        Here you get to specifically edit a Countries details.<br>
+                                        You can<strong> change the name</strong> of the country,<strong>change the
+                                            status</strong> of this country or <strong>Change the Country code</strong> of this country.
+                                        <br>
+                                        <strong>Active status</strong> : pick up points in this country are visible.<br>
+                                        <strong>In-Active status</strong> : pick up points in this country are visible.
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <p class="mydef">Riotech Developers </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--County Modal-->
+<div class="modal" data-backdrop="static" id="countyModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <a class="btn btn-info close" data-dismiss="modal">&times;</a>
+                <h3 class="text-center">Province(s)/Counties</h3>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <ul class="nav nav-tabs">
+                            <li >
+                                <a data-toggle="tab" title="Add Province" onclick="menuClicked('addCounty')">
+                                    <span class="fa fa-stack fa-lg">
+                                        <i class="fa fa-stack-1x">P</i><span>
+                                            <sup style="margin-left:29px; margin-bottom: 9px;">
+                                                <i class="fa fa-plus"></i>
+                                            </sup>
+                                        </span>
+                                    </span><br>
+                                    <span class="autohide"> Add Province </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a data-toggle="tab" title="Edit Province" onclick="menuClicked('viewCounty')">
+                                    <span class="fa fa-stack fa-lg">
+                                        <i class="fa fa-stack-1x">P</i><span>
+                                            <sup style="margin-left:29px; margin-bottom: 9px;">
+                                                <i class="fa fa-edit"></i>
+                                            </sup>
+                                        </span>
+                                        <!--<i class="fa fa-stack-2x fa-square-o"></i>-->
+                                    </span><br>
+                                    <span class="autohide"> Edit Province </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class=" col-sm-9 tab-pane" id="modalCounty">
+                        <h3 class="mytitle">Garlado Limited</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <p class="mydef">Riotech Developers</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--MODAL POPUP FOR COUNTY EDIT-->
+<div class="modal fade" role="dialog" data-backdrop="static" id="countyPopupEdit">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg1">
+                <a class="btn btn-info close" data-dismiss="modal">&times</a>
+                <h3 class="text-center">Manage County/Province</h3>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <form name="editCountyData">
+                            <input type="hidden" name="countyId"/>
+                            <div class="form-group">
+                                <label>Country</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i>C</i>
+                                    </span>
+                                    <input type="text" class="form-control" name="country" disabled/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>County/Province</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i>P</i>
+                                    </span>
+                                    <input class="form-control" 
+                                           onfocus="countyValidate(this.value, document.getElementById('countyEdit'))"
+                                           onkeyup="countyValidate(this.value, document.getElementById('countyEdit'))"
+                                           name="county"/>
+                                </div>
+                                <p class="text-danger" id="countyEdit"></p>
+                            </div>
+                            <div class="form-group">
+                                <label>
+                                    Status
+                                </label>
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-star"></i>
+                                    </span>
+                                    <select name="status" class="form-control">
+                                        <option></option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <p class="text-success text-center" id="editCountyFb">
+                                    <i class="fa fa-spin fa-refresh"></i>
+                                </p>
+                            </div>
+                            <div class="form-group">
+                                <button type="button" onclick="saveEditCountyDataUpdate()" class="btn btn-primary">
+                                    Save
+                                </button>
+                                <button type="reset" class="btn btn-danger">
+                                    Clear
+                                </button>
+                            </div>
+                        </form>
+                        <div class="panel-group">
+                            <div class="panel panel-info">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a class="btn btn-info" data-toggle="collapse" href="#editCountyDataHelper">
+                                            <i class="fa fa-question-circle-o"></i> About Edit Province/Country
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="editCountyDataHelper" class="collapse panel-collapse">
+                                    <div class="panel-body">
+                                        <p>From here you get to rename the province name in case of wrong spellings and change the status
+                                            .</p>
+                                        <ol>
+                                            <li><strong>Active Status : </strong> All pick up points in this province <strong>will</strong> be visible for customers.</li>
+                                            <li><strong>In-Active Status : </strong> All pick up points in this province <strong>will not</strong> be visible for customers.</li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <p class="mydef">Riotech Developers</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--state/constituency Modal-->
+
+
+<div class="modal" data-backdrop="static" id="constituencyModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <a class="btn btn-info close" data-dismiss="modal">&times;</a>
+                <h3 class="text-center">My States/Constituencies</h3>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <ul class="nav nav-tabs">
+                            <li >
+                                <a data-toggle="tab" title="Add Constituencies" onclick="menuClicked('addConstituency')">
+                                    <span class="fa fa-stack fa-lg">
+                                        <i class="fa fa-stack-1x">S</i><span>
+                                            <sup style="margin-left:29px; margin-bottom: 9px;">
+                                                <i class="fa fa-plus"></i>
+                                            </sup>
+                                        </span>
+                                    </span><br>
+                                    <span class="autohide"> Add <br> Constituencies </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a  data-toggle="tab" title="View Constituencies" onclick="menuClicked('viewConstituency')">
+                                    <span class="fa fa-stack fa-lg">
+                                        <i class="fa fa-stack-1x">S</i><span>
+                                            <sup style="margin-left:29px; margin-bottom: 9px;">
+                                                <i class="fa fa-edit"></i>
+                                            </sup>
+                                        </span>
+                                        <!--<i class="fa fa-stack-2x fa-square-o"></i>-->
+                                    </span><br>
+                                    <span class="autohide"> Edit <br> Constituencies </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class=" col-sm-9 tab-pane" id="modalConstituency">
+                        <h3 class="mytitle">Garlado Limited</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <p class="mydef">Riotech Developers</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" role="dialog" data-backdrop="static" id="modalStateEdit">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <a class="btn btn-info close" data-dismiss="modal">&times;</a>
+                <h3 class="text-center">Edit State Details</h3>
+            </div>
+            <div class="modal-body">
+                <form name="editStateDetails">
+                    <input type="hidden" name="id"/>
+                    <div class="form-group">
+                        <label>Country</label>
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i>C</i>
+                            </span>
+                            <input type="text" class="form-control" name="country" disabled/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Province/County</label>
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i>P</i>
+                            </span>
+                            <input type="text" class="form-control" name="county" disabled/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>State/Constituency</label>
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i>S</i>
+                            </span>
+                            <input type="text"
+                                   onfocus="countyValidate(this.value, document.getElementById('esdState'))"
+                                   onkeyup="countyValidate(this.value, document.getElementById('esdState'))"
+                                   class="form-control" name="state"/>
+                        </div>
+                        <p class="text-danger" id="esdState"></p>
+                    </div>
+                    <div class="form-group">
+                        <label>Status</label>
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="fa fa-star"></i>
+                            </span>
+                            <select class="form-control" name="status"></select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <p class="text-success" id="esdFeedBack">
+
+                        </p>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-primary" onclick="editStateDetailsSave()" type="button">
+                            Save
+                        </button>
+                        <button class="btn btn-danger" type="reset">
+                            Clear
+                        </button>
+                    </div>
+                </form>
+                <div class="panel-group">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a class="btn btn-info" data-toggle="collapse" data-target="#StateDetailsHelper">
+                                    <i></i> About Edit State/Constituency
+                                </a>
+                            </h4>
+                        </div>
+                        <div class="collapse panel-collapse" id="StateDetailsHelper">
+                            <div class="panel-body">
+                                <p>Here you get to edit <strong>Constituency/State</strong> that contain your pickup points.
+                                    <br>
+                                    You can modifiy the name of the state or the status of this State.
+                                    <br>
+                                    <strong>Active status</strong> : pick-up points in this state/constituency are visible to customers.
+                                    <br> <strong>In-Active status</strong> : pick-up points in this state/constituency are <strong>not</strong> visible to customers.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <p class="mydef">Riotech Developers</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--
+======================================================================================================================
+======================================================================================================================
+======================================================================================================================
+-->
+<!--I am pick up points-->
+<div class="modal fade" data-backdrop="static" id="modalPickupMain" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <a class="btn btn-info close" data-dismiss="modal">&times;</a>
+                <h3 class="text-center">Pickup Points!</h3>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-2">
+                        <ul class="nav nav-tabs">
+                            <li >
+                                <a data-toggle="tab" title="Add Pickup Point" onclick="menuClicked('addPickup')">
+                                    <span class="fa fa-stack fa-lg">
+                                        <i class="fa fa-stack-1x fa-fort-awesome"></i><span>
+                                            <sup style="margin-left:29px; margin-bottom: 9px;">
+                                                <i class="fa fa-plus"></i>
+                                            </sup>
+                                        </span>
+                                    </span><br>
+                                    <span class="autohide"> Add<br> Pickup Point </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a data-toggle="tab" title="View Pickup Points" onclick="menuClicked('viewPickup')">
+                                    <span class="fa fa-stack fa-lg">
+                                        <i class="fa fa-stack-1x fa-fort-awesome"></i><span>
+                                            <sup style="margin-left:29px; margin-bottom: 9px;">
+                                                <i class="fa fa-edit"></i>
+                                            </sup>
+                                        </span>
+                                        <!--<i class="fa fa-stack-2x fa-square-o"></i>-->
+                                    </span><br>
+                                    <span class="autohide">  View<br> Pickup Point </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class=" col-sm-10 tab-pane" id="modalPickup">
+                        <h3 class="mytitle">Garlado Limited</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <p class="mydef">Riotech Developers</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--i am modal that does the editing of the pickup data-->
+<div class="modal fade" data-backdrop="staric" role="dialog" id="editPickupData">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <a class="btn btn-info close" data-dismiss="modal">&times;</a>
+                <h3 class="text-center">Edit Pickup point</h3>
+            </div>
+            <div class="modal-body">
+                <form name="pickupDetailsData">
+                    <input type="hidden" name="id"/>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group form-group-sm">
+                                <label>Country</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i>C</i>
+                                    </span>
+                                    <input type="text" class="form-control" name="country" disabled/>
+                                </div>
+                            </div>
+                            <div class="form-group form-group-sm">
+                                <label>Province/County</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i>P</i>
+                                    </span>
+                                    <input type="text" class="form-control" name="county" disabled/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group form-group-sm">
+                                <label>State/Constituency</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i>S</i>
+                                    </span>
+                                    <input type="text" name="state" class="form-control" disabled/>
+                                </div>
+                            </div>
+                            <div class="form-group form-group-sm">
+                                <label>Pickup Address</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-fort-awesome"></i>
+                                    </span>
+                                    <input type="text" name="pickupAddress" class="form-control"
+                                           onfocus="nameValidate2(this.value, document.getElementById('PDDpickupAddress'))"
+                                           onkeyup="nameValidate2(this.value, document.getElementById('PDDpickupAddress'))"
+                                           placeholder="Enter an address for this pickup point"/>
+                                </div>
+                                <p class="text-danger" id="PDDpickupAddress"></p>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group form-group-sm">
+                                <label>Status</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-star"></i>
+                                    </span>
+                                    <select name="status" class="form-control"></select>
+                                </div>
+                            </div>
+                            <div class="form-group form-group-sm">
+                                <label>Pickup point description</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-fort-awesome"></i>
+                                    </span>
+                                    <textarea name="pickupDescription" class="form-control"
+                                              onfocus="descriptionValidate2(this.value, document.getElementById('PDDdescription'))"
+                                              onkeyup="descriptionValidate2(this.value, document.getElementById('PDDdescription'))"
+                                              rows="4" 
+                                              placeholder="Eg, Westlands, safaricom house plaza, 1st floor, fooom 13"></textarea>
+                                </div>
+                                <p class="text-danger" id="PDDdescription"></p>
+                            </div>
+                            <div class="form-group text-center text-success form-group-sm" id="PDDfeedback">
+
+                            </div>
+                            <div class="form-group text-center form-group-sm">
+                                <button onclick="pickupDetailsDataSave()" class="btn btn-primary" type="button">
+                                    Save
+                                </button>
+                                <button class="btn btn-danger" type="reset">
+                                    Clear
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="panel-group">
+                            <div class="panel panel-info">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">
+                                        <a class="btn btn-info" data-toggle="collapse" data-target="#EditPickupDataHelper">
+                                            <i class="fa fa-question-circle-o"></i> 
+                                            About Edit Pickup Points
+                                        </a>
+                                    </h3>
+                                </div>
+                                <div class="collapse panel-collapse" id="EditPickupDataHelper">
+                                    <div class="panel-body">
+                                        <p>Here you get to change the <strong>pickup address name</strong>,<strong> description</strong> &<strong> status</strong> of this pickup point.<br>
+                                            <strong>Active status : </strong> This pickup station will be visible for customers.<br>
+                                            <strong>InActive status : </strong> This picku station will <b>not</b> be visible for customers.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <p class="mydef">Riotech Developers</p>
+            </div>
+        </div>
+    </div>
+</div>

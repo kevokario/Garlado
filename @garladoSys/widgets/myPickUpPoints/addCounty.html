@@ -1,0 +1,85 @@
+<div class="container-fluid">
+    <!--row with title only-->
+    <div class="row">
+        <div class="col-sm-12 text-center">
+            <h3>Add County/Province</h3>
+            <hr>
+        </div>
+    </div>
+    <!--Row with form data only-->
+    <div class="row">
+        <div class="col-sm-10 col-sm-offset-1">
+            <form name="addCounty">
+                <div class="form-group">
+                    <label>Select a country</label>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i>C</i>
+                        </span>
+                        <select
+                            onfocus="countryValidate(this.value,document.getElementById('countyCountryAdd'))"
+                            onchange="countryValidate(this.value,document.getElementById('countyCountryAdd'))"
+                            class="form-control" name="country">
+                            <option>---select Country---</option>
+                        </select>
+                    </div>
+                    <p class="text-danger" id="countyCountryAdd"></p>
+                </div>
+                <div class="form-group">
+                    <label>Enter Province/County name</label>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i>P</i>
+                        </span>
+                        <input class="form-control"
+                               onfocus="countyValidate(this.value,document.getElementById('countyNameAdd'))"
+                               onkeyup="countyValidate(this.value,document.getElementById('countyNameAdd'))"
+                               name="countyNameAdd" 
+                               placeholder="Enter County or provice name."/>
+                    </div>
+                    <p class="text-danger" id="countyNameAdd"></p>
+                </div>
+                <div class="form-group">
+                    <p class="text-success text-center" id="addCountyFeedBack">
+                      
+                    </p>
+                </div>
+                <div class="form-group">
+                    <button type="button" onclick="addNewCounty()" class="btn btn-primary">
+                        Save
+                    </button>
+                    <button type="reset" class="btn btn-danger">
+                        Clear
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!--row wih helper text only-->
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="panel-group">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-target="#addCountyCollapse" class="btn btn-info">
+                                <i class="fa fa-question-circle-o"></i>
+                                About Add County
+                            </a>
+                        </h4>
+                    </div>
+                    <div class="collapse panel-collapse" id="addCountyCollapse">
+                        <div class="panel-body">
+                            Here you get to specifically Add the <strong>Provinces/Counties</strong> of the selected Country that contain your Pick Up points<br>
+                            <ol>
+                                <li>Select a country</li>
+                                <li>Enter the name of the Province/County</li>
+                            </ol>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,60 @@
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12 col-sm-offset-0">
+            <h3 class="text-center">Add new Group</h3>
+            <form name="addGroup">
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class=" fa fa-shopping-cart">
+                            </i>
+                        </span>
+                        <input type="text"
+                               name="addNewGroup"
+                               onkeyup="nameValidate1(this.value, document.getElementById('addNewGroup'))"
+                               onfocus="nameValidate1(this.value, document.getElementById('addNewGroup'))"
+                               placeholder="Enter Group name"
+                               class="form-control">
+                    </div>
+                    <p class="text-danger" id="addNewGroup"></p>
+                </div>
+                <div class="form-group">
+                </div>
+
+                <p class="text-success" id="addGroup"></p>
+
+                <div class="form-group">
+                    <button type="button" class="btn btn-primary" onclick="groupAdd()">
+                        Add
+                    </button>
+                    <button type="reset" onclick="/*groupAddClear()*/" class="btn btn-danger">Clear</button>
+                </div>
+
+            </form>
+            <div class="col-sm-12">
+                <div class="panel-group">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" class="btn btn-info" href="#collapse1view">
+                                <i class="fa fa-question-circle-o"></i> About General Group
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapse1view" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            This is generalization of your products at the highest level.
+                            <br>
+                            For example, <strong>Electronics</strong> 
+                            is generalization of all electronic equipment, be it kitchen devices or washing machines. 
+                        </div>
+
+                    </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>

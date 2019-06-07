@@ -1,0 +1,91 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12 col-sm-offset-0">
+            <h3 class="text-center">Add Brand Group.</h3>
+            <form name="addBrandForm">
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-cart-plus"></i>
+                        </span>
+                        <select 
+                            class="form-control"
+                            name="general"
+                            onfocus="generalValidate(this.value, document.getElementById('generalErrorBrand'))"
+                            onchange="generalValidate(this.value, document.getElementById('generalErrorBrand')),
+                            populateBrandCategory(this.value)"
+                            >
+                            <option>------SELECT PARENT GENERAL GROUP------</option>
+                        </select>
+                    </div>
+                    <p class="text-danger" id="generalErrorBrand"></p>
+                </div>
+
+                
+
+
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class=" fa fa-bandcamp">
+                            </i>
+                        </span>
+                        <input type="text"
+                               name="addBrand"
+                               onkeyup="brandNameValidate(this.value, document.getElementById('addErrorBrand'))"
+                               onfocus="brandNameValidate(this.value, document.getElementById('addErrorBrand'))"
+                               placeholder="Enter Brand group name"
+                               class="form-control">
+                    </div>
+                    <p class="text-danger" id="addErrorBrand"></p>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-picture-o"></i>
+                        </span>
+                        <input type="file" 
+                               name="addPic"
+                               onfocus="imageValidator(document.addBrandForm.addPic,document.getElementById('addErrorPic'))"
+                               onchange="imageValidator(document.addBrandForm.addPic,document.getElementById('addErrorPic'))"
+                               class="form-control" placeholder="Select a brand picture"/>
+                    </div>
+                    <p class="text-danger" id="addErrorPic"></p>
+                </div>
+
+                <p class="text-success" id="addBrandfeedback"></p>
+
+                <div class="form-group">
+                    <button type="button" class="btn btn-primary" onclick="addBrandName()">
+                        Add
+                    </button>
+                    <button type="reset" class="btn btn-danger">Clear</button>
+                </div>
+
+            </form>
+            <div class="col-sm-12">
+                <div class="panel-group">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" class="btn btn-info" href="#collapsecataddview">
+                                    <i class="fa fa-question-circle-o"></i> About Brand Group
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapsecataddview" class="panel-collapse collapse">
+                            <div class="panel-body">
+                               This option makes it possible to add brands for general group products.
+                                <br>
+                                For example, <strong>Phones and Tablets</strong> 
+                                is a general group that may include brand's like <strong>Huawei,samsung,tecno</strong> to mention a few.<br>
+                                 </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>

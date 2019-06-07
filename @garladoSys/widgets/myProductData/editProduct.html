@@ -1,0 +1,565 @@
+<style>
+    .mytitle {
+        font-size:35px;
+        animation-name: motoranimationt;
+        animation-duration: 3s;
+        animation-delay: 0s;
+        animation-timing-function: ease-in-out;
+        animation-iteration-count: 1;
+        position:relative;
+        display: inline;
+
+
+    }
+
+    a{
+        cursor: pointer;
+    }
+
+    @keyframes motoranimationt{
+        0%{
+            font-size: 0px;
+            top:0px;
+            opacity: 0;
+        }
+        100%{
+            font-size:35px;
+            top:50%;
+            opacity: 1;
+        }
+    }
+    .productImg{
+        height: 190px;
+        border: 1px solid #999;
+        border-radius: 5px;
+        padding: 4px;
+        transition: 1s;
+        width:100%;
+    }
+    .productImg1{
+        height: 250px;
+        border: 1px solid #999;
+        border-radius: 5px;
+        padding: 4px;
+        transition: 1s;
+        width: 100%;
+    }
+
+    @media(max-width:768px){
+        .productImg{
+            height: 230px;
+            border: 1px solid #999;
+            border-radius: 5px;
+            padding: 4px;
+            width:70%;
+            margin-right: 15%;
+            margin-left: 15%;
+        }
+        .autohide{
+            display: none;
+        }
+    }
+</style>
+<div class="container-fluid">
+    <h3 class="text-center">Edit my Products.</h3>
+    <div class="row">
+        <!--        
+        =============================================
+                    FORM DATA
+        =============================================
+        -->
+        <div class="col-sm-12">
+            <form name="editProductFilter">
+                <table class="table">
+                    <tr>
+                        <td>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-star"></i>
+                                    </span>
+                                    <select class="form-control"
+                                            onchange="statusValidate(this.value, document.getElementById('editProductFilterStatus'))"
+                                            onfocus="statusValidate(this.value, document.getElementById('editProductFilterStatus'))"
+                                            name="editProductFilterStatus">
+                                        <option>---select status---</option>
+                                        <option>ACTIVE</option>
+                                        <option>INACTIVE</option>
+                                        <option>ALL</option>
+                                    </select>
+                                </div>
+                                <p class="text-danger" id="editProductFilterStatus"></p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-cart-plus"></i>
+                                    </span>
+                                    <select class="form-control" 
+                                            onfocus="generalValidate(this.value, document.getElementById('editProductFilterGeneral'))"
+                                            onchange="generalValidate(this.value, document.getElementById('editProductFilterGeneral')),
+                                                            populateEditProductCategory(this.value)"
+                                            name="editProductFilterGeneral">
+                                        <option>---select Group---</option>
+                                    </select>
+                                </div>
+                                <p class="text-danger" id="editProductFilterGeneral"></p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-shopping-basket"></i>
+                                    </span>
+                                    <select class="form-control"
+                                            onfocus="categoryValidate(this.value, document.getElementById('editProductFilterCat'))"
+                                            onchange="categoryValidate(this.value, document.getElementById('editProductFilterCat')),
+                                                            populateEditProductSpecific(this.value)"
+                                            name="editProductFilterCat">
+                                        <option>---select Cat---</option>
+                                    </select>
+                                </div>
+                                <p class="text-danger" id="editProductFilterCat"></p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-shopping-bag"></i>
+                                    </span>
+                                    <select class="form-control"
+                                            onfocus="specificValidate(this.value, document.getElementById('editProductFilterSpec'))"
+                                            onchange="specificValidate(this.value, document.getElementById('editProductFilterSpec'))"
+                                            name="editProductFilterSpec">
+                                        <option>---select group---</option>
+                                    </select>
+                                    <div class="input-group-btn">
+                                        <button type="button" class="btn btn-info" onclick="editProductFilterAction()">
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <p class="text-danger" id="editProductFilterSpec"></p>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+        <!--        
+        =============================================
+                    TABLE DATA
+        =============================================
+        -->
+        <div class="col-sm-12" style="max-height: 350px; min-height:0px ;margin-bottom: 5px;overflow-y: scroll;">
+            <table class="table table-striped table-hover table-responsive">
+                <thead class="bg1">
+                    <tr>
+                        <th>
+                            <span class="fa fa-stack">
+                                <i class="fa fa-stack-2x fa-square-o"></i>
+                                <i class="fa fa-stack-1x fa-bars"></i>
+                            </span>
+                            <span class="autohide">No.</span>
+                        </th>
+                        <th>
+                            <span class="fa fa-stack">
+                                <i class="fa fa-stack-2x fa-square-o"></i>
+                                <i class="fa fa-stack-1x fa-cart-plus"></i>
+                            </span>
+                            <span class="autohide">General</span>
+                        </th>
+                        <th>
+                            <span class="fa fa-stack">
+                                <i class="fa fa-stack-2x fa-square-o"></i>
+                                <i class="fa fa-stack-1x fa-shopping-basket"></i>
+                            </span>
+                            <span class="autohide">Category</span>
+                        </th>
+                        <th>
+                            <span class="fa fa-stack">
+                                <i class="fa fa-stack-2x fa-square-o"></i>
+                                <i class="fa fa-stack-1x fa-shopping-bag"></i>
+                            </span>
+                            <span class="autohide">Specific</span>
+                        </th>
+                        <th>
+                            <span class="fa fa-stack">
+                                <i class="fa fa-stack-2x fa-square-o"></i>
+                                <i class="fa fa-stack-1x fa-smile-o"></i>
+                            </span>
+                            <span class="autohide">Name</span>
+                        </th>
+                        <th>
+                            <span class="fa fa-stack">
+                                <i class="fa fa-stack-2x fa-square-o"></i>
+                                <i class="fa fa-stack-1x fa-bandcamp"></i>
+                            </span>
+                            <span class="autohide">Brand</span>
+                        </th>
+                        <th>
+                            <span class="fa fa-stack">
+                                <i class="fa fa-stack-2x fa-square-o"></i>
+                                <i class="fa fa-stack-1x fa-star"></i>
+                            </span>
+                            <span class="autohide">Status</span>
+                        </th>
+                        <th>
+                            <span class="fa fa-stack">
+                                <i class="fa fa-stack-2x fa-square-o"></i>
+                                <i class="fa fa-stack-1x fa-star-o"></i>
+                            </span>
+                            <span class="autohide">Action</span>
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody id="tableProductView">
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!--
+///////////////////////////////////////////////////////////////////////////
+                Modal EDIT PRODUCT
+///////////////////////////////////////////////////////////////////////////
+-->
+<div class="modal" data-backdrop="static" role="dialog" id="manageEditProduct">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <a class="close btn btn-info" data-dismiss="modal">&times;</a>
+                <h3 style="text-decoration: none">
+                    <span class="fa fa-stack">
+                        <i class="fa fa-stack-1x fa-smile-o"></i>
+                        <i class="fa fa-stack-2x fa-square-o"></i>
+                    </span>
+                    Edit my Product.
+                </h3>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <form name="editProductData">
+                        <input type="hidden" name="editProductDataProductId"/>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label class="control-label">
+                                        General Group.
+                                    </label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-cart-plus"></i>
+                                        </span>
+                                        <input type="text" class="form-control" name="editProductDataGeneral" disabled/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">
+                                        Category Group.
+                                    </label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-shopping-basket"></i>
+                                        </span>
+                                        <input type="text" class="form-control" name="editProductDataCategory" disabled/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">
+                                        Specific Group.
+                                    </label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-shopping-bag"></i>
+                                        </span>
+                                        <input type="text" class="form-control" name="editProductDataSpecific" disabled/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">
+                                        Product Brand.
+                                    </label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-bandcamp"></i>
+                                        </span>
+                                        <input type="text" class="form-control" name="editProductDataBrand" disabled/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+
+                                <div class="form-group">
+                                    <label class="control-label">
+                                        Product Name.
+                                    </label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-smile-o"></i>
+                                        </span>
+                                        <input type="text"
+                                               onfocus ="productNameValidate(this.value, document.getElementById('editProductDataName'))"
+                                               onkeyup ="productNameValidate(this.value, document.getElementById('editProductDataName'))"
+                                               class="form-control"
+                                               name="editProductDataName"/>
+                                    </div>
+                                    <p class="text-danger" id="editProductDataName"></p>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">
+                                        Our Sell Price.
+                                    </label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-money"></i>
+                                        </span>
+                                        <input type="text"
+                                               onfocus="priceValidate(this.value, document.getElementById('editProductDataPrice'))"
+                                               onkeyup="priceValidate(this.value, document.getElementById('editProductDataPrice'))"
+                                               class="form-control"
+                                               name="editProductDataPrice"/>
+                                    </div>
+                                    <p class="text-danger" id="editProductDataPrice"></p>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">
+                                        Product's Market Price.
+                                    </label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-money"></i>
+                                        </span>
+                                        <input type="text"
+                                               onfocus="priceValidate(this.value, document.getElementById('editProductDataMPrice'))"
+                                               onkeyup="priceValidate(this.value, document.getElementById('editProductDataMPrice'))"
+                                               class="form-control"
+                                               name="editProductDataMPrice"/>
+                                    </div>
+                                    <p class="text-danger" id="editProductDataMPrice"></p>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">
+                                        Product Status.
+                                    </label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-star"></i>
+                                        </span>
+                                        <select class="form-control" name="editProductDataStatus">
+                                            <option>ACTIVE</option><option>INACTIVE</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <div class="col-sm-4">
+                                <h5 class="text-center" style="margin: 3px;
+                                    padding-bottom: 3px;"><strong>Product Image.</strong></h5>
+                                <div id="productImage">
+
+                                </div>
+                                <div class="text-center" style="margin-top: 4px">
+                                    <button type="button" 
+                                            onclick="modalSetProductPicModal(document.editProductData.editProductDataProductId.value)"
+                                            class="btn btn-success btn-sm">
+                                        <span class="fa fa-stack">
+                                            <i class="fa fa-square-o fa-stack-2x"></i>
+                                            <i class="fa fa-image fa-stack-1x"></i>
+                                        </span>
+                                        Manage product pictures
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="form-group text-center">
+                                <hr/>
+                                <p class="mydef text-success" id="editProductDataFeedBack"></p>
+                            </div>
+                            <hr style="margin:3px"/>
+                            <div class="form-group text-center">
+                                <button type="button" class="btn btn-primary btn-sm" onclick="updateProductDetails()">
+                                    <span class="fa fa-stack">
+                                        <i class="fa fa-square-o fa-stack-2x"></i>
+                                        <i class="fa fa-save fa-stack-1x"></i>
+                                    </span>
+                                    Save
+                                </button>
+                                <button type="button" 
+                                        onclick="modalProductManageFeaturesModal(document.editProductData.editProductDataProductId.value)"
+                                        class="btn btn-success btn-sm">
+                                    <span class="fa fa-stack">
+                                        <i class="fa fa-square-o fa-stack-2x"></i>
+                                        <i class="fa fa-folder-open fa-stack-1x"></i>
+                                    </span>
+                                    Manage Features...
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="col-sm-12">
+                        <div class="panel-group">
+                            <div class="panel panel-info">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" class="btn btn-info" href="#collapse1view2fdws3">
+                                            <i class="fa fa-question-circle-o"></i> About Edit My Product 
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapse1view2fdws3" class="panel-collapse collapse">
+                                    <div class="panel-body text-justify">
+                                        Here you get to specifically edit a product. 
+                                        You can<strong> change the name</strong>,<strong>Change the price</strong> or <strong>change the
+                                            status</strong> of a product.
+                                        <br>
+                                        <p>You can also manage the products description features by clicking the 
+                                            <b>Manage Features...</b> button and manage the product's image by clicking the
+                                            <b> Manage product pictures</b> button.</p>
+                                        <strong>Active status</strong> : you can sell these products.<br>
+                                        <strong>In-Active status</strong> : you cannot sell these products.<br>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <p class="mydef">Riotech Developers </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--MODAL POP-UP FOR PRODUCT DESCRIPTION/KEY FEATURES-->
+<div class="modal fade" role="dialog" data-backdrop="static" id="modalProductManageFeatures">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <a class="btn btn-info close" data-dismiss="modal">&times;</a>
+                <h3 class="text-center" style="color : "><span class="fa fa-info-circle"></span> Product Description(s). </h3>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <ul class="nav nav-tabs">
+                            <li>
+                                <a data-toggle="tab" title="Add Features" onclick="menuClicked('addFeature')">
+                                    Add Features
+                                </a>
+                            </li>
+                            <li>
+                                <a data-toggle="tab" title="View Features" onclick="menuClicked('viewFeature')">
+                                    View Features
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-12 tab-content">
+                        <div id="mainDivFeatureManager">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <p class="mydef">Riotech Developers </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--MODAL POP-UP FOR SET WEB PICTURE MODAL-->
+<div class="modal fade" role="dialog" data-backdrop="static" id="modalSetProductPic">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <a class="btn btn-info close" data-dismiss="modal">&times;</a>
+                <h3 class="text-center" style="color : "><span class="fa fa-picture-o"></span> Product Picture Manager. </h3>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <ul class="nav nav-tabs text-center">
+                            <li >
+                                <a data-toggle="tab" title="Add More Pictures" onclick="menuClicked('addmorepictures')">
+                                    Add<br> More Pictures.
+                                </a>
+                            </li>
+                            <li>
+                                <a data-toggle="tab" title="Manage Product Pictures." onclick="menuClicked('manageproductpictures')">
+
+                                    Manage<br> Product Pictures.
+                                </a>
+                            </li>
+                            <li >
+                                <a data-toggle="tab" title="View Product Pictures." onclick="menuClicked('viewproductpictures')">
+                                    View<br> Product Pictures.
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <div class="col-sm-12 tab-pane " id="mainDivPicManager">
+                            <p style="margin: 10px;"> </p>
+                            <h3 class="mytitle">Garlado Limited</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <p class="mydef">Riotech Developers </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<!--
+CONTENT FOR PRODUCT IMAGE
+<div class="row">
+
+                    <div class="col-sm-12">
+                        <div class="panel-group">
+                            <div class="panel panel-info">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" class="btn btn-info" href="#collapse1view2fds3">
+                                            <i class="fa fa-question-circle-o"></i> About Edit Specific Category Group 
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapse1view2fds3" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        Here you get to specifically edit a product's Specific Category group.<br>
+                                        You can<strong> change the name</strong> of the group or <strong>change the
+                                            status</strong> of this group.
+                                        <br>
+                                        <strong>Active status</strong> : you can sell these products.<br>
+                                        <strong>In-Active status</strong> : you cannot sell these products.<br>
+                                        <strong>Prt Group</strong> : refers to general group.<br>
+                                        <strong>Ctr Group</strong> : refers to category group<br>
+                                        <Strong>Spc Group</strong> : refers to Specific category groups.
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+-->

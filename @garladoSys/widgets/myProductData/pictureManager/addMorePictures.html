@@ -1,0 +1,63 @@
+<div class="container-fluid">
+    <h3 class="text-center">Add More Pictures.</h3>
+    <div class="row">
+        <div class="col-sm-12">
+            <h4>Product :<strong id="addMorePictureName"> </strong></h4>
+        </div>
+        <div class="col-sm-12">
+            <form name="addMorePic">
+                <input type="hidden" name="itemid">
+                <div class="form-group">
+                    <label class="control-label">Browse a picture.</label>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-picture-o"></i>
+                        </span>
+                        <input type="file" 
+                               id="moreItempic" 
+                               onfocus="imageValidator(document.addMorePic.moreItemPic,document.getElementById('moreItempicDiv'))"
+                               onchange="imageValidator(document.addMorePic.moreItemPic,document.getElementById('moreItempicDiv'))"
+                               name="moreItemPic" class="form-control">
+                    </div>
+                    <p class="text-danger" id="moreItempicDiv"></p>
+                </div>
+                <div class="form-group">
+                    <p class="text-center mydef text-success" id="addMorePicFeedBack">
+                    </p>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary"
+                            onclick="uploadMoreImages()"
+                            type="button">
+                        Add
+                    </button>
+                </div>
+            </form>
+        </div>
+        <div class="col-sm-12">
+             <div class="panel-group">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" class="btn btn-info" href="#collapse1view2fdeds3">
+                            <i class="fa fa-question-circle-o"></i> About Add More Pictures
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapse1view2fdeds3" class="panel-collapse collapse">
+                    <div class="panel-body text-justify">
+                        Here you get to specifically add more images for a product.
+                        To do so:
+                        <ol>
+                            <li>Browse an image.</li>
+                            <li>Click Add button.</li>
+                            <li>Thats All!</li>
+                        </ol>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>

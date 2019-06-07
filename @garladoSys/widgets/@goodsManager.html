@@ -1,0 +1,703 @@
+<style>
+
+
+</style>
+<div class="container">
+    <div class="row">
+        <h3 class="text-center">
+            Manage My Products.
+
+        </h3>
+        <hr>
+        <div class="col-sm-10 col-sm-offset-1 text-center" style="text-align: center;">
+            <div class="row">
+                <div class="col-sm-4 menu" data-toggle="modal" data-target="#manageParent">
+                    <span class="fa fa-stack">
+                        <i class="fa fa-stack-1x fa-cart-plus"></i>
+                        <i class="fa fa-stack-2x fa-square-o"></i>
+                    </span>
+                    <p>General Product groups.</p>
+
+                </div>
+                <div class="col-sm-4 menu" data-toggle="modal" data-target="#manageCategory">
+                    <span class="fa fa-stack">
+                        <i class="fa fa-stack-1x fa-shopping-basket"></i>
+                        <i class="fa fa-stack-2x fa-square-o"></i>
+                    </span>
+                    <p>Product Category groups.</p>
+                </div>
+                <div class="col-sm-4 menu" data-toggle="modal" data-target="#manageBrand">
+
+                    <span class="fa fa-stack">
+                        <i class="fa fa-stack-1x fa-bandcamp"></i>
+                        <i class="fa fa-stack-2x fa-square-o"></i>
+                    </span>
+
+                    <p>Product Brands.</p>
+                </div>
+            </div>
+            <div class="row">
+
+
+                <div class="col-sm-4 menu" data-toggle="modal" data-target="#manageMinorCategory">
+
+                    <span class="fa fa-stack">
+                        <i class="fa fa-stack-1x fa-shopping-bag"></i>
+                        <i class="fa fa-stack-2x fa-square-o"></i>
+                    </span>
+
+                    <p>More specific Product groups.</p>
+                </div>
+                <div class="col-sm-4 menu" onclick="menuClicked('productsLoadProducts')">    
+                    <span class="fa fa-stack">
+                        <i class="fa fa-stack-1x fa-smile-o"></i>
+                        <i class="fa fa-stack-2x fa-square-o"></i>
+                    </span>
+                    <p>My Products</p>
+                </div>
+                <div class="col-sm-4 menu" onclick="menuClicked('defaultPage')">
+
+                    <span class="fa fa-stack">
+                        <i class="fa fa-stack-1x fa-hand-o-left"></i>
+                        <i class="fa fa-stack-2x fa-square-o"></i>
+                    </span>
+
+                    <p>Back to HomePage.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--
+///////////////////////////////////////////////////////////////////////////
+                Modal GENERAL GROUP
+///////////////////////////////////////////////////////////////////////////
+-->
+<div class="modal" data-backdrop="static" role="dialog" id="manageParent">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <a class="close btn btn-info" data-dismiss="modal">&times;</a>
+                <h3 style="text-decoration: none">
+                    <span class="fa fa-stack">
+                        <i class="fa fa-stack-1x fa-shopping-cart"></i>
+                        <i class="fa fa-stack-2x fa-square-o"></i>
+                    </span>
+                    General Product groups.
+                </h3>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <ul class="nav nav-tabs">
+                            <li >
+                                <a data-toggle="tab" title="Add Group" onclick="menuClicked('addGeneral')">
+                                    <span class="fa fa-stack fa-lg">
+                                        <i class="fa fa-shopping-cart fa-stack-1x"></i><span>
+                                            <sup style="margin-left:29px; margin-bottom: 9px;">
+                                                <i class="fa fa-plus"></i>
+                                            </sup>
+                                        </span>
+                                    </span><br>
+                                    <span class="autohide"> Add Group </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a data-toggle="tab" title="View Group" onclick="menuClicked('viewGeneral')">
+                                    <span class="fa fa-stack fa-lg">
+                                        <i class="fa fa-shopping-cart fa-stack-1x"></i><span>
+                                            <sup style="margin-left:29px; margin-bottom: 9px;">
+                                                <i class="fa fa-edit"></i>
+                                            </sup>
+                                        </span>
+                                        <!--<i class="fa fa-stack-2x fa-square-o"></i>-->
+                                    </span><br>
+                                    <span class="autohide"> Edit Group </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class=" col-sm-9 tab-pane" id="modalGeneral">
+                        <h3 class="mytitle">Garlado Limited</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <p class="mydef">Riotech Developers </p>
+            </div>
+        </div>
+    </div>
+</div>
+<!--MODAL POPUP FOR EDIT GROUP-->
+<div class="modal fade" role="dialog" data-backdrop="static" id="groupEdit">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <a class="btn btn-info close" data-dismiss="modal">&times;</a>
+                <h3 class="text-center" style="color : "><span class="fa fa-edit"></span> Edit Group</h3>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" name="groupeditform">
+                    <div class="form-group">
+                        <label class="control-label col-sm-2">
+                            Name
+                        </label>
+                        <div class="col-sm-10">
+                            <input type="hidden" name="majorID"/>
+                            <input 
+                                type="text"
+                                name="namegroup"
+                                onkeyup="nameValidate(this.value, document.getElementById('namediv'))"
+                                onfocus="nameValidate(this.value, document.getElementById('namediv'))"
+                                placeholder="Enter a new Item Name"
+                                class="form-control"/>
+                            <p class="text-danger" id="namediv"></p>
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2">
+                            Status
+                        </label>
+                        <div class="col-sm-10">
+                            <select class="form-control" name="status"></select>
+                            <p class="text-danger" id="statusdiv"></p>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="control-label col-sm-2"></div>
+                        <div class="col-sm-10 text-center">
+                            <p class="text-success" id="editgroupfeedback"></p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2"></label>
+                        <div class="col-sm-10">
+                            <button type="button" class="btn btn-primary" onclick="editGroupSave()">
+                                <i class="fa fa-save"></i> Save
+                            </button>
+                        </div>
+                    </div>
+                </form>
+                <div class="row">
+
+                    <div class="col-sm-12">
+                        <div class="panel-group">
+                            <div class="panel panel-info">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" class="btn btn-info" href="#collapse1view2">
+                                            <i class="fa fa-question-circle-o"></i> About Edit Group 
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapse1view2" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        Here you get to specifically edit a product group.<br>
+                                        You can<strong> change the name</strong> of the group or <strong>change the
+                                            status</strong> of this group.
+                                        <br>
+                                        <strong>Active status</strong> : you can sell these products.<br>
+                                        <strong>In-Active status</strong> : you cannot sell these products.
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <p class="mydef">Riotech Developers </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--
+///////////////////////////////////////////////////////////////////////////
+                Modal CATEGORIES GROUP
+///////////////////////////////////////////////////////////////////////////
+-->
+<div class="modal" data-backdrop="static" role="dialog" id="manageCategory">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <a class="close btn btn-info" data-dismiss="modal">&times;</a>
+                <h3 style="text-decoration: none">
+                    <span class="fa fa-stack">
+                        <i class="fa fa-stack-1x fa-shopping-basket"></i>
+                        <i class="fa fa-stack-2x fa-square-o"></i>
+                    </span>
+                    Product Category groups.
+                </h3>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-2">
+                        <ul class="nav nav-tabs">
+                            <li >
+                                <a data-toggle="tab" title="Add Group" onclick="menuClicked('addCategory')">
+                                    <span class="fa fa-stack fa-lg">
+                                        <i class="fa fa-shopping-basket fa-stack-1x"></i><span>
+                                            <sup style="margin-left:29px; margin-bottom: 9px;">
+                                                <i class="fa fa-plus"></i>
+                                            </sup>
+                                        </span>
+                                    </span><br>
+                                    <span class="autohide"> Add Group </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a data-toggle="tab" title="View Group" onclick="menuClicked('editCategory')">
+                                    <span class="fa fa-stack fa-lg">
+                                        <i class="fa fa-shopping-basket fa-stack-1x"></i><span>
+                                            <sup style="margin-left:29px; margin-bottom: 9px;">
+                                                <i class="fa fa-edit"></i>
+                                            </sup>
+                                        </span>
+                                        <!--<i class="fa fa-stack-2x fa-square-o"></i>-->
+                                    </span><br>
+                                    <span class="autohide"> Edit Group </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class=" col-sm-10 tab-pane" id="modalCategory">
+                        <h3 class="mytitle">Garlado Limited</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <p class="mydef">Riotech Developers </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--MODAL POPUP FOR CATEGORY GROUP-->
+<div class="modal fade" role="dialog" data-backdrop="static" id="categoryGroupEdit">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <a class="btn btn-info close" data-dismiss="modal">&times;</a>
+                <h3 class="text-center" style="color : "><span class="fa fa-edit"></span> Edit Category</h3>
+            </div>
+            <div class="modal-body">
+                <form class="" name="editcat">
+                    <input type="hidden" name="catid"/>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                Prt Group
+                            </span>
+                            <input type="text" name="prtname" class="form-control" disabled/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                Ctr Group
+                            </span>
+                            <input type="text"
+                                   placeholder="enter category name "
+                                   onfocus="nameValidate(this.value, document.getElementById('errorcrtname'))"
+                                   onkeyup="nameValidate(this.value, document.getElementById('errorcrtname'))"
+                                   name="categorynameedit"
+                                   class="form-control"/>
+                        </div>
+                        <p class="text-danger mydef" id="errorcrtname"></p>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                Status
+                            </span>
+                            <select name="crtstatusedit" class="form-control"></select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <p class="mydef text-center text-success" id="editCatErrordiv"></p>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-primary" type="button" onclick="editCat()">
+                            <i class="fa fa-save"></i> Save
+                        </button>
+                    </div>
+                </form>
+                <div class="row">
+
+                    <div class="col-sm-12">
+                        <div class="panel-group">
+                            <div class="panel panel-info">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" class="btn btn-info" href="#collapse1view23">
+                                            <i class="fa fa-question-circle-o"></i> About Edit Category Group 
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapse1view23" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        Here you get to specifically edit a product's Category group.<br>
+                                        You can<strong> change the name</strong> of the group or <strong>change the
+                                            status</strong> of this group.
+                                        <br>
+                                        <strong>Active status</strong> : you can sell these products.<br>
+                                        <strong>In-Active status</strong> : you cannot sell these products.<br>
+                                        <strong>Prt Group</strong> : refers to general group.<br>
+                                        <strong>Ctr Group</strong> : refers to category group
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <p class="mydef">Riotech Developers </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--
+///////////////////////////////////////////////////////////////////////////
+                Modal MINOR CATEGORY GROUP
+///////////////////////////////////////////////////////////////////////////
+-->
+<div class="modal" data-backdrop="static" role="dialog" id="manageMinorCategory">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <a class="close btn btn-info" data-dismiss="modal">&times;</a>
+                <h3 style="text-decoration: none">
+                    <span class="fa fa-stack">
+                        <i class="fa fa-stack-1x fa-shopping-bag"></i>
+                        <i class="fa fa-stack-2x fa-square-o"></i>
+                    </span>
+                    Specific Product's Category groups.
+                </h3>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-2">
+                        <ul class="nav nav-tabs">
+                            <li >
+                                <a data-toggle="tab" title="Add Group" onclick="menuClicked('addMinorCategory')">
+                                    <span class="fa fa-stack fa-lg">
+                                        <i class="fa fa-shopping-bag fa-stack-1x"></i><span>
+                                            <sup style="margin-left:29px; margin-bottom: 9px;">
+                                                <i class="fa fa-plus"></i>
+                                            </sup>
+                                        </span>
+                                    </span><br>
+                                    <span class="autohide"> Add Group </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a data-toggle="tab" title="Edit Group" onclick="menuClicked('editMinorCategory')">
+                                    <span class="fa fa-stack fa-lg">
+                                        <i class="fa fa-shopping-bag fa-stack-1x"></i><span>
+                                            <sup style="margin-left:29px; margin-bottom: 9px;">
+                                                <i class="fa fa-edit"></i>
+                                            </sup>
+                                        </span>
+                                        <!--<i class="fa fa-stack-2x fa-square-o"></i>-->
+                                    </span><br>
+                                    <span class="autohide"> Edit Group </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class=" col-sm-10 tab-pane" id="modalMinorCategory">
+                        <h3 class="mytitle">Garlado Limited</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <p class="mydef">Riotech Developers </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--MODAL POP-UP FOR CATEGORY GROUP-->
+<div class="modal fade" role="dialog" data-backdrop="static" id="minorCatEditUpdate">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <a class="btn btn-info close" data-dismiss="modal">&times;</a>
+                <h3 class="text-center" style="color : "><span class="fa fa-edit"></span>Edit Specific Category Group </h3>
+            </div>
+            <div class="modal-body">
+                <form class="" name="editminorcat">
+                    <input type="hidden" name="id"/>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                Prt Group
+                            </span>
+                            <input type="text" name="prtname" class="form-control" disabled/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                Ctr Group
+                            </span>
+                            <input type="text" name="catname" class="form-control" disabled/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                Spc Group
+                            </span>
+                            <input type="text"
+                                   placeholder="enter specific category name "
+                                   onfocus="nameValidate(this.value, document.getElementById('errormincrtname'))"
+                                   onkeyup="nameValidate(this.value, document.getElementById('errormincrtname'))"
+                                   name="minorname"
+                                   class="form-control"/>
+                        </div>
+                        <p class="text-danger mydef" id="errormincrtname"></p>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                Status
+                            </span>
+                            <select name="minorstatus" class="form-control"></select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <p class="mydef text-center text-success" id="editMINCatErrordiv"></p>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-primary" type="button" onclick="editMinorCat()">
+                            <i class="fa fa-save"></i> Save
+                        </button>
+                    </div>
+                </form>
+                <div class="row">
+
+                    <div class="col-sm-12">
+                        <div class="panel-group">
+                            <div class="panel panel-info">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" class="btn btn-info" href="#collapse1view2fds3">
+                                            <i class="fa fa-question-circle-o"></i> About Edit Specific Category Group 
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapse1view2fds3" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        Here you get to specifically edit a product's Specific Category group.<br>
+                                        You can<strong> change the name</strong> of the group or <strong>change the
+                                            status</strong> of this group.
+                                        <br>
+                                        <strong>Active status</strong> : you can sell these products.<br>
+                                        <strong>In-Active status</strong> : you cannot sell these products.<br>
+                                        <strong>Prt Group</strong> : refers to general group.<br>
+                                        <strong>Ctr Group</strong> : refers to category group<br>
+                                        <Strong>Spc Group</strong> : refers to Specific category groups.
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <p class="mydef">Riotech Developers </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--
+///////////////////////////////////////////////////////////////////////////
+                Modal BRAND GROUP
+///////////////////////////////////////////////////////////////////////////
+-->
+<div class="modal" data-backdrop="static" role="dialog" id="manageBrand">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <a class="close btn btn-info" data-dismiss="modal">&times;</a>
+                <h3 style="text-decoration: none">
+                    <span class="fa fa-stack">
+                        <i class="fa fa-stack-1x fa-bandcamp"></i>
+                        <i class="fa fa-stack-2x fa-square-o"></i>
+                    </span>
+                    Product Brands.
+                </h3>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-2">
+                        <ul class="nav nav-tabs">
+                            <li >
+                                <a data-toggle="tab" title="Add Group" onclick="menuClicked('addBrand')">
+                                    <span class="fa fa-stack fa-lg">
+                                        <i class="fa fa-stack-1x fa-bandcamp"></i><span>
+                                            <sup style="margin-left:29px; margin-bottom: 9px;">
+                                                <i class="fa fa-plus"></i>
+                                            </sup>
+                                        </span>
+                                    </span><br>
+                                    <span class="autohide"> Add Brand </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a data-toggle="tab" title="View Group" onclick="menuClicked('editBrand')">
+                                    <span class="fa fa-stack fa-lg">
+                                        <i class="fa fa-stack-1x fa-bandcamp"></i><span>
+                                            <sup style="margin-left:29px; margin-bottom: 9px;">
+                                                <i class="fa fa-edit"></i>
+                                            </sup>
+                                        </span>
+                                        <!--<i class="fa fa-stack-2x fa-square-o"></i>-->
+                                    </span><br>
+                                    <span class="autohide"> Edit Brand </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class=" col-sm-10 tab-pane" id="modalBrand">
+                        <h3 class="mytitle">Garlado Limited</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <p class="mydef">Riotech Developers </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--MODAL POPUP FOR BRAND GROUP-->
+<div class="modal fade" role="dialog" data-backdrop="static" id="brandGroupEdit">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <a class="btn btn-info close" data-dismiss="modal">&times;</a>
+                <h3 class="text-center" style="color : "><span class="fa fa-edit"></span> Edit Brand</h3>
+            </div>
+            <div class="modal-body">
+                <form class="" name="editbrand">
+                    <input type="hidden" name="brandid"/>
+                    <div class="col-sm-6">
+                        <h3 style="margin : 0" class="text-center"><small>Brand Info</small></h3>
+                        <hr style="margin:4px;"/>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    Prt Group
+                                </span>
+                                <input type="text" name="genname" class="form-control" disabled/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    Bnd Group
+                                </span>
+                                <input type="text"
+                                       placeholder="enter brand name "
+                                       onfocus="nameValidate(this.value, document.getElementById('errorbrandname'))"
+                                       onkeyup="nameValidate(this.value, document.getElementById('errorbrandname'))"
+                                       name="brandnameedit"
+                                       class="form-control"/>
+                            </div>
+                            <p class="text-danger mydef" id="errorbrandname"></p>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    Status
+                                </span>
+                                <select name="brandstatusedit" class="form-control"></select>
+                            </div>
+                        </div>
+                        <div class="form-group" id="selectBrandPicDiv" style="display: none">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    Logo
+                                </span>
+                                <input 
+                                    type="file"
+                                    name="brandpicedit"
+                                       onfocus="imageValidator(document.editbrand.brandpicedit,document.getElementById('errorbrandpic'))"
+                                       onchange="imageValidator(document.editbrand.brandpicedit,document.getElementById('errorbrandpic'))"
+                                       class="form-control"/>
+                            </div>
+                            <p class="text-danger mydef" id="errorbrandpic"></p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <h3 style="margin : 0" class="text-center"><small>Brand Logo</small></h3>
+                        <hr style="margin:4px;"/>
+                        <div id="viewBrandPic" style="margin-bottom:5px;">
+                            <img class="userImg" src="./img/logo.png" alt="Brand Logo"/>
+                        </div>
+                        <div class="form-group text-center">
+                            <button class="btn btn-sm btn-success" onclick="toggleBrandEdit()" type="button">change</button>
+                        </div>
+                    </div>
+                   
+                    <div class="form-group">
+                        <p class="mydef text-center text-success" id="editBrandErrordiv"></p>
+                    </div>
+                    <div class="form-group text-center">
+                        <button class="btn btn-primary" type="button" onclick="updateBandData()">
+                            <i class="fa fa-save"></i> Save
+                        </button>
+                    </div>
+                </form>
+                <div class="row">
+
+                    <div class="col-sm-12">
+                        <div class="panel-group">
+                            <div class="panel panel-info">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" class="btn btn-info" href="#collapse1view2bnd3">
+                                            <i class="fa fa-question-circle-o"></i> About Edit Brand Group 
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapse1view2bnd3" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        Here you get to specifically edit a product's Category group.<br>
+                                        You can<strong> change the name</strong> of the group or <strong>change the
+                                            status</strong> of this group.
+                                        <br>
+                                        <strong>Active status</strong> : you can sell these products.<br>
+                                        <strong>In-Active status</strong> : you cannot sell these products.<br>
+                                        <strong>Prt Group</strong> : refers to general group.<br>
+                                        <strong>Bnd Group</strong> : refers to category group
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <p class="mydef">Riotech Developers </p>
+            </div>
+        </div>
+    </div>
+</div>

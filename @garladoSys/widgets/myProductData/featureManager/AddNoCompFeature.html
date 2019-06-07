@@ -1,0 +1,73 @@
+<h4 class="text-center">
+  
+    Add Features
+</h4>
+
+<div class="row">
+    <div class="col-sm-12">
+        <!--//form content-->
+        <form name="addFormNFeature">
+            <div class="col-sm-12">
+                
+                     <div class="col-sm-6">
+                          <label class="control-label text-center">Product Image.</label>
+                          <div id="ANFimg" style="margin-bottom: 5px">
+                           
+                            <img src="./img/logo.png" class="productImg" alt=""/>
+                           
+                        </div>
+                    </div>
+                
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="control-label">
+                                Product Property 
+                            </label>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-product-hunt"></i>
+                                </span>
+                                <input type="text" name="prop1"
+                                       onfocus="propertyValidate(this.value,document.getElementById('ANFprop1'))"
+                                       onkeyup="propertyValidate(this.value,document.getElementById('ANFprop1'))"
+                                       placeholder=" eg, Color : red" class="form-control">
+                            </div>
+                            <p class="text-danger" id="ANFprop1"></p>
+                        </div>
+                       
+                        <div class="form-group">
+                            <label class="control-label">
+                                Product Property 
+                            </label>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-product-hunt"></i>
+                                </span>
+                                <input type="text" 
+                                       name="prop2"                                       
+                                       onkeyup="propertyValidate(this.value,document.getElementById('ANFprop2'))"
+                                       onfocus="propertyValidate(this.value,document.getElementById('ANFprop2'))"
+                                       placeholder=" eg, Color : red" class="form-control">
+                            </div>
+                            <p class="text-danger" id="ANFprop2"></p>
+                        </div>
+                    </div>
+               
+            </div>
+            <div class="form-group text-center" style="margin: 5px">
+                <div class="text-success mydef" id="ANFfeedback"></div>
+            </div>
+            <div class="form-group text-center" style="margin-top: 7px;">
+                 <button type="button"
+                        onclick="AddcaddNCompFeature()"
+                        class="btn btn-primary">
+                    Add
+                </button>
+                <button type="reset" class="btn btn-danger">
+                    clear
+                </button>
+            </div> 
+        </form>
+
+    </div>
+</div>

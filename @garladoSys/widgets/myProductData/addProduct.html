@@ -1,0 +1,253 @@
+<style>
+    @media(max-width:768px){
+        legend{
+            font-size: 12px;
+        }
+    }
+    legend{
+        transition: 1s;
+        font-weight: 100;
+        font-size: 15px;
+    }
+    .myimg{
+        height: 200px;
+        margin-left: 10%;
+        margin-right: 10%;
+        width: 80%;
+        border-radius: 4px;
+        border: 1px solid #999;
+        padding: 2px;
+        margin-bottom: 5px;margin-top: 5px;
+    }
+</style>
+
+<div class="container-fluid">
+    <div class="row">
+        <h3 class="text-center">
+            <span class="fa fa-stack">
+                <i class="fa fa-stack-1x fa-smile-o"></i>
+                <i class="fa fa-stack-2x fa-square-o"></i>
+            </span>
+            Add Product.
+        </h3>
+        <hr style="margin: 2px; margin-bottom: 10px"/>
+        <div class="col-sm-12">
+            <form name="addProduct">
+                <!--Select Groups-->
+                <div class="col-sm-4">
+                    <fieldset>
+                        <legend class="text-center"> Part A </legend>
+                        <div class="form-group">
+                            <label>Select General Group</label>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-cart-plus"></i>
+                                </span>
+                                <select 
+                                    class="form-control" 
+                                    name="productGeneralSelect"
+                                    onchange="populateAppProductCategory(this.value),
+                                                    generalValidate(this.value, document.getElementById('productGeneralSelect'))"
+                                    onfocus="generalValidate(this.value, document.getElementById('productGeneralSelect'))"
+                                    >
+                                    <option>------GENERAL GROUP------</option>
+                                </select>
+                            </div>
+                            <p class="text-danger" id="productGeneralSelect"></p>
+                        </div>
+                        <div class="form-group">
+                            <label>Select Category Group</label>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-shopping-basket"></i>
+                                </span>
+                                <select 
+                                    class="form-control"
+                                    name="productCategorySelect"
+                                    onfocus="categoryValidate(this.value, document.getElementById('productCategorySelect'))"
+                                    onchange="categoryValidate(this.value, document.getElementById('productCategorySelect')),
+                                                    populateAppProductSpecific(this.value);
+                                    "
+                                    >
+                                    <option>------CATEGORY GROUP------</option>
+                                </select>
+                            </div>
+                            <p class="text-danger" id="productCategorySelect"></p>
+                        </div>
+                        <div class="form-group">
+                            <label>Select Specific Group</label>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-shopping-bag"></i>
+                                </span>
+                                <select 
+                                    class="form-control"
+                                    name="productSpecificSelect"
+                                    onfocus="specificValidate(this.value, document.getElementById('productSpecificSelect'))"
+                                    onchange="specificValidate(this.value, document.getElementById('productSpecificSelect'))"
+                                    >
+                                    <option>------SPECIFIC GROUP------</option>
+                                </select>
+                            </div>
+                            <p class="text-danger" id="productSpecificSelect"></p>
+                        </div>
+                    </fieldset>
+                </div>
+                <!--name,market price-->
+                <div class="col-sm-4">
+                    <fieldset>
+                        <legend class="text-center"> Part B </legend>
+                        <div class="form-group">
+                            <label>Product Name</label>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-smile-o"></i>
+                                </span>
+                                <input type="text"
+                                       onfocus="productNameValidate(this.value, document.getElementById('productName'))"
+                                       onkeyup="productNameValidate(this.value, document.getElementById('productName'))"
+                                       placeholder="Enter Product Name"
+                                       name="productName" 
+                                       class="form-control"/>
+                            </div>
+                            <div class="text-danger" id="productName"></div>
+                        </div>
+                        <div class="form-group">
+                            <label>Set Sell Price</label>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-money"></i>
+                                </span>
+                                <input type="text" 
+                                       onfocus="priceValidate(this.value, document.getElementById('productPrice'))"
+                                       onkeyup="priceValidate(this.value, document.getElementById('productPrice'))"
+                                       name="productPrice" placeholder="Product Price" class="form-control"/>
+                            </div>
+                            <div class="text-danger" id="productPrice"></div>
+                        </div>
+                        <div class="form-group">
+                            <label>Set Market Price</label>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-money"></i>
+                                </span>
+                                <input type="text" 
+                                       onfocus="priceValidate(this.value, document.getElementById('marketPrice'))"
+                                       onkeyup="priceValidate(this.value, document.getElementById('marketPrice'))"
+                                       name="marketPrice" placeholder="Market Price" class="form-control"/>
+                            </div>
+                            <div class="text-danger" id="marketPrice"></div>
+                        </div>
+                    </fieldset>
+                </div>
+                <!--image,statu brand-->
+                <div class="col-sm-4">
+                    <fieldset>
+                        <legend class="text-center">Part C</legend>
+                        <div class="form-group">
+                            <label>Set Product Image</label>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-picture-o"></i>
+                                </span>
+                                <input type="file" 
+                                       class="form-control"
+                                       name="productImage"
+                                       onchange="imageValidator(document.addProduct.productImage, document.getElementById('productImage'))"
+                                       onfocus="imageValidator(document.addProduct.productImage, document.getElementById('productImage'))"
+                                       />
+                            </div>
+                            <div class="text-danger" id="productImage"></div>
+                        </div>
+                        <div class="form-group">
+                            <label>Select Product brand</label>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-bandcamp"></i>
+                                </span>
+                                <select 
+                                    class="form-control"
+                                    name="productBrand"
+                                    onfocus ="brandNameValidate(this.value, document.getElementById('productBrand'))"
+                                    onchange="brandNameValidate(this.value, document.getElementById('productBrand'))"
+                                    >
+                                    <option>------SET BRAND------</option>
+                                </select>
+                            </div>
+                            <div class="text-danger" id="productBrand"></div>
+                        </div>
+                        <div class="form-group">
+                            <label>Set Status</label>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-star-o"></i>
+                                </span>
+                                <select 
+                                    class="form-control"
+                                    name="productStatus"
+                                    onchange="statusValidate(this.value, document.getElementById('productStatus'))"
+                                    onfocus="statusValidate(this.value, document.getElementById('productStatus'))"
+                                    >
+                                    <option>------SET STATUS------</option>
+                                    <option>ACTIVE</option>
+                                    <option>INACTIVE</option>
+                                </select>
+                            </div>
+                            <div class="text-danger" id="productStatus"></div>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12"><hr style="margin: 2px;">
+                        <div class="form-group text-center">
+                            <p id="maindivaddProduct" class="text-success mydef"></p>
+                        </div>
+                        <div class="form-group text-center">
+                            <button type="button" class="btn btn-primary" onclick="addProductAdd()">
+                                Add
+                            </button>
+                            <button type="reset" class="btn btn-danger">
+                                Clear
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="panel-group">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" class="btn btn-info" href="#collapsecataddview">
+                                        <i class="fa fa-question-circle-o"></i> About Add Product
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapsecataddview" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    Here you get to add your products. to do so, follow the below steps.
+                                    <ol>
+                                        <li> Select General group for your product</li>
+                                        <li> Select Category group for your product</li>
+                                        <li> Select the Specific group for your product</li>
+                                        <li> Enter product name</li>
+                                        <li> Enter sell price for your product</li>
+                                        <li>Enter the market price for your product</li>
+                                        <li> Select a suitable picture for your product</li>
+                                        <li> Select a brand that your product belongs to</li>
+                                        <li> Set a status for your product</li>
+                                        <li> Click the add Button!</li>
+                                    </ol>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p class="mydef pull-right" style="margin: 20px">Riotech Developers</p>
+            </div>
+        </div>
+
+    </div>
+</div>

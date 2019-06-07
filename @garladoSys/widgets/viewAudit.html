@@ -1,0 +1,211 @@
+<style>
+    .myUserImg{
+        height: 140px;
+        border: 1px solid #999;
+        border-radius: 5px;
+        padding: 4px;
+        transition: 1s;
+        width:100%;
+    }
+    @media(max-width:768px){
+        .userImg{
+            height: 150px;
+            border: 1px solid #999;
+            border-radius: 5px;
+            padding: 4px;
+            width:60%;
+            margin-right: 20%;
+            margin-left: 20%;
+        }
+    } 
+    .inputMy{
+        
+    }
+</style>
+<div class="container-fluid">
+    <div class="row">
+        <div class="text-center col-sm-12">
+            <h3> 
+                <span class="pull-left fa fa-hand-o-left" style="cursor:pointer;padding : 5px;" onclick="menuClicked('defaultPage')"></span>
+                Audit Trail.</h3>
+            <hr style="margin : 1px">
+            <small>Click on user to view their log.</small>
+            <div class="col-sm-12"  style="height:350px; overflow-y: auto" id="usersAudit">
+               
+            </div>
+        </div>
+        <hr>
+        <div class="col-sm-12">
+            <p style="margin-top: 5px">
+
+                <span class="mydef pull-right">
+                    Riotech Developers
+                </span>
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="modal" data-backdrop="static" role="dialog" id="auditModal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <a class="close btn btn-info" data-dismiss="modal">&times;</a>
+                <h3>
+                    <span class="fa fa-stack">
+                        <i class="fa fa-stack-1x fa-bar-chart"></i>
+                        <i class="fa fa-stack-2x fa-square-o"></i>
+                    </span>
+
+                    User Audit Log</h3>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <!--form data-->
+                        <form name="auditSelect">
+                            <input type="hidden" name="userid"/>
+                            <fieldset>
+                                <legend class="pull-left"><small>From :</small></legend>
+                                <!--from data-->
+                                <div class="form-group form-group-sm">
+                                    <label>Select month</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </span>
+                                        <select name="monthFrom"
+                                                onfocus="monthValidate(this.value, document.getElementById('monthFrom'))"
+                                                onchange="monthValidate(this.value, document.getElementById('monthFrom')),
+                                                                fromMonthChange(this.value, document.auditSelect.monthTo.value, document.auditSelect.monthTo)"
+                                                class="form-control">
+                                            <option>---select Month---</option>
+                                        </select>
+                                    </div>
+                                    <p class="mydef text-danger" id="monthFrom"></p>
+                                </div>
+                                <div class="form-group form-group-sm">
+                                    <label>Select year</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </span>
+                                        <select 
+                                            onfocus="yearValidate(this.value, document.getElementById('yearFrom'))"
+                                            onchange="yearValidate(this.value, document.getElementById('yearFrom')),
+                                                            fromYearChange(this.value, document.auditSelect.yearTo.value, document.auditSelect.yearTo)"
+                                            name="yearFrom" class="form-control">
+                                            <option>---select year---</option>
+                                        </select>
+                                    </div>
+                                    <p class="mydef text-danger" id="yearFrom"></p>
+                                </div>
+
+                            </fieldset>
+                            <fieldset>
+                                <legend class="pull-left"><small>To :</small></legend>
+                                <!--to data-->
+                                <div class="form-group form-group-sm">
+                                    <label>Select month</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </span>
+                                        <select 
+                                            onfocus="monthValidate(this.value, document.getElementById('monthTo'))"
+                                            onchange="monthValidate(this.value, document.getElementById('monthTo')),
+                                                            toMonthChange(this.value, document.auditSelect.monthFrom.value, document.auditSelect.monthFrom)"
+                                            name="monthTo" class="form-control">
+                                            <option>---select Month---</option>
+                                        </select>
+                                    </div>
+                                    <p class="mydef text-danger" id="monthTo"></p>
+                                </div>
+                                <div class="form-group form-group-sm">
+                                    <label>Select year</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </span>
+                                        <select
+                                            onfocus="yearValidate(this.value, document.getElementById('yearTo'))"
+                                            onchange="yearValidate(this.value, document.getElementById('yearTo')),
+                                                            toYearChange(this.value, document.auditSelect.yearFrom.value, document.auditSelect.yearFrom)"
+                                            name="yearTo" class="form-control">
+                                            <option>---select year---</option>
+                                        </select>
+                                    </div>
+                                    <p class="text-danger mydef" id="yearTo"></p>
+                                </div>
+                            </fieldset>
+                            <div class="form-group form-group-sm text-center text-success" id="feedBackAuditSelect"></div>
+                            <div class="form-group form-group-sm">
+                                <button class="btn btn-sm btn-primary" onclick="showUserAudit()" type="button">
+                                    Show Log
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-sm-9">
+                        <!--table data-->
+                        <h3 class="text-center"><small>Log for user <strong id="specName" class="text-capitalize">Garlado Limited</strong>.</small></h3>
+                        <div class="col-sm-12" style="height: 350px; overflow-y: auto; margin-bottom: 5px">
+                            <table class="table table-responsive table-hover table-striped">
+                                <thead class="bg1">
+                                    <tr>
+                                        <th>
+                                            <span class="fa fa-stack">
+                                                <i class="fa fa-stack-1x fa-bars"></i>
+                                                <i class="fa fa-stack-2x fa-square-o"></i>
+                                            </span>
+                                            <span class="autohider">No.</span>
+                                        </th>
+                                        <th>
+                                            <span class="fa fa-stack">
+                                                <i class="fa fa-stack-1x fa-clock-o"></i>
+                                                <i class="fa fa-stack-2x fa-square-o"></i>
+                                            </span>
+                                            <span class="autohider">Time</span>
+                                        </th>
+                                        <th>
+                                            <span class="fa fa-stack">
+                                                <i class="fa fa-stack-1x fa-calendar"></i>
+                                                <i class="fa fa-stack-2x fa-square-o"></i>
+                                            </span>
+                                            <span class="autohider">Date</span>
+                                        </th>
+                                        <th>
+                                            <span class="fa fa-stack">
+                                                <i class="fa fa-stack-1x fa-star"></i>
+                                                <i class="fa fa-stack-2x fa-square-o"></i>
+                                            </span>
+                                            <span class="autohider">Action</span>
+                                        </th>
+                                        <th>
+                                            <span class="fa fa-stack">
+                                                <i class="fa fa-stack-1x fa-empire"></i>
+                                                <i class="fa fa-stack-2x fa-square-o"></i>
+                                            </span>
+                                            <span class="autohider">Event</span>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody id="userAuditData">
+                                    <tr>
+                                        <td colspan="7">
+                                            <h3 class="mytitle">Garlado Limited</h3>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p style="padding-top : 12px">Activity Level : <strong id="auditLevel">Garlado Limited</strong></p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <p class="mydef">Riotech Developers</p>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,402 @@
+<style>
+    a{
+        cursor: pointer;
+    }
+    .productImg{
+        height: 190px;
+        border: 1px solid #999;
+        border-radius: 5px;
+        padding: 4px;
+        transition: 1s;
+        width:100%;
+    }
+
+    @media(max-width:768px){
+        .productImg{
+            height: 230px;
+            border: 1px solid #999;
+            border-radius: 5px;
+            padding: 4px;
+            width:70%;
+            margin-right: 15%;
+            margin-left: 15%;
+        }
+        .autohide{
+            display: none;
+        }
+        h3 small{
+            font-size: 18px;
+        }h1 small{
+            font-size: 21px;
+        }
+    }
+    h3 small,h1 small{
+        color: #23527c;
+        transition: 1s;
+    }
+    .menuHolder{
+        padding : 10px;
+        margin : 10px;
+    }
+</style>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <h4 class="text-center" style="text-decoration: none;cursor: pointer">
+                <span style="cursor: pointer; padding : 7px;" onclick="menuClicked('my Store')" class="fa fa-hand-o-left fa-pull-left"></span>
+                My Store
+            </h4>
+            <hr/>
+        </div>
+        <div class="col-sm-12">
+            <div class="row">
+                <div class="col-sm-offset-2 col-sm-8 ">
+                    <div class="row text-center menuHolder">
+                        <div class="col-sm-4 menu" onclick="veiwMyStoreGeneral()">
+                            <!--<h1><small>General Groups.</small></h1>-->
+                            <span class="fa fa-stack fa-lg">
+                                <i class="fa fa-stack-2x fa-square-o"></i>
+                                <i class="fa fa-stack-1x fa-cart-plus"></i>
+                            </span>
+                            <h3><small>General Groups.</small></h3>
+                            <p> Total Groups Found : <label class="label label-success" id="totalGenDisplay">23</label></p>
+                        </div>
+                        <div class="col-sm-4 menu" onclick="viewMyStoreCategory()">
+                            <!--<h1><small>General Groups.</small></h1>-->
+                            <span class="fa fa-stack fa-lg">
+                                <i class="fa fa-stack-2x fa-square-o"></i>
+                                <i class="fa fa-stack-1x fa-shopping-basket"></i>
+                            </span>
+                            <h3><small>Category Groups.</small></h3>
+                            <p> Total Groups Found : <label class="label label-success" id="totalCatDisplay">23</label></p>
+                        </div>
+                        <div class="col-sm-4 menu" onclick="viewMyStoreSpecific()">
+                            <!--<h1><small>General Groups.</small></h1>-->
+                            <span class="fa fa-stack fa-lg">
+                                <i class="fa fa-stack-2x fa-square-o"></i>
+                                <i class="fa fa-stack-1x fa-shopping-bag"></i>
+                            </span>
+                            <h3><small>Specific Groups.</small></h3>
+                            <p> Total Groups Found : <label class="label label-success" id="totalSpecDisplay">23</label></p>
+                        </div>
+
+                    </div>
+                    <hr/>
+                    <div class="col-sm-6 col-sm-offset-3 text-center">
+                        <h3 class="text-success">Total Stock Value : KSH <b id="totalSumDisplay">23,000.00</b></h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--modal general-->
+<div class="modal" role="dialog" data-backdrop="static" id="viewStoreGeneralModal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <a class="btn btn-info close" data-dismiss="modal">&times;</a>
+                <h3 class="text-center">My General Groups.</h3>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <h4 class="text-center">My Groups.</h4>
+                    <div class="col-sm-12" style="height: 300px;padding:0; overflow-y: scroll" id="viewGeneralStoreData">
+                        <div id="tableMyStoreGeneral" style="margin:0;box-sizing: border-box; width: 100%" class="col-sm-12"><table class="table table-hover table-responsive table-striped text-uppercase" >
+                                <thead class="bg1">
+                                    <tr>
+                                        <th>
+                                            <span class="fa fa-stack">
+                                                <i class="fa-stack-2x fa fa-square-o"></i>
+                                                <i class="fa fa-stack-1x fa-bars"></i>
+                                            </span>
+                                            <span class="autohide">No.</span>
+                                        </th>
+                                        <th>
+                                            <span class="fa fa-stack">
+                                                <i class="fa-stack-2x fa fa-square-o"></i>
+                                                <i class="fa fa-stack-1x fa-cart-plus"></i>
+                                            </span>
+                                            <span class="autohide">Group Name</span>
+                                        </th>
+                                        <th>
+                                            <span class="fa fa-stack">
+                                                <i class="fa-stack-2x fa fa-square-o"></i>
+                                                <i class="fa fa-stack-1x fa-money"></i>
+                                            </span>
+                                            <span class="autohide">Amount</span>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody id="viewMyStoreGeneralDataTable">
+                                    <tr><td>1</td> <td>PHONES AND TABLETS</td> <td>234000</td></tr>
+                                    <tr><td>1</td> <td>PHONES AND TABLETS</td> <td>234000</td></tr>
+                                    <tr><td>1</td> <td>PHONES AND TABLETS</td> <td>234000</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div id="graphMyStoreGeneral" style="display: none; width: 90%;margin-left: 2%;height: 90%; ">
+
+                            <canvas id="generalCanvasStore"></canvas>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+
+                        <p>
+
+                            <br/>
+                            <a id="genStoreToggle" onclick="genStoreToggler()">Display as graph</a>
+                            <span class="pull-right" style="margin-top: 9px">
+                                <small style="font-size: 15px;">
+                                    Total Number of Groups : <b id="myStoreGeneralTot" class="badge"> 20 </b><br/>
+                                    Total Asset Value :Ksh 
+                                    <b id="generalTotal" style="font-size: 17px;text-decoration: underline">123444</b> 
+
+                                </small>
+                            </span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <p class="mydef">Riotech Developers</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!--modal cat-->
+<div class="modal " data-backdrop="static" role="dialog" id="viewStoreCategoryModal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <a class="close btn btn-info" data-dismiss="modal">&times;</a>
+                <h3 class="text-center">
+                    My Category Groups.
+                </h3>
+            </div>
+            <div class="modal-body">
+                <!--top part-->
+                <div class="container-fluid">                   
+                    <div class="row">
+                        <div class="col-sm-5">
+                            <form name="viewStoreCategory">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-shopping-basket"></i>
+                                        </span>
+                                        <select
+                                            onfocus="generalValidate(this.value, document.getElementById('VSCgeneral'))"
+                                            onchange="generalValidate(this.value, document.getElementById('VSCgeneral')),
+                                                        changedData(this.value, document.getElementById('VSCgeneralName'))"
+                                            name="general"
+                                            class="form-control">
+                                            <option>---select Group---</option>
+                                        </select>
+                                    </div>
+                                    <p class="text-danger mydef" id="VSCgeneral"></p>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-sm-7">
+                            <h4 class="">
+                                Sub groups for Group :<strong id="VSCgeneralName">Garlado Limited</strong>
+                            </h4>
+                        </div>
+
+                    </div>
+                </div>
+                <!--data part-->
+                <div class="container-fluid">
+                    <div class="row" style="height: 350px; overflow-y: scroll">
+                        <!--table data-->
+                        <div class="col-sm-12" id="VSCTableDiv">
+                            <table class="table table-hover table-responsive table-striped">
+                                <thead class="bg1">
+                                    <tr>
+                                        <th>
+                                            <span class="fa fa-stack">
+                                                <i class="fa fa-stack-2x fa-square-o"></i>
+                                                <i class="fa fa-stack-1x fa-bars"></i>
+                                            </span>
+                                            <span class="autohide">
+                                                No.
+                                            </span>
+                                        </th>
+                                        <th>
+                                            <span class="fa fa-stack">
+                                                <i class="fa fa-stack-2x fa-square-o"></i>
+                                                <i class="fa fa-stack-1x fa-shopping-basket"></i>
+                                            </span>
+                                            <span class="autohide">
+                                                Category Name
+                                            </span>
+                                        </th>
+                                        <th>
+                                            <span class="fa fa-stack">
+                                                <i class="fa fa-stack-2x fa-square-o"></i>
+                                                <i class="fa fa-stack-1x fa-money"></i>
+                                            </span>
+                                            <span class="autohide">
+                                                Group Amount
+                                            </span>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody id="VSCTable">
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <!--graph data-->
+                        <div class="col-sm-12" id="VSCGraphDiv" style="height: 350px; display: none">
+                            <canvas id="VSCGraph"></canvas>
+                        </div>
+                    </div>
+                    <p> 
+                        <a id="toggleCatStore" class="pull-left" onclick="catStoreToggler()">Display as Graph</a>
+                        <span class="pull-right">
+                            <span> Number of groups found : <span class="badge" id="VSCcount">32</span></span>
+                            <br>
+                            <span>Total Amount : Ksh <b id="VSCAmount">123500</b></span>
+                        </span>
+                    </p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <p class="mydef">Riotech Developers</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!--modal Spec-->
+<div class="modal " data-backdrop="static" role="dialog" id="viewStoreSpecificModal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <a class="close btn btn-info" data-dismiss="modal">&times;</a>
+                <h3 class="text-center">
+                    My Specific Groups.
+                </h3>
+            </div>
+            <div class="modal-body">
+                <!--top part-->
+                <div class="container-fluid">                   
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <form name="viewStoreSpecific">
+                                <table style="width: 100%">
+                                    <tr>
+                                        <td style="padding-right:10px ; width: 50% ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="fa fa-shopping-basket"></i>
+                                                    </span>
+                                                    <select
+                                                        onfocus="generalValidate(this.value, document.getElementById('VSSgeneral'))"
+                                                        onchange="generalValidate(this.value, document.getElementById('VSSgeneral')),myStorePopulateCat(this.value)"
+                                                        name="general"
+                                                        class="form-control">
+                                                        <option>---select Group---</option>
+                                                    </select>
+                                                </div>
+                                                <p class="text-danger mydef" id="VSSgeneral"></p>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="fa fa-shopping-basket"></i>
+                                                    </span>
+                                                    <select
+                                                        onfocus="categoryValidate(this.value, document.getElementById('VSScat'))"
+                                                        onchange="categoryValidate(this.value, document.getElementById('VSScat')),
+                                                        myStoreFilterSpecific(this.value)"
+                                                        name="category"
+                                                        class="form-control">
+                                                        <option>---select Cat---</option>
+                                                    </select>
+                                                </div>
+                                                <p class="text-danger mydef" id="VSScat"></p>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </form>
+                        </div>
+                        <div class="col-sm-6 col-sm-offset-3 text-center">
+                            <h4 class="">
+                                Sub groups for Group :<strong id="VSSCatName">Garlado Limited</strong>
+                            </h4>
+                        </div>
+
+                    </div>
+                </div>
+                <!--data part-->
+                <div class="container-fluid">
+                    <div class="row" style="height: 350px; overflow-y: scroll">
+                        <!--table data-->
+                        <div class="col-sm-12" id="VSSTableDiv">
+                            <table class="table table-hover table-responsive table-striped">
+                                <thead class="bg1">
+                                    <tr>
+                                        <th>
+                                            <span class="fa fa-stack">
+                                                <i class="fa fa-stack-2x fa-square-o"></i>
+                                                <i class="fa fa-stack-1x fa-bars"></i>
+                                            </span>
+                                            <span class="autohide">
+                                                No.
+                                            </span>
+                                        </th>
+                                        <th>
+                                            <span class="fa fa-stack">
+                                                <i class="fa fa-stack-2x fa-square-o"></i>
+                                                <i class="fa fa-stack-1x fa-shopping-basket"></i>
+                                            </span>
+                                            <span class="autohide">
+                                                Specific Group
+                                            </span>
+                                        </th>
+                                        <th>
+                                            <span class="fa fa-stack">
+                                                <i class="fa fa-stack-2x fa-square-o"></i>
+                                                <i class="fa fa-stack-1x fa-money"></i>
+                                            </span>
+                                            <span class="autohide">
+                                                Group Amount
+                                            </span>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody id="VSSTable">
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <!--graph data-->
+                        <div class="col-sm-12" id="VSSGraphDiv" style="height: 350px; display: none;transition: 0.5s">
+                            <canvas id="VSSGraph"></canvas>wew
+                        </div>
+                    </div>
+                    <p> 
+                        <a id="toggleSpecStore" class="pull-left" onclick="specStoreToggler()">Display as Graph</a>
+                        <span class="pull-right">
+                            <span> Number of groups found : <span class="badge" id="VSScount">3T2</span></span>
+                            <br>
+                            <span>Total Amount : Ksh <b id="VSSAmount">1235T00</b></span>
+                        </span>
+                    </p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <p class="mydef">Riotech Developers</p>
+            </div>
+        </div>
+    </div>
+</div>

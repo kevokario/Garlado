@@ -1,0 +1,374 @@
+.myHr{
+    margin: 5px 0;   
+}
+.myOrderLogo{
+    text-align: center;
+}
+.myOrderLogo h4{
+    margin-bottom: 0px;
+    color: #000d29;
+    letter-spacing: -0.5px;
+}
+.orderLogoImg{
+    border: 1px solid #999;
+    padding: 2px;
+    border-radius: 12px;
+    height: 70px;
+    width: 120px;
+    margin: 5px;
+    margin-bottom: 0px;
+    transition: .5s;
+}
+.orderLogoTable{
+    height: 100px;
+    margin-bottom: 0;
+}
+.orderLogoTable td{
+    vertical-align: bottom !important;
+    border: none !important;
+    text-align: center;
+    padding-left: 4px !important;
+    padding-right: 4px !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+.orderLogoTable td div{
+    border-bottom: 2px solid;
+}
+
+.myInfoDiv{
+    margin-top: 10px;
+}
+
+.myInfoDiv .panel{
+    box-shadow: 0 0 5px 0 rgba(0,0,0,0.15);
+    border-radius: 2px;
+}
+.myInfoDiv .panel .panel-heading{
+    border-bottom : 1px solid #e4e4e4;
+    text-align: center;
+    color: #118c8b;
+    /*text-decoration: underline;*/
+    letter-spacing: -0.5px;
+}
+.myInfoDiv .panel .panel-heading h3{
+    transition: .5s;
+}
+#ContainerArea{
+    min-height: 322px;
+}
+.buttonContinue{
+    padding: 17px 20px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    background: #fff;
+    border: 1px solid #118c8b;
+    color: #118c8b;
+    cursor: pointer;
+}
+.unselected{
+    opacity: 0.4;
+}
+.addressDiv{
+    border-style: dashed;
+    padding: 10px;
+    border-color: #F14D49;
+    width: 96%;
+    margin-left: 2%;
+    margin-right: 2%;
+    min-height: 150px;
+}
+.addressDivTitle{
+    width: 96%;
+    margin-left: 2%;
+    margin-right: 2%; 
+}
+.addressDivTitle h2,.paydiv h2, .confirmOrderDiv h2{
+    color: #118c8b;
+    /*text-decoration: underline;*/
+    letter-spacing: -0.5px;
+    transition: 0.5s;
+}
+.addressAdd{
+    margin: 6px;
+    text-align: right;
+}
+.addressAdd span{
+    cursor: pointer;
+}
+.panelAddress{
+    border: 1px solid #bca18d;
+    box-shadow: 0 0 7px 0 rgba(188,161,141,0.4);
+    margin: 15px 1%;
+    width: 48%;
+    padding: 0;
+
+}
+.addressName, .addressPhone, .addressDescription{
+    margin: 7px;
+    letter-spacing: -0.5px;
+    text-align: justify;
+}
+.addressName, .addressPhone, .addressDescription i{
+    font-weight: 600;
+    padding: 4px 5px 0px 4px;
+}
+.addressPhone{
+    text-align: right;
+}
+.addressBtnDiv{
+    padding: 9px;
+    text-align: right;
+}
+/*button area*/
+.mybtnAddress{
+    border-radius: 0;
+    letter-spacing: -0.5px;
+    transition: .5s;
+    border: 1px solid #118c8b;
+}
+.mybtnEdit{
+    color: #118c8b;
+    background-color: #fff;
+}
+.mybtnDelete{
+    background-color: #118c8b;
+    color: #fff;
+}
+.mybtnDelete:focus{
+    color: #fff;
+}
+.paydiv{
+    background-color: #f8f8f8;
+    padding: 18px 16px;
+    padding-bottom: 50px;
+}
+.paydiv .moneyDiv{
+    display: inline-block;
+    padding: 15px 21px;
+    border: 1px solid #000d29;
+    background: linear-gradient(to bottom right,#fff,rgba(188,161,141,0.1));
+    color: #F14D49;
+    margin-bottom: 10px;
+    box-shadow: 0 0 4px 0 rgba(0,0,0,0.2) inset;
+    font-weight: 600;
+}
+#modalAddress .optionPickup,
+#editClientData .optionPickup{
+    border: 1px solid #f14d49;
+    color: #f14d49;
+    background: #fff;
+    padding: 10px 9px;
+    cursor: pointer;
+    margin: 5px 10px;
+    text-decoration: none;
+    display: inline-block;
+    width: 186px;
+}
+#modalAddress .optionDoorStep,
+#editClientData .optionDoorStep{
+    border: 1px solid #f14d49;
+    color: #fff;
+    background-color: #f14d49;
+    padding: 10px 9px;
+    text-decoration: none;
+    width: 186px;
+    cursor: pointer;
+    margin: 5px 0px;
+    display: inline-block;
+}
+#modalAddress h3{
+    margin: 15px 0;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+#modalAddress .form-group .input-group .input-group-addon,
+#editClientData .form-group .input-group .input-group-addon{
+    border-radius: 0;
+    background-color: #fff;
+}
+#modalAddress .modal-content,
+#editClientData .modal-content{
+    border-radius: 0;
+    margin-top: 10%;
+}
+#modalAddress .form-group-sm,
+#editClientData .form-group-sm{
+    margin-bottom: 10px;
+}
+#modalAddress input, #modalAddress textarea, #modalAddress select,
+#editClientData input, #editClientData textarea, #editClientData select{
+    box-shadow: none;
+    border-radius: 0;
+}
+@media(max-width:768px){
+    .addressDivTitle h2,.paydiv h2,.confirmOrderDiv h2{
+        font-size: 21px;
+    }
+    .myInfoDiv .panel .panel-heading h3{
+        font-size: 21px;
+    }
+}
+@media(max-width:740px){
+    .panelAddress{
+        width: 98%;
+    }
+    .addressDiv{
+        padding: 5px;
+    }
+}
+@media(max-width:529px){
+
+}
+@media(max-width:320px){
+
+
+}
+
+/*CSS CODE FOR THE CONTINUE MODAL*/
+#modalSelectAddress h3,#modalSimulatePayment h3{
+    font-size: 21px;
+}
+#modalSelectAddress .myHr,#ihavepaidDiv .myHr{
+    margin: 17px 1px 5px 1px;
+}
+#modalSelectAddress .modal-content,#modalSimulatePayment .modal-content,#ihavepaidDiv .modal-content{
+    border-radius: 0;
+    margin-top: 18%;
+}
+#modalSelectAddress .myDiv{
+    display: inline-block;
+}
+#modalSelectAddress .radio{
+    border: 1px solid #999;
+    opacity: 0.9;
+}
+#modalSelectAddress .radio label{
+    /* border: 1px solid red; */
+    width: 100%;
+    padding: 0 36px;
+}
+#modalSelectAddress .radio input{
+    margin-top: 26px;
+}
+#modalSelectAddress .myDiv .list-group{
+    border: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-left: 1px solid #999;
+}
+#modalSelectAddress .myDiv .list-group-item{
+    border: none;
+}
+#modalSelectAddress form button{
+    padding: 8px 23px;
+    margin-top: 10px;
+}
+#modalSelectAddress form .buttonDiv{
+    border-top: 1px solid #118b8c;
+}
+#modalSelectAddress .addressOptions{
+    /*background-color: #ece5df;*/
+}
+.confirmOrderDiv table{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.confirmOrderDiv table tr td{
+
+}
+.confirmOrderDiv table tr td small{
+    color : #777;
+}
+.confirmOrderDiv table tr td .totalAmount{
+    font-size: x-large;
+    color: #118b8c;
+    letter-spacing: -0.5px;
+}
+@media(max-width:600px){
+    .confirmOrderDiv table tr td .totalAmount{
+        font-size: 18px;
+    }
+}
+#modalSimulatePayment ul{
+    padding-right: 40px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+#modalSimulatePayment #mpesa_number{
+    padding: 10px;
+    border-left: 9px solid #F2746B;
+    color: #000D29;
+    font-size: large;
+    text-align: center;
+}
+#modalSimulatePayment button{
+    width: 40%;
+}
+
+.customPaid,.customPaid:focus,.customPaid:active{
+    /*padding : 9px;*/
+    border: 1px solid #F2746B;
+    color: #fff;
+    background-color: #F2746B;
+}
+.customUnpaid,.customUnpaid:focus,.customUnpaid:active{
+    padding : 9px;
+    border: 1px solid #F2746B;
+
+    color: #F2746B;
+    background-color: #fff;
+}
+.customPaid, .customUnpaid{
+    border-radius: 0;
+    margin-bottom: 5px;
+}
+#completeOrderDiv .table>tbody>tr>td{
+
+        border : none;
+    }
+
+    #completeOrderDiv  .mypanel{
+        background-color: ghostwhite;
+        border-radius: 0;
+        border: 1px solid #F2746B;
+    }
+    #completeOrderDiv   .mypanel .panel-heading{
+        border-bottom: inherit;
+        color: #f14d49;
+        letter-spacing: 0.5px;
+        font-size: 13px;
+    }
+    #completeOrderDiv  .mypanel .media{
+        width: 37%;
+        margin-left: 0%;
+        border-radius: 5px;
+        border: 1px solid #118b8c;
+        padding: 5px;
+        transition: .5s;
+    } 
+    #completeOrderDiv  .mypanel .media .media-left{
+
+    }
+    #completeOrderDiv  .mypanel .media h4{
+        letter-spacing: -0.5px;
+        color: #118d8c;
+    }
+    #completeOrderDiv   .mypanel .media p{
+        letter-spacing: -0.5px;
+
+    }
+    #completeOrderDiv .mypanel .media .media-left img{
+        width:67px;height:60px; border:1px solid #f9f9f9;
+    }
+    @media(max-width:567px){
+        #completeOrderDiv     .mypanel .media{
+            width: 95%;
+            margin-left: 2.5%;
+        }
+    }

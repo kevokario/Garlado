@@ -1,0 +1,102 @@
+/*-------------------productDiv Css-----------------*/
+.dataDiv .contentDiv .productDiv{
+    /*border : 1px solid red;*/
+    margin-top: 15px;
+}
+.dataDiv .contentDiv .productDiv .col-sm-3 {
+    padding: 2px;
+    color: #888;
+    text-decoration: none;
+    transition : .3s;
+    margin-bottom: 15px;
+    border : 2px solid #FFF;
+}
+.dataDiv .contentDiv .productDiv .col-sm-3 .pcash .oldFee{
+    font-size: x-small;
+}
+.dataDiv .contentDiv .productDiv .col-sm-3:hover {
+    /*box-shadow:0 4px 8px 0 rgba(0,0,0,0.4) ;*/
+    border-color :  #777;
+}
+.dataDiv .contentDiv .productDiv .col-sm-3:hover>.col-sm-12 {
+    /*box-shadow:0 4px 8px 0 rgba(0,0,0,0.4) ;*/
+    visibility: visible;
+}
+.dataDiv .contentDiv .productDiv .col-sm-3 img{
+    height: 200px;
+    width: 98%;
+    margin-bottom: 7px;
+    margin-left: 1%;
+    margin-right: 1%;
+    border-radius: 4px;
+}
+.dataDiv .contentDiv .productDiv .col-sm-3 .productBrandName{
+    font-size: 13px;
+    color: #888;
+    padding: 5px 0px;
+    margin-left: 1%;
+    border-bottom: 2px solid #777;
+    width: 98%;
+    margin-bottom: 15px;
+}
+.dataDiv .contentDiv .productDiv .col-sm-3 .productName{
+    font-weight: 800;
+    color: #111;
+    letter-spacing: -1px;
+    word-spacing: 0px;
+    font-size: 14px;
+}
+.dataDiv .contentDiv .productDiv .col-sm-3 .col-sm-12{
+    padding: 0;
+    margin-bottom: 10px;
+    visibility: hidden;
+}
+.dataDiv .contentDiv .productDiv .col-sm-3 .col-sm-12 button{
+    border-radius: 0;
+    padding: 9px;
+    font-size: 11px;
+}
+.dataDiv .contentDiv .productDiv .col-sm-3 .col-sm-12 .cartbtn{
+    color: #118c8b;
+    border: 1px solid #118c8b;
+    background: #fff;
+}
+.dataDiv .contentDiv .productDiv .col-sm-3 .col-sm-12 .buybtn{
+    color: #fff;
+    border: 1px solid #118c8b;
+    background: #118c8b;
+}
+@media(max-width:825px){
+    h3{
+        font-size: 13px;
+    }
+
+}
+@media(max-width:825px){
+    .dataDiv .contentDiv .productDiv .col-sm-3{
+        margin-bottom: 5px;
+        width: 32.3333%;
+        display: inline-block;
+    }
+    .dataDiv .contentDiv .productDiv .col-sm-3 img{
+        height: 135px;
+    }
+}
+@media(max-width:500px){
+    .dataDiv .contentDiv .productDiv .col-sm-3{
+        margin-bottom: 0px;
+        width: 47.3333%;
+        display: inline-block;
+    }
+    .dataDiv .contentDiv .productDiv .col-sm-3 .col-sm-12 button{
+        margin : 5px;
+        width: 95%;
+    }
+}
+@media(max-width:360px){
+
+}
+.breadcrumb{
+    background-color: #fff;
+    margin-bottom : 5px;
+}
