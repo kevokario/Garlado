@@ -690,7 +690,21 @@ function simulatePaymentProceed(btn) {
 
 
 }
+var order_no ='';
+var amt = '';
 
+function setOrderNo(str){
+    order_no = str;
+}
+function setAmt( str){
+    amt = str;
+}
+function getOrderNo(){
+    return order_no;
+}
+function getAmt(){
+    return amt;
+}
 function orderPlacement(str) {
     var email = $('#clientEmail').text();
     var phone = $('#clientEmail').text();
@@ -703,7 +717,10 @@ function orderPlacement(str) {
         json: json
     }, function (data, status) {
         //step 2: simulate payment
-        if (data == 'order placed') {
+            var data1 = JSON.parse(data);
+        if (data1[0] == 'order placed') {
+            setAmt(data1[2]);
+            setOrderNo(data1[1]);
             $(str).removeClass('fa-pulse fa-refresh');
             $(btn).removeAttr('disabled');
             $('#modalSimulatePayment').modal('toggle');
@@ -720,6 +737,8 @@ function paidConfirmed() {
         $('#confirmOrderDiv button:eq(1) i').removeClass('fa-money').addClass('fa-pulse fa-refresh');
         $.get('includes/completeOrder.php', function (data, status) {
             $('#ContainerArea').html(data);
+            //this function sets data to the div
+            updateCompleteOrder();
             $('#optionCompleteOrder').removeClass('unselected');
             $('#optionOrderPayment').addClass('unselected');
         });
@@ -729,5 +748,16 @@ function paidConfirmed() {
 function unPaidConfirmed() {
     $('#ihavepaidDiv').modal('toggle').animate({}, 900, function () {
         $('#modalSimulatePayment').modal('toggle');
+    });
+}
+
+function updateCompleteOrder(){
+    $('#completeOrderDiv table tbody tr:eq(0) td:eq(2)').text(getOrderNo());
+    $('#completeOrderDiv table tbody tr:eq(1) td:eq(2)').text('ksh. '+getAmt());
+    $('#completeOrderDiv table tbody tr:eq(2) button:eq(0)').click(function(){
+        document.location.href="Home";
+    });
+    $('#completeOrderDiv table tbody tr:eq(2) button:eq(1)').click(function(){
+        document.location.href = "myShoppingCart";
     });
 }

@@ -1464,7 +1464,7 @@ function deleteItem($index) {
 function checkUserLoggedIn() {
     $result = 'no';
 
-    if (isset($_SESSION['ClientLoggedIn'])) {
+    if (isset($_SESSION['ClientLoggedIn']) && $_SESSION['ClientLoggedIn'] !== 'null') {
         $result = 'yes';
     }
     echo $result;
@@ -2199,9 +2199,12 @@ function placeOrder($json) {
      echo $con->error;
  }
  else{
- echo 'order placed';
+     $_SESSION['ClientLoggedIn']='null';
+ echo json_encode(['order placed',$orderNumber, moneyFormat($sumTotal)]);
  }
 }
+
+
 
 /*
   SELECT county.conName from county inner JOIN country on country.contId = county.contId where country.contName='Kenya';

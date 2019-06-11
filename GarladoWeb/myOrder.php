@@ -21,7 +21,7 @@ if (isset($_SESSION['ClientLoggedIn']) === false) {
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-3 myOrderLogo">
-                    <img class="orderLogoImg" alt="Garlado Online Store" src="img/logo1.png">
+                    <a href="Home"><img class="orderLogoImg" alt="Garlado Online Store" src="img/logo1.png"></a>
                     <h4>Garlado Online Store</h4>
                 </div>
                 <div class="col-sm-5 col-sm-offset-4">
