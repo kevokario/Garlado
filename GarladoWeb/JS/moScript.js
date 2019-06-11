@@ -686,35 +686,32 @@ function simulatePaymentProceed(btn) {
     var i = $(btn).children('i');
 
     //step 1: place order
+    orderPlacement(i);
 
-    var response = orderPlacement(i);
 
-    //step 2: simulate payment
-    if (response == 'order placed') {
-        $(i).addClass('fa-pulse fa fa-refresh')
-                .wait(2000)
-                .removeClass('fa-pulse fa-refresh');
-        $(btn).attr('disabled', 'disabled').wait(2000).removeAttr('disabled').animate({}, 1000, function () {
-            $('#modalSimulatePayment').modal('toggle');
-            $('#ihavepaidDiv').modal('show');
-        }
-        );
-    } else {
-        test(response);
-    }
 }
 
 function orderPlacement(str) {
-   var email = $('#clientEmail').text();
-   var phone = $('#clientEmail').text();
-   var json = JSON.stringify([email,phone]);
-    $(str).addClass('fa fa-pulse fa-refresh');
+    var email = $('#clientEmail').text();
+    var phone = $('#clientEmail').text();
+    var btn = $(str).parent();
+    var json = JSON.stringify([email, phone]);
+    $(str).addClass('fa-pulse fa fa-refresh');
+    $(btn).attr('disabled', 'disabled');
     $.post('Core/preloader.php', {
         cat: 'orderPlacement',
         json: json
     }, function (data, status) {
-        return data;
-        //return 'order placed';
+        //step 2: simulate payment
+        if (data == 'order placed') {
+            $(str).removeClass('fa-pulse fa-refresh');
+            $(btn).removeAttr('disabled');
+            $('#modalSimulatePayment').modal('toggle');
+            $('#ihavepaidDiv').modal('show');
+
+        } else {
+            
+        }
     });
 }
 

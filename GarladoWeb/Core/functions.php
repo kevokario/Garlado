@@ -1511,6 +1511,7 @@ function generateCode($mail, $number) {
     $smsCode = substr($hashedString, 2, 6);
     return $smsCode;
 }
+
 function generateOrderNumber($mail, $number) {
     $date = getTime('date');
     $time = getTime('time');
@@ -2051,7 +2052,7 @@ function verifyAddress($email) {
         }
     } else {
         for ($a = 0; $a < $rs->num_rows; $a++) {
-            $arrayResult[0]='Multiple Address';
+            $arrayResult[0] = 'Multiple Address';
             $rs->data_seek($a);
             $array[0] = $rs->fetch_assoc()['fName'];
             $rs->data_seek($a);
@@ -2062,15 +2063,15 @@ function verifyAddress($email) {
             $array[3] = $rs->fetch_assoc()['addressDetails'];
             $rs->data_seek($a);
             $array[4] = $rs->fetch_assoc()['addressId'];
-            $fb.='<div class="radio">
+            $fb .= '<div class="radio">
                     <label>
-                        <input type="radio" value="'.$array[4].'" name="optionaddress">
+                        <input type="radio" value="' . $array[4] . '" name="optionaddress">
                         <div class="myDiv">
                             <ul class="list-group">
                                 <li class="list-group-item">
-                                    <i class="fa fa-user"></i> <b>'.$array[0].' '.$array[1].'</b><br>
-                                    <i class="fa fa-phone"></i> <b>'.$array[2].'</b><br>
-                                    <p class="text-justify"><i class="fa fa-map-marker"></i> '.$array[3].'</p>
+                                    <i class="fa fa-user"></i> <b>' . $array[0] . ' ' . $array[1] . '</b><br>
+                                    <i class="fa fa-phone"></i> <b>' . $array[2] . '</b><br>
+                                    <p class="text-justify"><i class="fa fa-map-marker"></i> ' . $array[3] . '</p>
                                 </li>
                             </ul>
                         </div>
@@ -2083,103 +2084,123 @@ function verifyAddress($email) {
     echo json_encode($arrayResult);
 }
 
-function loadOrderPayment($address){
+function loadOrderPayment($address) {
     $_SESSION['Client_address'] = $address;
     echo 'set';
 }
 
-function getConfirmOrderDetails($address){
+function getConfirmOrderDetails($address) {
     $cartData = $_SESSION['cart'];
     $addressId = $_SESSION['Client_address'];
-    
+
     $data = json_decode($cartData);
     $item_count = 0;
     $total_price = 0;
     $array_size = count($data);
-    for($a=0;$a<$array_size;$a++){
-        $item_count = $item_count+($data[$a][2]);
-        $total_price = $total_price +((int)$data[$a][1]);
+    for ($a = 0; $a < $array_size; $a++) {
+        $item_count = $item_count + ($data[$a][2]);
+        $total_price = $total_price + ((int) $data[$a][1]);
     }
-    
+
     $fixedPrice = 200;
-    
+
 //    Get the address details based on provided id
-    $destination_type='';
-    $shipping_fee=200;
-    $pay_ammount= $fixedPrice;
+    $destination_type = '';
+    $shipping_fee = 200;
+    $pay_ammount = $fixedPrice;
     $name = '';
     $phone = '';
     $destination_description = '';
-    
+
     $con = connect();
     $sql = "SELECT clientaddress.fName, clientaddress.lName, clientaddress.phone, 
             clientaddress.addressType, clientaddress.addressDetails from clientaddress
             where clientaddress.addressId = $address;";
-    
+
     $result = $con->query($sql);
     $rows = $result->num_rows;
-    
-    for($a=0;$a<$rows;$a++){
+
+    for ($a = 0; $a < $rows; $a++) {
         $result->data_seek($a);
         $name = $result->fetch_assoc()['fName'];
-        
+
         $result->data_seek($a);
-        $name = $na11me.' '.$result->fetch_assoc()['lName'];
-        
+        $name = $na11me . ' ' . $result->fetch_assoc()['lName'];
+
         $result->data_seek($a);
         $phone = $result->fetch_assoc()['phone'];
-        
+
         $result->data_seek($a);
         $destination_type = $result->fetch_assoc()['addressType'];
-        
+
         $result->data_seek($a);
         $destination_description = $result->fetch_assoc()['addressDetails'];
     }
-    
+
 //    
 //      echo count($data).' Items array found<br><br>'.$cartData.'<br><br>'.$item_count.' items <br> Ksh.'
 //              . moneyFormat($total_price).'<br>Fixed price : KSH.'.$fixedPrice.'<br>Total Payable : '. moneyFormat(($fixedPrice+$total_price));
 //      
-    
+
     $fb = array();
     $fb[0] = $item_count;
     $fb[1] = moneyFormat($total_price);
     $fb[2] = $shipping_fee;
-    $fb[3] = moneyFormat(($fixedPrice+$total_price));
+    $fb[3] = moneyFormat(($fixedPrice + $total_price));
     $fb[4] = $destination_type;
     $fb[5] = $name;
     $fb[6] = $phone;
     $fb[7] = $destination_description;
-    
+
     $json = json_encode($fb);
     echo $json;
-      
-      
 }
 
-function placeOrder($json){
+function placeOrder($json) {
     $cart = $_SESSION['cart'];
-    $addressId = $_SESSION['Client_address'];
+
     $data = json_decode($cart);
+    //contains name[1] and email[0]
     $jsonArray = json_decode($json);
+    
+    $addressId = $_SESSION['Client_address'];
     $item_count = 0;
     $total_price = 0;
+    
     //get item name, item quantity
     $JsonArrayItems = array();
     $array_size = count($data);
-    for($a=0;$a<$array_size;$a++){
-        $item_count = $item_count+($data[$a][2]);
-        $total_price = $total_price +((int)$data[$a][1]);
+    for ($a = 0; $a < $array_size; $a++) {
+        $item_count = $item_count + ($data[$a][2]);
+        $total_price = $total_price + ((int) $data[$a][1]);
         $JsonArrayItems[$a][0] = $data[$a][0];
         $JsonArrayItems[$a][1] = $data[$a][2];
     }
-    
+
     $fixedPrice = 200;
-    $sumTotal = $fixedPrice+$total_price;
-    
+    $sumTotal = $fixedPrice + $total_price;
+
     $orderNumber = generateOrderNumber($jsonArray[0], $jsonArray[1]);
-    
-    echo 'Obtained'.$orderNumber.'<br>'.$JsonArrayItems;
+
+    $orderItems = json_encode($JsonArrayItems);
+    $status = 'new';
+    $time = getTime('time');
+    $date = getTime('date');
+    $month = getTime('month');
+    $year = getTime('year');
+
+ $sql = "INSERT INTO
+          `clientorders`(`addressId`, `orderNumber`, `orderItems`, `orderAmount`, `itemCount`, `time`, `date`, `month`, `year`, `status`) 
+                 VALUES ($addressId,'$orderNumber','$orderItems','$sumTotal','$item_count','$time','$date','$month','$year','$status');";
+ 
+ $con = connect();
+ $con->query($sql);
+ if($con->error){
+     echo $con->error;
+ }
+ else{
+ echo 'order placed';
+ }
 }
 
 /*
