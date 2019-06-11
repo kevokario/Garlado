@@ -17,4 +17,5 @@
         <script src="Ajax/loaderAjax.js" type="text/javascript"></script>
         <script src="Ajax/authAjax.js" type="text/javascript"></script>
         <script src="Ajax/authPhp.js" type="text/javascript"></script>
+        <script src="JS/simpleQuery.js" type="text/javascript"></script>
     </head>

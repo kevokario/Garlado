@@ -112,7 +112,10 @@ h3{
         padding-bottom: 5px;
         margin-bottom: 4px;
     }
-    
+ 
+    #mynav .myOrderBadge{
+        background-color:  #f0ad4e;
+    }
     
 
 

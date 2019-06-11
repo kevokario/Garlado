@@ -3940,4 +3940,16 @@ function pickupDetailsDataSave($jsonData) {
         echo '<p><i class="fa fa-smile-o"></i> Changes successfully saved!</p>';
     }
 }
+//==========================================
+function checkOrder(){
+    $con = connect();
+    $sql = "SELECT count(clientorders.orderId) as openOrders from clientorders where clientorders.status = 'new';";
+    $result = $con->query($sql);
+    $newOrders = '';
+    for($a = 0;$a < $result->num_rows; $a++){
+        $result->data_seek($a);
+        $newOrders = $result->fetch_assoc()['openOrders'];
+    }
+    echo $newOrders;
+}
 ?>
