@@ -1,30 +1,80 @@
 <div class="container-fluid">
     <div class="row">
-        
-        <div class="col-sm-12">
-            <h4 class="text-center" style="text-decoration: none">
-                   New Orders
-            </h4>
-            <hr>
-        </div>
-        
+
         <div class="col-sm-12 text-center">
+            <h4 class="" style="text-decoration: none">
+                New Orders
+            </h4>
             <div class="OrderDivTitle bg-info">
                 New Orders <span class="badge myOrderBadge">3</span>
             </div>
+            <div class="OrderDivTitle bg-info">
+                Pending Orders <span class="badge myOrderBadge">3</span>
+            </div>
+            <hr>
         </div>
-        
+
+        <div class="col-sm-12 text-center" style="overflow-y: auto; height: 300px">
+            <table class="table table-responsive table-hover table-striped">
+                <thead class="bg1">
+                    <tr>
+                        <th>
+                            <span class="fa fa-stack">
+                                <i class="fa fa-stack-2x fa-square-o"></i>
+                                <i class="fa fa-stack-1x fa-bars"></i>
+                            </span>
+                            <span class="autohide">No.</span>
+                        </th>   
+                        <th>
+                            <span class="fa fa-stack">
+                                <i class="fa fa-stack-2x fa-square-o"></i>
+                                <i class="fa fa-stack-1x fa-bars"></i>
+                            </span>
+                            <span class="autohide">OrderNumber</span>
+                        </th>   
+                        <th>
+                            <span class="fa fa-stack">
+                                <i class="fa fa-stack-2x fa-square-o"></i>
+                                <i class="fa fa-stack-1x fa-bars"></i>
+                            </span>
+                            <span class="autohide">Items</span>
+                        </th>   
+                        <th>
+                            <span class="fa fa-stack">
+                                <i class="fa fa-stack-2x fa-square-o"></i>
+                                <i class="fa fa-stack-1x fa-bars"></i>
+                            </span>
+                            <span class="autohide">Amount</span>
+                        </th>   
+                        <th>
+                            <span class="fa fa-stack">
+                                <i class="fa fa-stack-2x fa-square-o"></i>
+                                <i class="fa fa-stack-1x fa-bars"></i>
+                            </span>
+                            <span class="autohide">Payment</span>
+                        </th>   
+                        <th>
+                            <span class="fa fa-stack">
+                                <i class="fa fa-stack-2x fa-square-o"></i>
+                                <i class="fa fa-stack-1x fa-bars"></i>
+                            </span>
+                            <span class="autohide">Status</span>
+                        </th>   
+                        <th>
+                            <span class="fa fa-stack">
+                                <i class="fa fa-stack-2x fa-square-o"></i>
+                                <i class="fa fa-stack-1x fa-bars"></i>
+                            </span>
+                            <span class="autohide">Action</span>
+                        </th>   
+                    </tr>
+                </thead>
+                <tbody id="newOrderList">
+                    
+                </tbody>
+            </table>
+        </div>
+
     </div>
 </div>
 
-<style>
-    .OrderDivTitle{
-        border-left: 5px solid #23527c;
-        padding: 10px;
-        text-align: left;
-        display: inline-block;
-    }
-    .OrderDivTitle .myOrderBadge{
-        background-color: #f0ad4e;
-    }
-</style>

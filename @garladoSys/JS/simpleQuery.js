@@ -20,6 +20,7 @@ function checkOrder() {
 }
 
 function LoadClients() {
+    loader($('#mainDivDboard'));
     $.get('widgets/@manageOrders.html', function (data, status) {
         $('#mainDivDboard').html(data);
         //asign click listeners here also
@@ -41,19 +42,41 @@ function LoadClients() {
 }
 
 function loadNewOrders() {
+    loader($('#holder'));
     $.get('widgets/Orders/newOrders.html', function (data, status) {
         $('#holder').html(data);
+        loadOrders();
     });
 }
 
 function loadPendingOrders() {
+    loader($('#holder'));
     $.get('widgets/Orders/pendingOrders.html', function (data, status) {
         $('#holder').html(data);
     });
 }
 
 function loadClosedOrders() {
+    loader($('#holder'));
     $.get('widgets/Orders/closedOrders.html', function (data, status) {
         $('#holder').html(data);
     });
+}
+
+function loader(div) {
+    $(div).html('<p class="text-center" style="margin-bottom:0; margin: 10px"><i class="fa fa-pulse fa-refresh"></i></p>');
+}
+;
+
+
+function loadOrders() {
+    loader($('#newOrderList'));
+    $.post('AjaxPhp/simpleQuery.php',
+            {
+                cat: 'loadNewOrders'
+            },
+            function (data,status) {
+                $('#newOrderList').html(data);
+            }
+    );
 }

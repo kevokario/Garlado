@@ -3952,4 +3952,11 @@ function checkOrder(){
     }
     echo $newOrders;
 }
+
+function loadNewOrders(){
+    $con = connect();
+    $sql = "";
+    $fb = '';
+    echo $fb;
+}
 ?>

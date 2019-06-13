@@ -1,13 +1,13 @@
 <div class="row">
-   
+
     <div class="col-sm-2">
         <div class="autohider menu1">
-                <span class="fa fa-stack">
-                    <i class="fa fa-stack-1x fa-paw"></i>
-                    <i class="fa fa-stack-2x fa-square-o"></i>
-                </span>
-                <p>Manage Orders</p>
-            </div>
+            <span class="fa fa-stack">
+                <i class="fa fa-stack-1x fa-paw"></i>
+                <i class="fa fa-stack-2x fa-square-o"></i>
+            </span>
+            <p>Client Orders</p>
+        </div>
         <ul class="nav nav-tabs" id="orderManagement">
             <li >
                 <a data-toggle="tab" title="Add member">
@@ -41,9 +41,26 @@
     <div class="col-sm-10" style="">
         <div class="col-sm-12 tab-pane " id="holder">
             <h3 class="mytitle">Garlado Limited</h3>        
-          
 
-            
         </div>
     </div>
 </div>
+<style>
+    .OrderDivTitle{
+        border-left: 5px solid #23527c;
+        padding: 10px;
+        text-align: left;
+        display: inline-block;
+        margin-right: 20px;
+    }
+    .OrderDivTitle .myOrderBadge{
+        background-color: #f0ad4e;
+    }
+
+    @media(max-width:567px){
+        .OrderDivTitle{
+            display: block;
+            margin-bottom: 20px;
+        }
+    }
+</style>

@@ -85,7 +85,7 @@ if (isset($_SESSION['marvel']) === false) {
                                         <i class="fa fa-stack-1x fa-user-o"></i>
                                         <i class="fa fa-stack-2x fa-square-o"></i>
                                     </span>
-                                    Manage Clients <span class="badge bg-warning myOrderBadge">0</span>
+                                    Client Orders <span class="badge bg-warning myOrderBadge">0</span>
                                 </a>
                             </li>
                         </ul>
