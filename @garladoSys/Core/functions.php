@@ -3955,8 +3955,40 @@ function checkOrder(){
 
 function loadNewOrders(){
     $con = connect();
-    $sql = "";
-    $fb = '';
+    $sql = "SELECT clientorders.orderNumber, clientorders.itemCount, clientorders.orderAmount, clientorders.status "
+            . "FROM clientorders where clientorders.status='new'";
+    $result = $con->query($sql);
+    $rows = $result->num_rows;
+    $array = array();
+    $fb='';
+    for($a = 0; $a < $rows; $a++){
+        $result->data_seek($a);
+        $array[0] = $result->fetch_assoc()['orderNumber'];
+        
+        $result->data_seek($a);
+        $array[1] = $result->fetch_assoc()['itemCount'];
+        
+        $result->data_seek($a);
+        $array[2] = $result->fetch_assoc()['orderAmount'];
+        
+        $result->data_seek($a);
+        $array[3] = $result->fetch_assoc()['status'];
+        
+        $fb .= "<tr>
+                <td>".($a+1)."</td>
+                <td>".$array[0]."</td>
+                <td>".$array[1]."</td>
+                <td>".$array[2]."</td>
+                <td>".$array[3]."</td>
+                <td>
+                <button class='btn btn-warning'>
+                    <i class='fa fa-folder-open-o'></i>...
+                </button>
+                </td>
+                </tr>";
+        $array[0]=$array[1]=$array[2]=$array[3] = '';
+    }
+    
     echo $fb;
 }
 ?>

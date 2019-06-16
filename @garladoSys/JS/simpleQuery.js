@@ -77,6 +77,16 @@ function loadOrders() {
             },
             function (data,status) {
                 $('#newOrderList').html(data);
+                $('#newOrderList tr button').click(function(){
+                    var orderNumber = $(this).parent().parent().children('td:eq(1)').text();
+                    openOrder(orderNumber);
+                });
             }
     );
+}
+
+//this function registers click function to button on new orders table!
+
+function openOrder(str){
+    alert(str);
 }

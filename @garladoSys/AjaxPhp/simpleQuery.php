@@ -19,6 +19,7 @@ if(isset($_POST['cat'])){
     }
     else if($cat === 'loadNewOrders'){
         loadNewOrders();
+//        echo 'Welcome';
     }
     
     
