@@ -88,5 +88,11 @@ function loadOrders() {
 //this function registers click function to button on new orders table!
 
 function openOrder(str){
-    alert(str);
+    $.post('AjaxPhp/simpleQuery.php',{
+        cat:'getOrderItems',
+        orderNumber:str.trim()
+    },function(data,status){
+//        test(data);
+       $('#openOrdersModal').modal('show'); 
+    });
 }

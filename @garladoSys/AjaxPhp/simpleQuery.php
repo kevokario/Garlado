@@ -21,6 +21,9 @@ if(isset($_POST['cat'])){
         loadNewOrders();
 //        echo 'Welcome';
     }
+    else if ($cat === 'getOrderItems'){
+        getOrderItems($_POST['orderNumber']);
+    }
     
     
 }

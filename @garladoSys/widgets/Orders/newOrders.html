@@ -6,10 +6,10 @@
                 New Orders
             </h4>
             <div class="OrderDivTitle bg-info">
-                New Orders <span class="badge myOrderBadge">3</span>
+                New Orders <span class="badge myOrderBadge"></span>
             </div>
             <div class="OrderDivTitle bg-info">
-                Pending Orders <span class="badge myOrderBadge">3</span>
+                Pending Orders <span class="badge myOrderBadge"></span>
             </div>
             <hr>
         </div>
@@ -63,7 +63,7 @@
                     </tr>
                 </thead>
                 <tbody id="newOrderList">
-                    
+
                 </tbody>
             </table>
         </div>
@@ -71,3 +71,117 @@
     </div>
 </div>
 
+
+<!--this modal is responsible for displaying orders-->
+<div class="modal fade" data-backdrop="static" role="dialog" id="openOrdersModal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <a class="btn btn-info close" data-dismiss="modal">&times;</a>
+                <h3>Client Orders</h3>
+            </div>
+            <div class="modal-body">
+                <div class="clientNewOrders">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <ul>
+                                <li>
+                                    <b>Phone</b> : <span>0704219247</span>
+                                </li>
+                                <li>
+                                    <b>Address</b> : <span>Welcome to some addresses</span>
+                                </li>
+                                <li>
+                                    <b>Order number</b> : <span>randomecharshere</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 text-center">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a data-toggle="tab" href="#productDetails">Client Orders</a></li>
+                                <li><a data-toggle="tab" href="#ClientDetails">Client Details</a></li>
+                            </ul>
+                            <div class="tab-content">
+
+                                <div class="tab-pane fade in active" id="productDetails">
+
+                                    <div class="col-sm-3">
+                                        <img src="img/logo.png" alt="product picture"/>
+                                        <h5><b>Item Name</b></h5>
+                                        <ol>
+                                            <li>Quantity Ordered :<span></span> </li>
+                                            <li>Item Price : Ksh <span>453.00</span></li>
+                                            <li>Total Price : Ksh <span>1200.00</span></li>
+                                        </ol>
+                                    </div>
+
+                                </div>
+
+                                <div id="ClientDetails" class="tab-pane fade">
+                                    waddup yo
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12">
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <p class="mydef">Riotech Developers</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    #openOrdersModal .clientNewOrders, #openOrdersModal #ClientDetails{
+        min-height: 350px;
+    }
+    #openOrdersModal .clientNewOrders ul{
+        padding-left: 5px;
+        text-align: center;
+    }
+    #openOrdersModal .clientNewOrders ol{
+        padding-left: 3px;
+        list-style-type: none;
+        text-align: left;
+    }
+    #openOrdersModal .clientNewOrders ul li{
+        display: inline-block;
+    }
+    #openOrdersModal #productDetails{
+        height: 410px;
+        overflow: auto;
+    }
+    #openOrdersModal .clientNewOrders .col-sm-3 {
+        transition: .5s;
+        margin-top: 10px;
+    }
+    #openOrdersModal .clientNewOrders .col-sm-3 img{
+        width: 150px;
+        height: 150px;
+        border: 1px solid;
+        padding: 5px;
+        border-radius: 5px;
+        transition: .5s;
+    }
+    @media(max-width:768px){
+        #openOrdersModal .clientNewOrders .col-sm-3{
+            width: 49%;
+            display: inline-block;
+        }
+        #openOrdersModal .clientNewOrders .col-sm-3 img{
+            width: 120px;
+            height: 120px;
+        }
+    }
+</style>

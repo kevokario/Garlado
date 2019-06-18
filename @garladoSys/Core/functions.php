@@ -3991,4 +3991,13 @@ function loadNewOrders(){
     
     echo $fb;
 }
+
+function getOrderItems($orderNumber){
+    $con = connect();
+    $sql = "SELECT clientorders.orderItems, clientaddress.phone, clientaddress.addressDetails from clientorders
+inner JOIN clientaddress on clientaddress.addressId = clientorders.addressId;";
+    $fb = '';
+    $result = $con->query($sql);
+    echo 'welcome home';
+}
 ?>
