@@ -112,7 +112,7 @@ function addMember($name, $mail, $phone, $level, $image, $stat) {
         if ($rows === 0) {
             $con->query($sqlinsert);
             if ($con->error) {
-                echo '<p class="text-danger">User <strong>' . $mail . '</strong> was not added!</p>'.$con->error;
+                echo '<p class="text-danger">User <strong>' . $mail . '</strong> was not added!</p>' . $con->error;
             } else {
                 $action = 'ADDED NEW MEMBER';
                 $event = 'Successful addition of member ' . $mail . ' as a user of adminitstration panel.';
@@ -332,7 +332,7 @@ function UpdateMemberDataB($id, $name, $email, $phone, $level, $status) {
             $action = 'MODIFIED USER DATA';
             $event = 'Successful modification of user ' . $email . ' information.';
             auditLogger($action, $event);
-            echo 'Changes Successfuly saved!'.$sql;
+            echo 'Changes Successfuly saved!' . $sql;
         }
     }
 }
@@ -3940,64 +3940,162 @@ function pickupDetailsDataSave($jsonData) {
         echo '<p><i class="fa fa-smile-o"></i> Changes successfully saved!</p>';
     }
 }
+
 //==========================================
-function checkOrder(){
+function checkOrder() {
     $con = connect();
     $sql = "SELECT count(clientorders.orderId) as openOrders from clientorders where clientorders.status = 'new';";
     $result = $con->query($sql);
     $newOrders = '';
-    for($a = 0;$a < $result->num_rows; $a++){
+    for ($a = 0; $a < $result->num_rows; $a++) {
         $result->data_seek($a);
         $newOrders = $result->fetch_assoc()['openOrders'];
     }
     echo $newOrders;
 }
 
-function loadNewOrders(){
+function loadNewOrders() {
     $con = connect();
     $sql = "SELECT clientorders.orderNumber, clientorders.itemCount, clientorders.orderAmount, clientorders.status "
             . "FROM clientorders where clientorders.status='new'";
     $result = $con->query($sql);
     $rows = $result->num_rows;
     $array = array();
-    $fb='';
-    for($a = 0; $a < $rows; $a++){
+    $fb = '';
+    for ($a = 0; $a < $rows; $a++) {
         $result->data_seek($a);
         $array[0] = $result->fetch_assoc()['orderNumber'];
-        
+
         $result->data_seek($a);
         $array[1] = $result->fetch_assoc()['itemCount'];
-        
+
         $result->data_seek($a);
         $array[2] = $result->fetch_assoc()['orderAmount'];
-        
+
         $result->data_seek($a);
         $array[3] = $result->fetch_assoc()['status'];
-        
+
         $fb .= "<tr>
-                <td>".($a+1)."</td>
-                <td>".$array[0]."</td>
-                <td>".$array[1]."</td>
-                <td>".$array[2]."</td>
-                <td>".$array[3]."</td>
+                <td>" . ($a + 1) . "</td>
+                <td>" . $array[0] . "</td>
+                <td>" . $array[1] . "</td>
+                <td>" . moneyFormatter($array[2]) . "</td>
+                <td>" . $array[3] . "</td>
                 <td>
                 <button class='btn btn-warning'>
                     <i class='fa fa-folder-open-o'></i>...
                 </button>
                 </td>
                 </tr>";
-        $array[0]=$array[1]=$array[2]=$array[3] = '';
+        $array[0] = $array[1] = $array[2] = $array[3] = '';
     }
-    
+
     echo $fb;
 }
 
-function getOrderItems($orderNumber){
+function getOrderItems($orderNumber) {
     $con = connect();
-    $sql = "SELECT clientorders.orderItems, clientaddress.phone, clientaddress.addressDetails from clientorders
-inner JOIN clientaddress on clientaddress.addressId = clientorders.addressId;";
-    $fb = '';
+    $sql = "SELECT 
+            clientaddress.fname,clientaddress.lname,clientaddress.phone,
+            clientaddress.addressdetails,clientaddress.addresstype,clientorders.orderitems,
+            orderamount,clientorders.itemcount,clientorders.time,
+            clientorders.date,clientorders.status
+            from clientorders 
+            inner join
+            clientaddress on clientaddress.addressId = clientorders.addressId
+            where clientorders.ordernumber = '$orderNumber'";
+
+//    $fb = '';
     $result = $con->query($sql);
-    echo 'welcome home';
+//    echo 'welcome home';
+
+    /*    This is what we will need to do 
+      Get address details
+     *     
+     *     Get details for the items
+     * 
+     *     Get Map Details
+     *  */
+//    Address details
+    $clientArray = array();
+
+    $rows = $result->num_rows;
+
+    for ($a = 0; $a < $rows; $a++) {
+        $result->data_seek($a);
+        $clientArray[0] = $result->fetch_assoc()['fname'];
+
+
+        $result->data_seek($a);
+        $clientArray[1] = $result->fetch_assoc()['lname'];
+
+
+        $result->data_seek($a);
+        $clientArray[2] = $result->fetch_assoc()['phone'];
+
+
+        $result->data_seek($a);
+        $clientArray[3] = $result->fetch_assoc()['addressdetails'];
+
+
+        $result->data_seek($a);
+        $clientArray[4] = $result->fetch_assoc()['addresstype'];
+
+
+        $result->data_seek($a);
+        $clientArray[5] = $result->fetch_assoc()['orderitems'];
+
+
+        $result->data_seek($a);
+        $clientArray[6] = $result->fetch_assoc()['orderamount'];
+
+
+        $result->data_seek($a);
+        $clientArray[7] = $result->fetch_assoc()['time'];
+
+
+        $result->data_seek($a);
+        $clientArray[8] = $result->fetch_assoc()['date'];
+
+        $result->data_seek($a);
+        $clientArray[9] = $result->fetch_assoc()['status'];
+    }
+
+//    echo json_encode($clientArray);
+    $orderItems = array();
+    $orderItemsJson = json_decode($clientArray[5]);
+
+//    this array contains all the product names.
+//    From product names order the following data.
+//   i will have a multidimension array with the following. product name,product,newprice,product img,
+//   first array format
+//   0-fname 1-lname 2-phone 3-addressdetails 4-addresstype 5-orderitems 6-orderitems 7-orderamount 8-itemcount 9-time 10-date 11-status
+//   second array format
+    //Format : 0->name 1-> price 2->image 3-> quantity
+    //Array format : 0>name, 1->quantity
+    
+    $sql1 = "";
+    
+    for($b = 0; $b<count($orderItemsJson); $b++){
+        $sql1 = "SELECT items.newPrice, items.itemPic from items WHERE items.itemName = '".$orderItemsJson[$b][0]."';";
+        $result1 = $con->query($sql1);
+        for($c = 0; $c<$result1->num_rows; $c++){
+            $orderItems[$b][0] = $orderItemsJson[$b][0];
+            $result1->data_seek($c);
+            $orderItems[$b][1] = $result1->fetch_assoc()['newPrice'];
+            $result1->data_seek($c);
+            $orderItems[$b][2] = $result1->fetch_assoc()['itemPic'];
+            $orderItems[$b][3] = $orderItemsJson[$b][1];
+        }
+    }
+//    
+    $finalArray = array();
+    $finalArray[0]= json_encode($clientArray);
+    $finalArray[1]= json_encode($orderItems);
+//    
+    echo json_encode($finalArray);
+//    echo count($orderItemsJson);
+//    echo $orderItemsJson[0][0];
+//    echo $orderItems[0];
 }
 ?>
