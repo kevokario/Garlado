@@ -83,14 +83,15 @@ function loadOrders() {
 //this function registers click function to button on new orders table!
 
 function openOrder(str) {
+    $('#openOrdersModal ul li h3 span').text(str);
     $.post('AjaxPhp/simpleQuery.php', {
         cat: 'getOrderItems',
         orderNumber: str.trim()
     }, function (data, status) {
 //        test(data);
-//        var url = "https://maps.google.com/maps?q=quest%20website%20developers&t=&z=13&ie=UTF8&iwloc=&output=embed";
-//        var urldest = "https://www.google.com/maps/embed/v1/directions?origin=40.7127837,-74.0059413&destination=42.3600825,-71.05888&key=AIzaSyDzlJ68ZHuGRQ6eFfFtGFwNchJG98CRE-g";
-//        $('#openOrdersModal #iframe').attr('src', urldest);
+        var url = "https://maps.google.com/maps?q=quest%20website%20developers&t=&z=13&ie=UTF8&iwloc=&output=embed";
+//        var urldest = "https://www.google.com/maps/embed/v1/directions?origin=40.7127837,-74.0059413&destination=42.3600825,-71.05888&key=AIzaSyAqVaMhQ8J6dOXmnEzdCFaSNwH853STe7I";
+        $('#openOrdersModal #iframe').attr('src', url);
 
 //first array format
 //   0-fname 1-lname 2-phone 3-addressdetails 4-addresstype 5-orderitems 6-orderitems 7-orderamount 8-itemcount 9-time 10-date 11-status
@@ -105,21 +106,37 @@ function openOrder(str) {
 
 //    populate the items
         var items = '';
-         var div = $('#openOrdersModal #productDetails');
+        var div = $('#openOrdersModal #productDetails');
         for (var a = 0; a < array2.length; a++) {
-           var total = (parseInt(array2[a][3])*parseInt(array2[a][1])).toString();
+            var total = (parseInt(array2[a][3]) * parseInt(array2[a][1])).toString();
 
-            items+='<div class="col-sm-3">\n\
-                        <img src="../productImages/'+array2[a][2]+'" alt="product picture"/>\n\
-                        <h5><b>'+array2[a][0]+'</b></h5>\n\
+            items += '<div class="col-sm-3">\n\
+                        <img src="../productImages/' + array2[a][2] + '" alt="product picture"/>\n\
+                        <h5><b>' + array2[a][0] + '</b></h5>\n\
                         <ol>\n\
-                            <li>Quantity Ordered :<span>'+array2[a][3]+'</span> </li>\n\
-                            <li>Item Price : Ksh <span>'+moneyFormatter(array2[a][1])+'</span></li>\n\
-                            <li>Total Price : Ksh <span>'+moneyFormatter(total)+'</span></li>\n\
+                            <li>Quantity Ordered :<span>' + array2[a][3] + '</span> </li>\n\
+                            <li>Item Price : Ksh <span>' + moneyFormatter(array2[a][1]) + '</span></li>\n\
+                            <li>Total Price : Ksh <span>' + moneyFormatter(total) + '</span></li>\n\
                         </ol>\n\
                     </div>';
         }
-        $(div).html(items); 
+        $(div).html(items);
+
+//        populate the contact info
+        var divClientForm = ('#ClientDetails form ');
+
+        $('#ClientDetails form .fancy:eq(0)').text(array1[0]);
+        $('#ClientDetails form .fancy:eq(1)').text(array1[1]);
+        $('#ClientDetails form .fancy:eq(2)').text(array1[2]);
+        $('#ClientDetails form .fancy:eq(3)').html('<b class="text-capitalize">' + array1[4] + '</b> Mode of Delivery');
+        $('#ClientDetails form .fancy:eq(4)').text(array1[10]);
+        $('#ClientDetails form .fancy:eq(5)').text(array1[11]);
+        $('#ClientDetails form .fancy:eq(6)').text(array1[12]);
+        $('#ClientDetails form .fancy:eq(7)').text('---under construction---');
+        $('#ClientDetails form .fancy:eq(8)').text(array1[3]);
+        var url = "https://maps.google.com/maps?q="+encodeURIComponent(array1[12])+"&t=&z=13&ie=UTF8&iwloc=&output=embed";
+//        var urldest = "https://www.google.com/maps/embed/v1/directions?origin=40.7127837,-74.0059413&destination=42.3600825,-71.05888&key=AIzaSyAqVaMhQ8J6dOXmnEzdCFaSNwH853STe7I";
+        $('#openOrdersModal #iframe').attr('src', url);
         $('#openOrdersModal #iframe').html('<p class="text-center">Welcome to Maps</p>');
         $('#openOrdersModal').modal('show');
     });

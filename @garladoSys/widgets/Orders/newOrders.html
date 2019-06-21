@@ -86,13 +86,7 @@
                         <div class="col-sm-12">
                             <ul>
                                 <li>
-                                    <b>Phone</b> : <span>0704219247</span>
-                                </li>
-                                <li>
-                                    <b>Address</b> : <span>Welcome to some addresses</span>
-                                </li>
-                                <li>
-                                    <b>Order number</b> : <span>randomecharshere</span>
+                                    <h3><b>Order number</b> : <span>randomecharshere</span></h3>
                                 </li>
                             </ul>
                         </div>
@@ -100,32 +94,125 @@
                     <div class="row">
                         <div class="col-sm-12 text-center">
                             <ul class="nav nav-tabs">
-                                <li class="active"><a data-toggle="tab" href="#productDetails">Client Orders</a></li>
-                                <li><a data-toggle="tab" href="#ClientDetails">Client Details</a></li>
-                                <li><a data-toggle="tab" href="#ClientDestination">Client Location</a></li>
+                                <li class="active"><a data-toggle="tab" href="#productDetails"><i class="fa fa-cart-plus"></i> Client Orders</a></li>
+                                <li><a data-toggle="tab" href="#ClientDetails"><i class="fa fa-address-card-o"></i> Client Details</a></li>
+                                <li><a data-toggle="tab" href="#ClientDestination"><i class="fa fa-map-marker"></i> Client Location</a></li>
                             </ul>
                             <div class="tab-content">
 
                                 <div class="tab-pane fade in active" id="productDetails">
 
-<!--                                    <div class="col-sm-3">
-                                        <img src="img/logo.png" alt="product picture"/>
-                                        <h5><b>Item Name</b></h5>
-                                        <ol>
-                                            <li>Quantity Ordered :<span></span> </li>
-                                            <li>Item Price : Ksh <span>453.00</span></li>
-                                            <li>Total Price : Ksh <span>1200.00</span></li>
-                                        </ol>
-                                    </div>-->
+                                    <!--                                    <div class="col-sm-3">
+                                                                            <img src="img/logo.png" alt="product picture"/>
+                                                                            <h5><b>Item Name</b></h5>
+                                                                            <ol>
+                                                                                <li>Quantity Ordered :<span></span> </li>
+                                                                                <li>Item Price : Ksh <span>453.00</span></li>
+                                                                                <li>Total Price : Ksh <span>1200.00</span></li>
+                                                                            </ol>
+                                                                        </div>-->
 
                                 </div>
 
-                                <div id="ClientDetails" class="tab-pane fade">
-                                    waddup yo
+                                <div id="ClientDetails" class="tab-pane fade text-left">
+                                    <form>
+                                        <fieldset>
+                                            <legend class="text-center">Client Details</legend>
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label>First Name</label>
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon">
+                                                                <span class="fa fa-user-o"></span>
+                                                            </span>
+                                                            <p class="form-control-static fancy"></p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Last Name</label>
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon">
+                                                                <span class="fa fa-user-o"></span>
+                                                            </span>
+                                                            <p class="form-control-static fancy"></p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Phone Number</label>
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon">
+                                                                <span class="fa fa-phone"></span>
+                                                            </span>
+                                                            <p class="form-control-static fancy"></p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Address Details</label>
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon">
+                                                                <span class="fa fa-address-book"></span>
+                                                            </span>
+                                                            <p class="form-control-static fancy"></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label>Country</label>
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon">
+                                                                <i class="">C</i>
+                                                            </span>
+                                                            <p class="form-control-static fancy">Some Name</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>County/Province</label>
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon">
+                                                                <span class="">P</span>
+                                                            </span>
+                                                            <p class="form-control-static fancy">Some Name</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>State/Contsituenct</label>
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon">
+                                                                <span class="">S</span>
+                                                            </span>
+                                                            <p class="form-control-static fancy">0704219247</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Payment Status</label>
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon">
+                                                                <span class="fa fa-money"></span>
+                                                            </span>
+                                                            <p class="form-control-static fancy">Door step mode of delivery</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-12">
+                                                    <div class="form-group">
+                                                        <label>Location Description</label>
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon">
+                                                                <i class="fa fa-map-marker"></i>
+                                                            </span>
+                                                            <textarea class="form-control fancy" disabled="" rows="4" value="">Some Text</textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                    </form>
                                 </div>
                                 <div id="ClientDestination" class="tab-pane fade">
                                     <iframe id="iframe">
-                                        
+
                                     </iframe>
                                 </div>
                             </div>
@@ -138,6 +225,27 @@
                 <div class="row">
                     <div class="col-sm-12">
 
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="panel-group">
+                            <div class="panel panel-info">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" class="btn btn-info" href="#clientOrdersNew">
+                                            <i class="fa fa-question-circle-o"></i> About Client Orders
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="clientOrdersNew" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        I donno what is to happen here.
+                                        <br>
+                                        What is to happen here is coming up here shortly!
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -183,6 +291,19 @@
         padding: 5px;
         border-radius: 5px;
         transition: .5s;
+    }
+    .fancy{
+        padding: 10px;
+        border: none;
+        border-radius: 0;
+        border-bottom: 1px solid #888;
+        background-color: #f9f9f9;
+    }
+    .input-group-addon{
+        border:none;
+        /*background-color: #fff;*/
+        border-bottom: 1px solid #999;
+        border-radius: 0;
     }
     @media(max-width:768px){
         #openOrdersModal .clientNewOrders .col-sm-3{

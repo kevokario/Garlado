@@ -3999,10 +3999,14 @@ function getOrderItems($orderNumber) {
             clientaddress.fname,clientaddress.lname,clientaddress.phone,
             clientaddress.addressdetails,clientaddress.addresstype,clientorders.orderitems,
             orderamount,clientorders.itemcount,clientorders.time,
-            clientorders.date,clientorders.status
+            clientorders.date,clientorders.status,
+            country.contName, county.conName, constituency.constName
             from clientorders 
             inner join
             clientaddress on clientaddress.addressId = clientorders.addressId
+            inner join constituency on constituency.constId = clientaddress.constId
+            inner join county on county.conId = constituency.conId
+            inner join country on country.contId = county.contId
             where clientorders.ordernumber = '$orderNumber'";
 
 //    $fb = '';
@@ -4059,11 +4063,22 @@ function getOrderItems($orderNumber) {
 
         $result->data_seek($a);
         $clientArray[9] = $result->fetch_assoc()['status'];
+        
+         $result->data_seek($a);
+        $clientArray[10] = $result->fetch_assoc()['contName'];
+
+        $result->data_seek($a);
+        $clientArray[11] = $result->fetch_assoc()['conName'];
+
+        $result->data_seek($a);
+        $clientArray[12] = $result->fetch_assoc()['constName'];
     }
 
 //    echo json_encode($clientArray);
     $orderItems = array();
     $orderItemsJson = json_decode($clientArray[5]);
+
+    
 
 //    this array contains all the product names.
 //    From product names order the following data.
@@ -4073,13 +4088,13 @@ function getOrderItems($orderNumber) {
 //   second array format
     //Format : 0->name 1-> price 2->image 3-> quantity
     //Array format : 0>name, 1->quantity
-    
+
     $sql1 = "";
-    
-    for($b = 0; $b<count($orderItemsJson); $b++){
-        $sql1 = "SELECT items.newPrice, items.itemPic from items WHERE items.itemName = '".$orderItemsJson[$b][0]."';";
+
+    for ($b = 0; $b < count($orderItemsJson); $b++) {
+        $sql1 = "SELECT items.newPrice, items.itemPic from items WHERE items.itemName = '" . $orderItemsJson[$b][0] . "';";
         $result1 = $con->query($sql1);
-        for($c = 0; $c<$result1->num_rows; $c++){
+        for ($c = 0; $c < $result1->num_rows; $c++) {
             $orderItems[$b][0] = $orderItemsJson[$b][0];
             $result1->data_seek($c);
             $orderItems[$b][1] = $result1->fetch_assoc()['newPrice'];
@@ -4090,12 +4105,9 @@ function getOrderItems($orderNumber) {
     }
 //    
     $finalArray = array();
-    $finalArray[0]= json_encode($clientArray);
-    $finalArray[1]= json_encode($orderItems);
+    $finalArray[0] = json_encode($clientArray);
+    $finalArray[1] = json_encode($orderItems);
 //    
     echo json_encode($finalArray);
-//    echo count($orderItemsJson);
-//    echo $orderItemsJson[0][0];
-//    echo $orderItems[0];
 }
 ?>

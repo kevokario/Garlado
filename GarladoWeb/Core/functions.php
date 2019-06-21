@@ -1532,7 +1532,7 @@ function sendSms($recipients, $message) {
     $gateway = new AfricasTalkingGateway($username, $apikey);
     $fb = 'sent';
     try {
-        $message = "Thank you for creating an account with us.Proivde the following verification code to activate your account.\nCODE : " . $message . " .\n\nGarlado Online Store";
+        $message = "Thank you for creating an account with us.Proivde the following verification code to activate your account.\nCODE : " . $message . " \n\nGarlado Online Store";
         $results = $gateway->sendMessage($recipients, $message);
     } catch (AfricasTalkingGatewayException $e) {
         $fb = 'unsent';
