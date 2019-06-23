@@ -86,7 +86,7 @@
                         <div class="col-sm-12">
                             <ul>
                                 <li>
-                                    <h3><b>Order number</b> : <span>randomecharshere</span></h3>
+                                    <h3><b>Order number</b> : <span></span></h3>
                                 </li>
                             </ul>
                         </div>
@@ -97,6 +97,7 @@
                                 <li class="active"><a data-toggle="tab" href="#productDetails"><i class="fa fa-cart-plus"></i> Client Orders</a></li>
                                 <li><a data-toggle="tab" href="#ClientDetails"><i class="fa fa-address-card-o"></i> Client Details</a></li>
                                 <li><a data-toggle="tab" href="#ClientDestination"><i class="fa fa-map-marker"></i> Client Location</a></li>
+                                <li><a data-toggle="tab" href="#ClientAction"><i class="fa fa-star-o"></i> Action</a></li>
                             </ul>
                             <div class="tab-content">
 
@@ -202,7 +203,7 @@
                                                             <span class="input-group-addon">
                                                                 <i class="fa fa-map-marker"></i>
                                                             </span>
-                                                            <textarea class="form-control fancy" disabled="" rows="4" value="">Some Text</textarea>
+                                                            <textarea class="form-control fancy" disabled="" rows="4"></textarea>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -215,6 +216,84 @@
 
                                     </iframe>
                                 </div>
+                                <div id="ClientAction" class="tab-pane fade text-left">
+                                    <form>
+                                        <fieldset>
+                                            <legend class="text-center">Client Details</legend>
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label>Client Name</label>
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon">
+                                                                <span class="fa fa-user-o"></span>
+                                                            </span>
+                                                            <p class="form-control-static fancy">Some Name</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Order Amount</label>
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon">
+                                                                <span class="fa fa-money"></span>
+                                                            </span>
+                                                            <p class="form-control-static fancy">Some Name</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Phone Number</label>
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon">
+                                                                <span class="fa fa-phone"></span>
+                                                            </span>
+                                                            <p class="form-control-static fancy">0704219247</p>
+                                                        </div>
+                                                    </div>
+
+
+
+                                                </div>
+                                                <div class="col-sm-6">
+
+                                                    <div class="form-group">
+                                                        <label>Order Number</label>
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon">
+                                                                <span class="fa fa-money"></span>
+                                                            </span>
+                                                            <p class="form-control-static fancy">Door step mode of delivery</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Payment Status</label>
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon">
+                                                                <span class="fa fa-money"></span>
+                                                            </span>
+                                                            <p class="form-control-static fancy">Door step mode of delivery</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Select appropriate action</label>
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon">
+                                                                <i class="fa fa-star-o"></i>
+                                                            </span>
+                                                            <div class="radio">
+                                                                <label> <input type="radio" value="pending" name="optradio">Products are being delivered </label>
+                                                            </div>
+                                                        </div>
+                                                        <br>
+
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-12 text-center">
+                                                    <button type="button" class="btn btn-primary">Submit <i class="fa fa-star-o"></i></button>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                    </form>
+                                </div>
                             </div>
                         </div>
 
@@ -224,9 +303,22 @@
 
                 <div class="row">
                     <div class="col-sm-12">
-
+                        <ul class="summary">
+                            <li>
+                                Time of order : <b><span></span></b>.
+                            </li>
+                            <li>
+                                Date of order : <b> <span></span></b>. 
+                            </li>
+                            <li>
+                                Items Ordered : <b><span></span></b>.
+                            </li>
+                            <li>
+                                Total Amount <b>Ksh : <span></span></b>. 
+                            </li>
+                        </ul>
                     </div>
-                    <div class="col-sm-12">
+                    <div class="col-sm-12" style='border-top: 1px solid #999;padding-top: 5px;'>
                         <div class="panel-group">
                             <div class="panel panel-info">
                                 <div class="panel-heading">
@@ -238,9 +330,50 @@
                                 </div>
                                 <div id="clientOrdersNew" class="panel-collapse collapse">
                                     <div class="panel-body">
-                                        I donno what is to happen here.
+                                        From here you get to view the following
                                         <br>
-                                        What is to happen here is coming up here shortly!
+                                        <dl>
+                                            <ol>
+                                                <li>
+                                                <dt>
+                                                    View Orders Placed
+                                                </dt>
+                                                <dd>
+                                                    You are able to view the orders placed by the client through the
+                                                    <b>Client Orders</b> Tab. You will also see the total amount of the Order Placed
+                                                </dd>
+                                                </li>
+                                                <li>
+                                                <dt>
+                                                    View Client Info
+                                                </dt>
+                                                <dd>
+                                                    You will be able to see the client information through the
+                                                    <b>Client Details</b> Tab. From Here you will be able to contact the user and make delivery arrangements
+                                                </dd>
+                                                </li>
+                                                <li>
+                                                <dt>
+                                                    View Client Location
+                                                </dt>
+                                                <dd>
+                                                    You will be able to see a map location of where your client is through the
+                                                    <b>Client Location's</b> Tab. This should make it easy to deliver their products.
+                                                    If the Client's location provided is not clear, the area will be indicated by a line path.
+                                                </dd>
+                                                </li>
+                                                <li>
+                                                <dt>
+                                                    Actions
+                                                </dt>
+                                                <dd>
+                                                    Here you will be able to act on the client order through the 
+                                                    <b>Action's</b> Tab. From here, you will see the client address to deliver too,payment status and a group of options.
+                                                    Click on the appropriate action.
+                                                </dd>
+                                                </li>
+                                            </ol>
+                                        </dl>
                                     </div>
 
                                 </div>
@@ -257,12 +390,18 @@
 </div>
 
 <style>
-    #openOrdersModal .clientNewOrders, #openOrdersModal #ClientDetails, #openOrdersModal #ClientDestination{
+    #openOrdersModal .clientNewOrders, 
+    #openOrdersModal #ClientDetails, 
+    #openOrdersModal #ClientDestination,
+    #openOrdersModal #ClientAction{
         min-height: 410px;
     }
     #openOrdersModal .clientNewOrders ul{
         padding-left: 5px;
         text-align: center;
+    }
+    #openOrdersModal #ClientAction .radio{
+        margin-left:5px;
     }
     #openOrdersModal #iframe{
         width: 100%;
@@ -279,6 +418,14 @@
     #openOrdersModal #productDetails{
         height: 410px;
         overflow: auto;
+    }
+    #openOrdersModal .summary{
+        list-style-type: none;
+    }
+    #openOrdersModal .summary li{
+
+        display: inline-block;
+        margin: 2px 10px;
     }
     #openOrdersModal .clientNewOrders .col-sm-3 {
         transition: .5s;

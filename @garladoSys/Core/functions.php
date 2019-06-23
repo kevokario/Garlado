@@ -3980,11 +3980,12 @@ function loadNewOrders() {
                 <td>" . $array[0] . "</td>
                 <td>" . $array[1] . "</td>
                 <td>" . moneyFormatter($array[2]) . "</td>
-                <td>" . $array[3] . "</td>
+                <td><span class='label label-success'>" . $array[3] . "</span></td>
                 <td>
                 <button class='btn btn-warning'>
                     <i class='fa fa-folder-open-o'></i>...
                 </button>
+                
                 </td>
                 </tr>";
         $array[0] = $array[1] = $array[2] = $array[3] = '';
@@ -4072,6 +4073,9 @@ function getOrderItems($orderNumber) {
 
         $result->data_seek($a);
         $clientArray[12] = $result->fetch_assoc()['constName'];
+        
+         $result->data_seek($a);
+        $clientArray[13] = $result->fetch_assoc()['itemcount'];
     }
 
 //    echo json_encode($clientArray);

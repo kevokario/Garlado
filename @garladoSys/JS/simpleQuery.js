@@ -134,6 +134,12 @@ function openOrder(str) {
         $('#ClientDetails form .fancy:eq(6)').text(array1[12]);
         $('#ClientDetails form .fancy:eq(7)').text('---under construction---');
         $('#ClientDetails form .fancy:eq(8)').text(array1[3]);
+        
+        $('#openOrdersModal .summary li:eq(0) b span').text(array1[7]);
+        $('#openOrdersModal .summary li:eq(1) b span').text(array1[8]);
+        $('#openOrdersModal .summary li:eq(2) b span').text(array1[13]);
+        $('#openOrdersModal .summary li:eq(3) b span').text(moneyFormatter(array1[6]));
+        
         var url = "https://maps.google.com/maps?q="+encodeURIComponent(array1[12])+"&t=&z=13&ie=UTF8&iwloc=&output=embed";
 //        var urldest = "https://www.google.com/maps/embed/v1/directions?origin=40.7127837,-74.0059413&destination=42.3600825,-71.05888&key=AIzaSyAqVaMhQ8J6dOXmnEzdCFaSNwH853STe7I";
         $('#openOrdersModal #iframe').attr('src', url);
