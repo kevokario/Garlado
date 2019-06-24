@@ -3953,6 +3953,17 @@ function checkOrder() {
     }
     echo $newOrders;
 }
+function checkOrderPending() {
+    $con = connect();
+    $sql = "SELECT count(clientorders.orderId) as openOrders from clientorders where clientorders.status = 'pending';";
+    $result = $con->query($sql);
+    $newOrders = '';
+    for ($a = 0; $a < $result->num_rows; $a++) {
+        $result->data_seek($a);
+        $newOrders = $result->fetch_assoc()['openOrders'];
+    }
+    echo $newOrders;
+}
 
 function loadNewOrders() {
     $con = connect();

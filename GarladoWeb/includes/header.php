@@ -7,6 +7,7 @@
     
         <script src="../Res1/bs/js/jquery-3.3.1.js"></script>
         <script src="../Res1/bs/js/bootstrap.min.js"></script>
+        <script src="../Res/bs/js/jquery.wait.js" type="text/javascript"></script>
         <script src="../Res1/Chartjs/Chart.min.js" type="text/javascript"></script>
         <script src="../Res1/bs/js/bootstrapValidator.min.js"></script>
         <link rel="icon" href="img/logo.png"/>

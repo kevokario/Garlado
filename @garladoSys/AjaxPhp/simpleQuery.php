@@ -17,6 +17,9 @@ if(isset($_POST['cat'])){
         checkOrder();
 //        echo 'Obtained';
     }
+    else if($cat === "checkOrderPending"){
+        checkOrderPending();
+    }
     else if($cat === 'loadNewOrders'){
         loadNewOrders();
 //        echo 'Welcome';

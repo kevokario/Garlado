@@ -68,7 +68,7 @@ if (isset($_SESSION['marvel']) === false) {
                         <a data-toggle="dropdown">
                             <span class="fa fa-user-secret"></span>
                             <sup><span class="fa fa-briefcase"></span></sup>
-                            Manage Users <span class="badge bg-warning myOrderBadge">0</span> <i class="fa fa-caret-down"></i>
+                            Manage Users <span class="badge bg-warning myOrderBadge-new">0</span> <i class="fa fa-caret-down"></i>
                         </a>
                         <ul class="dropdown-menu">
                             <li>
@@ -85,7 +85,7 @@ if (isset($_SESSION['marvel']) === false) {
                                         <i class="fa fa-stack-1x fa-user-o"></i>
                                         <i class="fa fa-stack-2x fa-square-o"></i>
                                     </span>
-                                    Client Orders <span class="badge bg-warning myOrderBadge">0</span>
+                                    Client Orders <span class="badge bg-warning myOrderBadge-new"></span>
                                 </a>
                             </li>
                         </ul>

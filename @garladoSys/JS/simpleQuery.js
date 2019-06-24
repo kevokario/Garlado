@@ -1,20 +1,31 @@
 $(document).ready(function () {
 // this function loads new orders and places them here
-    checkOrder();
+    checkOrder($('#mynav .myOrderBadge-new'));
     //  Option manage client
     $('#mynav .dropdown:eq(0) ul li:eq(1) a').click(function () {
         LoadClients();
     });
 });
-function checkOrder() {
+function checkOrder(span) {
     var spin = '<i class="fa fa-pulse fa-refresh"></i>';
-    $('#mynav .myOrderBadge').html(spin);
+    $(span).html(spin);
     $.post('AjaxPhp/simpleQuery.php',
             {
                 cat: 'checkOrder'
             },
             function (data, status) {
-                $('#mynav .myOrderBadge').html(data);
+                $(span).html(data);
+            });
+}
+function checkOrderPending(span) {
+    var spin = '<i class="fa fa-pulse fa-refresh"></i>';
+    $(span).html(spin);
+    $.post('AjaxPhp/simpleQuery.php',
+            {
+                cat: 'checkOrderPending'
+            },
+            function (data, status) {
+                $(span).html(data);
             });
 }
 
@@ -42,6 +53,8 @@ function loadNewOrders() {
     loader($('#holder'));
     $.get('widgets/Orders/newOrders.html', function (data, status) {
         $('#holder').html(data);
+        checkOrder($('.OrderDivTitle .myOrderBadge-new'));
+        checkOrderPending($('.OrderDivTitle .myOrderBadge-pending'));
         loadOrders();
     });
 }
@@ -134,16 +147,38 @@ function openOrder(str) {
         $('#ClientDetails form .fancy:eq(6)').text(array1[12]);
         $('#ClientDetails form .fancy:eq(7)').text('---under construction---');
         $('#ClientDetails form .fancy:eq(8)').text(array1[3]);
-        
+
         $('#openOrdersModal .summary li:eq(0) b span').text(array1[7]);
         $('#openOrdersModal .summary li:eq(1) b span').text(array1[8]);
         $('#openOrdersModal .summary li:eq(2) b span').text(array1[13]);
         $('#openOrdersModal .summary li:eq(3) b span').text(moneyFormatter(array1[6]));
-        
-        var url = "https://maps.google.com/maps?q="+encodeURIComponent(array1[12])+"&t=&z=13&ie=UTF8&iwloc=&output=embed";
+
+
+        $('#ClientAction form .fancy:eq(0)').text(array1[0] + ' ' + array1[1]);
+        $('#ClientAction form .fancy:eq(1)').text(moneyFormatter(array1[6]));
+        $('#ClientAction form .fancy:eq(2)').text(array1[2]);
+        $('#ClientAction form .fancy:eq(3)').html('<b class="text-capitalize">' + str + '</b>');
+        $('#ClientAction form .fancy:eq(4)').text('---under construction---');
+        $('#ClientAction form button').click(function () {
+            ActionClicked($(this));
+        });
+
+        var url = "https://maps.google.com/maps?q=" + encodeURIComponent(array1[12]) + "&t=&z=13&ie=UTF8&iwloc=&output=embed";
 //        var urldest = "https://www.google.com/maps/embed/v1/directions?origin=40.7127837,-74.0059413&destination=42.3600825,-71.05888&key=AIzaSyAqVaMhQ8J6dOXmnEzdCFaSNwH853STe7I";
         $('#openOrdersModal #iframe').attr('src', url);
         $('#openOrdersModal #iframe').html('<p class="text-center">Welcome to Maps</p>');
         $('#openOrdersModal').modal('show');
     });
+}
+
+//this is the action that is performed on clicking the action submit button
+//-------------------------------------------------
+function ActionClicked(btn) {
+    var form = $('#ClientAction form');
+    var input = document.forms['ClientAction']['options'].checked;
+//    if(input.checked){
+//        alert('w');
+//    }
+// change the status to pending, dismiss this modal, show a message update Success! Reload the newOrders. page
+    $(btn).children('i').removeClass('fa-star-o').addClass('fa-pulse fa-refresh').wait(2000).removeClass('fa-pulse fa-refresh').addClass('fa-star-o');
 }

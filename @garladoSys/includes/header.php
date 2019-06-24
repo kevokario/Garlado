@@ -13,6 +13,7 @@
         <meta http-equiv="Expires" content="0">
 
         <script src="../Res/bs/js/jquery-3.3.1.js"></script>
+        <script src="../Res/bs/js/jquery.wait.js" type="text/javascript"></script>
         <script src="../Res/bs/js/bootstrap.min.js"></script>
         <script src="../Res/Chartjs/Chart.min.js" type="text/javascript"></script>
         <script src="../Res/bs/js/bootstrapValidator.min.js"></script>
