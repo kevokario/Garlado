@@ -16,7 +16,7 @@ $n2 = $_SESSION['marvel'];
  $name = $n4.'.'.$ext;
  $location = '../productImages/' . $name;  
  move_uploaded_file($_FILES["file"]["tmp_name"], $location);
- //echo '<img src="'.$location.'" height="150" width="225" class="img-thumbnail" /><br><p>'.$location.'</p>';
+//  echo '<img src="'.$location.'" height="150" width="225" class="img-thumbnail" /><br><p>'.$location.'</p>';
  echo $name;
 }
 

@@ -1,5 +1,5 @@
 
 
 <script type="text/javascript">
-    document.location.href='@admauth';
+    document.location.href='@admauth.php';
    </script>

@@ -713,7 +713,7 @@ function populateParentCategory() {
 
 function populateParentCategoryEdit() {
     $con = connect();
-    $sql = "select * from `majorCategory` where `status`=1 order by `majorId` asc";
+    $sql = "select * from `majorcategory` where `status`=1 order by `majorId` asc";
     $name = '';
     $result = $con->query($sql);
     $rows = $result->num_rows;
@@ -1092,7 +1092,7 @@ function SaveMinorChangeUpdate($id, $name, $status) {
 
 function populateAppProductGeneral() {
     $con = connect();
-    $sql = "select * from `majorCategory` where `status`=1 order by `majorId` asc";
+    $sql = "select * from `majorcategory` where `status`=1 order by `majorId` asc";
     $name = '';
     $result = $con->query($sql);
     $rows = $result->num_rows;

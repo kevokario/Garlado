@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="us-en">
     <head>
-        <title>GARLADO</title>
+        <title>My Online Duka</title>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <link rel="stylesheet" href="../Res/bs/css/bootstrap.min.css"/>
         <link rel="stylesheet" href="../Res/bs/css/bootstrap-theme.min.css"/>

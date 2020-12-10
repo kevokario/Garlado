@@ -21,7 +21,7 @@ function loginAttempt(strusername, strpassword, feedback) {
             }
             if (response === 'SuccessLogin') {
                 feedback.innerHTML = "Redirecting...<i class='fa fa-pulse fa-refresh'></i>";
-                document.location.href = "@dashboard";
+                document.location.href = "@dashboard.php";
             } if (response === 'FailedLogin') {
                 feedback.innerHTML = '<div class="alert alert-danger alert-dismissible">\n\
        <a class="close" data-dismiss="alert">&times;</a> <p>Invalid Username/Password. Please try again</p>  </div>';
